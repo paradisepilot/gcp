@@ -1,7 +1,7 @@
 #!/bin/bash
 
-sudo apt-get update
-sudo apt-get install r-base r-base-dev
+#sudo apt-get update
+#sudo apt-get install r-base r-base-dev
 
 mkdir ./tmp
 cd    ./tmp
@@ -14,7 +14,7 @@ bash ${minicondaInstaller}
 #curl -O https://repo.anaconda.com/archive/${anacondaInstaller}
 #bash ${anacondaInstaller}
 
-source ~/.bashrc
-conda install scikit-learn
-conda install keras
+#source ~/.bashrc
+#conda install scikit-learn
+#conda install keras
 
