@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#sudo apt-get update
-#sudo apt-get --yes install r-base r-base-dev
+sudo apt-get update
+sudo apt-get --yes install r-base r-base-dev
 
 mkdir ./tmp
 cd    ./tmp
