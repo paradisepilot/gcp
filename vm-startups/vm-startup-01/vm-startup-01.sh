@@ -15,7 +15,6 @@ bash ${minicondaInstaller}
 #bash ${anacondaInstaller}
 
 source ~/.bashrc
-
 conda install scikit-learn
 conda install keras
 
