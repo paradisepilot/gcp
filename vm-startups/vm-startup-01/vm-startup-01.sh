@@ -16,7 +16,6 @@ curl -O https://repo.continuum.io/miniconda/${minicondaInstaller}
 #bash ${anacondaInstaller}
 
 #source ~/.bashrc
-#conda install pandas
-#conda install scikit-learn
+#conda install pandas scikit-learn
 #conda install keras
 
