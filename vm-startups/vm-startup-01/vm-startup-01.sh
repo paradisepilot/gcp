@@ -9,6 +9,7 @@ cd    ./tmp
 minicondaInstaller=Miniconda3-latest-Linux-x86_64.sh
 curl -O https://repo.continuum.io/miniconda/${minicondaInstaller}
 #bash ${minicondaInstaller}
+#conda update conda
 
 #anacondaInstaller=Anaconda3-5.1.0-Linux-x86_64.sh
 #curl -O https://repo.anaconda.com/archive/${anacondaInstaller}
