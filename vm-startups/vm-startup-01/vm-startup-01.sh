@@ -18,6 +18,10 @@ bash ${minicondaInstaller} -b -p ${minicondaDIR}
 #export PATH="$minicondaDIR/bin:$PATH"
 
 source ${minicondaDIR}/bin/activate
+echo >> ${myHOME}/.bashrc
+echo PATH="$PATH" >> ${myHOME}/.bashrc
+echo >> ${myHOME}/.bashrc
+
 conda update  --yes conda
 conda install --yes pandas scikit-learn
 #conda install --yes keras
@@ -25,10 +29,6 @@ conda install --yes pandas scikit-learn
 #anacondaInstaller=Anaconda3-5.1.0-Linux-x86_64.sh
 #curl -O https://repo.anaconda.com/archive/${anacondaInstaller}
 #bash ${anacondaInstaller} -b -p $HOME/anaconda
-
-echo >> ${myHOME}/.bashrc
-echo PATH="$minicondaDIR/bin:$PATH" >> ${myHOME}/.bashrc
-echo >> ${myHOME}/.bashrc
 
 source ${myHOME}/.bashrc
 touch STARTUP-COMPLETE.txt
