@@ -8,7 +8,8 @@ cd    ./tmp
 
 #myUsername=`whoami`
 myUsername=paradisepilot
-minicondaDIR=/home/${myUsername}/miniconda
+myHOME=/home/${myUsername}
+minicondaDIR=${myHOME}/miniconda
 echo minicondaDIR=${minicondaDIR}
 
 minicondaInstaller=Miniconda3-latest-Linux-x86_64.sh
@@ -25,5 +26,6 @@ conda install --yes pandas scikit-learn
 #curl -O https://repo.anaconda.com/archive/${anacondaInstaller}
 #bash ${anacondaInstaller} -b -p $HOME/anaconda
 
+export PATH="$minicondaDIR/bin:$PATH" >> ${myHOME}/.bashrc
 touch STARTUP-COMPLETE.txt
 
