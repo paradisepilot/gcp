@@ -6,7 +6,8 @@
 mkdir ./tmp
 cd    ./tmp
 
-myUsername=`whoami`
+#myUsername=`whoami`
+myUsername=paradisepilot
 minicondaDIR=/home/${myUsername}/miniconda
 echo minicondaDIR=${minicondaDIR}
 
