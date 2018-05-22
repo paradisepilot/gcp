@@ -6,13 +6,15 @@
 mkdir ./tmp
 cd    ./tmp
 
-minicondaDIR=$HOME/miniconda
-echo ${minicondaDIR}
+myUsername=`whoami`
+minicondaDIR=/home/${myUsername}/miniconda
+echo minicondaDIR=${minicondaDIR}
+
 minicondaInstaller=Miniconda3-latest-Linux-x86_64.sh
 curl -O https://repo.continuum.io/miniconda/${minicondaInstaller}
 bash ${minicondaInstaller} -b -p ${minicondaDIR}
-export PATH="$HOME/miniconda/bin:$PATH"
-source $HOME/miniconda/bin/activate
+export PATH="$myUsername/miniconda/bin:$PATH"
+source ${myUsername}/miniconda/bin/activate
 
 conda update  --yes conda
 conda install --yes pandas scikit-learn
