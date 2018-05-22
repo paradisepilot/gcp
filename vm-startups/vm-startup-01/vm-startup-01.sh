@@ -30,5 +30,6 @@ echo >> ${myHOME}/.bashrc
 echo PATH="$minicondaDIR/bin:$PATH" >> ${myHOME}/.bashrc
 echo >> ${myHOME}/.bashrc
 
+source ${myHOME}/.bashrc
 touch STARTUP-COMPLETE.txt
 
