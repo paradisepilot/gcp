@@ -6,9 +6,11 @@ sudo apt-get --yes install r-base r-base-dev
 mkdir ./tmp
 cd    ./tmp
 
+minicondaDIR=$HOME/miniconda
+echo ${minicondaDIR}
 minicondaInstaller=Miniconda3-latest-Linux-x86_64.sh
 curl -O https://repo.continuum.io/miniconda/${minicondaInstaller}
-bash ${minicondaInstaller} -b -p $HOME/miniconda
+bash ${minicondaInstaller} -b -p ${minicondaDIR}
 export PATH="$HOME/miniconda/bin:$PATH"
 source $HOME/miniconda/bin/activate
 
