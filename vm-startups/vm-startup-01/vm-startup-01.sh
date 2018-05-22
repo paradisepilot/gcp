@@ -13,8 +13,8 @@ echo minicondaDIR=${minicondaDIR}
 minicondaInstaller=Miniconda3-latest-Linux-x86_64.sh
 curl -O https://repo.continuum.io/miniconda/${minicondaInstaller}
 bash ${minicondaInstaller} -b -p ${minicondaDIR}
-export PATH="$myUsername/miniconda/bin:$PATH"
-source ${myUsername}/miniconda/bin/activate
+export PATH="$minicondaDIR/bin:$PATH"
+source ${minicondaDIR}/bin/activate
 
 conda update  --yes conda
 conda install --yes pandas scikit-learn
