@@ -26,6 +26,6 @@ conda install --yes pandas scikit-learn
 #curl -O https://repo.anaconda.com/archive/${anacondaInstaller}
 #bash ${anacondaInstaller} -b -p $HOME/anaconda
 
-export PATH="$minicondaDIR/bin:$PATH" >> ${myHOME}/.bashrc
+echo PATH="$minicondaDIR/bin:$PATH" >> ${myHOME}/.bashrc
 touch STARTUP-COMPLETE.txt
 
