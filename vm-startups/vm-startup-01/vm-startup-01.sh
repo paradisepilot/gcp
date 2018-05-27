@@ -6,8 +6,7 @@ sudo apt-get --yes install r-base r-base-dev
 mkdir ./tmp
 cd    ./tmp
 
-#myUsername=`whoami`
-myUsername=paradisepilot
+myUsername=USERNAME
 myHOME=/home/${myUsername}
 minicondaDIR=${myHOME}/miniconda
 echo minicondaDIR=${minicondaDIR}
