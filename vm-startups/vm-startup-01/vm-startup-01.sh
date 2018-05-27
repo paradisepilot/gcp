@@ -4,10 +4,6 @@ sudo apt-get update
 sudo apt-get upgrade
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
-### install R
-#sudo apt-get --yes install r-base r-base-dev
-
-### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### install Anaconda dependencies
 sudo apt-get --yes install build-essential cmake unzip pkg-config libopenblas-dev liblapack-dev
 sudo apt-get --yes install libhdf5-serial-dev
@@ -58,13 +54,17 @@ conda install --yes --channel conda-forge keras
 #curl -O https://repo.anaconda.com/archive/${anacondaInstaller}
 #bash ${anacondaInstaller} -b -p $HOME/anaconda
  
-### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 chown --recursive ${myUsername} ${minicondaDIR}
 chgrp --recursive ${myUsername} ${minicondaDIR}
 
 chown --recursive ${myUsername} ${myHOME}/tmp
 chgrp --recursive ${myUsername} ${myHOME}/tmp
 
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
+### install R
+#sudo apt-get --yes install r-base r-base-dev
+
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 touch  ${myHOME}/STARTUP-COMPLETE.txt
 chown --recursive ${myUsername} ${myHOME}/STARTUP-COMPLETE.txt
 chgrp --recursive ${myUsername} ${myHOME}/STARTUP-COMPLETE.txt
