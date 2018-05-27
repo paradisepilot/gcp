@@ -45,8 +45,8 @@ conda install --yes --channel conda-forge opencv
 
 ${minicondaDIR}/bin/pip install pydot-ng
 
-conda install --yes --channel conda-forge tensorflow
-conda install --yes --channel conda-forge keras
+#conda install --yes --channel conda-forge tensorflow
+#conda install --yes --channel conda-forge keras
 #conda install --yes --channel anaconda    tensorflow-gpu
 #conda install --yes --channel anaconda    keras-gpu
 
