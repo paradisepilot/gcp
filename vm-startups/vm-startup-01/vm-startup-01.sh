@@ -39,7 +39,7 @@ ${minicondaDIR}/bin/pip install --upgrade pip
 conda install --yes --channel conda-forge opencv
 conda install --yes --channel conda-forge matplotlib
 conda install --yes --channel anaconda    h5py
-conda install --yes --channel anaconda    yaml
+conda install --yes --channel anaconda    pyyaml
 conda install --yes --channel anaconda    pandas
 conda install --yes --channel anaconda    scikit-learn
 #conda install --yes --channel anaconda    keras-gpu
