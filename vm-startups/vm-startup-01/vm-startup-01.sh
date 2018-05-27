@@ -13,6 +13,9 @@ sudo apt-get --yes install build-essential cmake unzip pkg-config libopenblas-de
 sudo apt-get --yes install libhdf5-serial-dev
 sudo apt-get --yes install graphviz
 
+### the following is needed for opencv (cv2)
+sudo apt-get --yes install libgl1-mesa-glx
+
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### install miniconda
 mkdir ./tmp
