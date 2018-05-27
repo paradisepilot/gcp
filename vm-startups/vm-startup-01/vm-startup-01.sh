@@ -35,9 +35,9 @@ echo >> ${myHOME}/.bashrc
 
 conda update  --yes conda
 
-conda install --yes -c anaconda    h5py
-#conda install --yes -c conda-forge opencv
-#conda install --yes -c anaconda    pydot-ng
+conda install --yes --channel anaconda    h5py
+#conda install --yes --channel conda-forge opencv
+#conda install --yes --channel anaconda    pydot-ng
 
 #conda install --yes yaml matplotlib
 #conda install --yes pandas
