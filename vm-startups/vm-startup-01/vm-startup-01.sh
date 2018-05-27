@@ -42,9 +42,13 @@ conda install --yes --channel anaconda    pyyaml
 conda install --yes --channel anaconda    pandas
 conda install --yes --channel anaconda    scikit-learn
 conda install --yes --channel conda-forge opencv
-#conda install --yes --channel anaconda    keras-gpu
 
 ${minicondaDIR}/bin/pip install pydot-ng
+
+conda install --yes --channel conda-forge tensorflow
+conda install --yes --channel conda-forge keras
+#conda install --yes --channel anaconda    tensorflow-gpu
+#conda install --yes --channel anaconda    keras-gpu
 
 #anacondaInstaller=Anaconda3-5.1.0-Linux-x86_64.sh
 #curl -O https://repo.anaconda.com/archive/${anacondaInstaller}
