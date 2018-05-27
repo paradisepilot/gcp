@@ -34,15 +34,26 @@ echo PATH="$PATH" >> ${myHOME}/.bashrc
 echo >> ${myHOME}/.bashrc
 
 conda update  --yes conda
-#conda install --yes pydot-ng h5py opencv
-conda install --yes yaml matplotlib
-conda install --yes pandas
-conda install --yes scikit-learn
+
+conda install --yes pydot-ng
+#conda install --yes h5py
+#conda install --yes opencv
+
+#conda install --yes yaml matplotlib
+#conda install --yes pandas
+#conda install --yes scikit-learn
 #conda install --yes keras
 
 #anacondaInstaller=Anaconda3-5.1.0-Linux-x86_64.sh
 #curl -O https://repo.anaconda.com/archive/${anacondaInstaller}
 #bash ${anacondaInstaller} -b -p $HOME/anaconda
+ 
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
+chown --recursive ${myUsername} ${minicondaDIR}
+chgrp --recursive ${myUsername} ${minicondaDIR}
+
+chown --recursive ${myUsername} ${myHOME}/tmp
+chgrp --recursive ${myUsername} ${myHOME}/tmp
 
 source ${myHOME}/.bashrc
 touch  ${myHOME}/STARTUP-COMPLETE.txt
