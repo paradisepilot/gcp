@@ -44,5 +44,5 @@ conda install --yes scikit-learn
 #bash ${anacondaInstaller} -b -p $HOME/anaconda
 
 source ${myHOME}/.bashrc
-touch STARTUP-COMPLETE.txt
+touch  ${myHOME}/STARTUP-COMPLETE.txt
 
