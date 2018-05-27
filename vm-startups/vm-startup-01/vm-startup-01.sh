@@ -56,7 +56,6 @@ ${minicondaDIR}/bin/pip install pydot-ng
  
 chown --recursive ${myUsername} ${minicondaDIR}
 chgrp --recursive ${myUsername} ${minicondaDIR}
-
 chown --recursive ${myUsername} ${myHOME}/tmp
 chgrp --recursive ${myUsername} ${myHOME}/tmp
 
