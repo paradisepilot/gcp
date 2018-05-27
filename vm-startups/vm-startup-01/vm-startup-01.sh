@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt-get update
-sudo apt-get upgrade
+#sudo apt-get upgrade
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### install R
@@ -9,9 +9,9 @@ sudo apt-get upgrade
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### install Anaconda dependencies
-sudo apt-get --yes install build-essential cmake unzip pkg-config libopenblas-dev liblapack-dev
-sudo apt-get --yes install libhdf5-serial-dev
-sudo apt-get --yes install graphviz
+#sudo apt-get --yes install build-essential cmake unzip pkg-config libopenblas-dev liblapack-dev
+#sudo apt-get --yes install libhdf5-serial-dev
+#sudo apt-get --yes install graphviz
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### install miniconda
