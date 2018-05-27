@@ -44,7 +44,6 @@ conda install --yes --channel anaconda    scikit-learn
 conda install --yes --channel conda-forge opencv
 #conda install --yes --channel anaconda    keras-gpu
 
-#conda install --yes --channel anaconda pydot-ng
 ${minicondaDIR}/bin/pip install pydot-ng
 
 #anacondaInstaller=Anaconda3-5.1.0-Linux-x86_64.sh
