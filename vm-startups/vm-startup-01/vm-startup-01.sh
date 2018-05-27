@@ -34,6 +34,8 @@ echo PATH="$PATH" >> ${myHOME}/.bashrc
 echo >> ${myHOME}/.bashrc
 
 conda update  --yes conda
+${minicondaDIR}/bin/pip install --upgrade pip
+
 conda install --yes --channel conda-forge opencv
 conda install --yes --channel conda-forge matplotlib
 conda install --yes --channel anaconda    h5py
