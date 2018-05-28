@@ -52,7 +52,10 @@ ${minicondaDIR}/bin/pip install keras
 #curl -O https://repo.anaconda.com/archive/${anacondaInstaller}
 #bash ${anacondaInstaller} -b -p $HOME/anaconda
  
-# check: import matplotlib, seaborn, h5py, yaml, pandas, sklearn, cv2, pydot_ng, tensorflow, keras
+# run the following command at the Python prompt to check
+# if the packages have been installed properly:
+# >>> import matplotlib, seaborn, h5py, yaml, pandas, sklearn, cv2, pydot_ng, tensorflow, keras
+
 chown --recursive ${myUsername} ${minicondaDIR}
 chgrp --recursive ${myUsername} ${minicondaDIR}
 chown --recursive ${myUsername} ${myHOME}/tmp
