@@ -22,7 +22,7 @@ paradisepilot@cloudshell:~/gcp/image-builders/image-builder-001 (alert-basis-204
 paradisepilot@cloudshell:~/gcp/image-builders/image-builder-001 (alert-basis-204816)$ ./gcloud-compute-ssh.sh
 ~~~
 
- *  At the shell prompt of the running GCE instance, execute the following in order to install the software tools:
+ *  At the shell prompt of the running GCE instance, execute the following in order to install the software tools (this will take several minutes):
 ~~~
 paradisepilot@voyager:~/gcp/image-builders/image-builder-001$ ./image-builder-001.sh > stdout.sh.image-builder-001 2> stderr.sh.image-builder-001
 ~~~
