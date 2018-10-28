@@ -12,7 +12,7 @@ $ git clone https://github.com/paradisepilot/gcp
 $ cd gcp/image-builders/image-builder-001
  ~~~
 
- *  In order to launch a GCE instance, execute the following:
+ *  Execute the following in order to launch the GCE instance:
 ~~~
 $ ./gcloud-compute-instances-create.sh
 ~~~
