@@ -4,22 +4,22 @@ How to launch a Google Cloud Engine (GCE) instance, and install certain software
 
  *  At the Google cloudshell prompt, clone the following GitHub project:
  ~~~
-$ git clone https://github.com/paradisepilot/gcp
+paradisepilot@cloudshell:~ (alert-basis-204816)$ git clone https://github.com/paradisepilot/gcp
  ~~~
 
  *  Change directory (cd) as follows:
  ~~~
-$ cd gcp/image-builders/image-builder-001
+paradisepilot@cloudshell:~ (alert-basis-204816)$ cd gcp/image-builders/image-builder-001/
  ~~~
 
  *  Execute the following in order to launch the GCE instance:
 ~~~
-$ ./gcloud-compute-instances-create.sh
+paradisepilot@cloudshell:~/gcp/image-builders/image-builder-001 (alert-basis-204816)$ ./gcloud-compute-instances-create.sh
 ~~~
 
  *  Once the GCE instance is running, execute the following in order to log on to it:
 ~~~
-$ ./gcloud-compute-ssh.sh
+paradisepilot@cloudshell:~/gcp/image-builders/image-builder-001 (alert-basis-204816)$ ./gcloud-compute-ssh.sh
 ~~~
 
  *  At the shell prompt of the running GCE instance, execute the following in order to install the software tools:
@@ -30,7 +30,7 @@ paradisepilot@voyager:~/gcp/image-builders/image-builder-001$ ./image-builder-00
  *  In order to test the freshly installed Python, launch Python in the GCE instance:
 ~~~
 cd ~/miniconda/bin/
-./python3
+paradisepilot@voyager:~/miniconda/bin$ ./python3
 ~~~
 
  *  At the Python prompt, import the following Python modules:
