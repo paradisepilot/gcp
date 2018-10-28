@@ -46,6 +46,7 @@ ${minicondaDIR}/bin/pip install --upgrade pip
 #conda install --yes --channel anaconda    gensim
 #conda install --yes --channel conda-forge opencv
 
+${minicondaDIR}/bin/pip install google-compute-engine
 ${minicondaDIR}/bin/pip install matplotlib
 ${minicondaDIR}/bin/pip install seaborn
 ${minicondaDIR}/bin/pip install h5py
