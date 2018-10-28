@@ -27,7 +27,7 @@ paradisepilot@cloudshell:~/gcp/image-builders/image-builder-001 (alert-basis-204
 paradisepilot@voyager:~/gcp/image-builders/image-builder-001$ ./image-builder-001.sh > stdout.sh.image-builder-001 2> stderr.sh.image-builder-001
 ~~~
 
- *  In order to test the freshly installed Python, launch Python in the GCE instance:
+ *  In order to test the freshly installed Python and the modules we just installed, launch Python in the GCE instance:
 ~~~
 cd ~/miniconda/bin/
 paradisepilot@voyager:~/miniconda/bin$ ./python3
