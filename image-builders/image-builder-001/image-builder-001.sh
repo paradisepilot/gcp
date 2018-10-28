@@ -37,15 +37,6 @@ echo >> ${myHOME}/.bashrc
 conda update  --yes conda
 ${minicondaDIR}/bin/pip install --upgrade pip
 
-#conda install --yes --channel conda-forge matplotlib
-#conda install --yes --channel anaconda    seaborn
-#conda install --yes --channel anaconda    h5py
-#conda install --yes --channel anaconda    pyyaml
-#conda install --yes --channel anaconda    pandas
-#conda install --yes --channel anaconda    scikit-learn
-#conda install --yes --channel anaconda    gensim
-#conda install --yes --channel conda-forge opencv
-
 ${minicondaDIR}/bin/pip install google-compute-engine
 ${minicondaDIR}/bin/pip install matplotlib
 ${minicondaDIR}/bin/pip install seaborn
