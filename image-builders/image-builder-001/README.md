@@ -29,7 +29,7 @@ paradisepilot@voyager:~/gcp/image-builders/image-builder-001$ ./image-builder-00
 
  *  In order to test the freshly installed Python and the modules we just installed, launch Python in the GCE instance:
 ~~~
-cd ~/miniconda/bin/
+paradisepilot@voyager:~/gcp/image-builders/image-builder-001$ cd ~/miniconda/bin/
 paradisepilot@voyager:~/miniconda/bin$ ./python3
 ~~~
 
@@ -38,3 +38,8 @@ paradisepilot@voyager:~/miniconda/bin$ ./python3
  >>> import matplotlib, seaborn, h5py, pandas, sklearn, gensim, pydot_ng, tensorflow, keras
  ~~~
 
+ *  Do NOT forget to delete (or, at least stop) the instance once you are done:
+ ~~~
+paradisepilot@voyager:~/miniconda/bin$ cd ~/gcp/image-builders/image-builder-001/
+paradisepilot@voyager:~/gcp/image-builders/image-builder-001$ ./gcloud-compute-instances-delete.sh
+ ~~~
