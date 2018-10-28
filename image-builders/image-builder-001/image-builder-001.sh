@@ -17,7 +17,8 @@ sudo apt-get --yes install libgl1-mesa-glx
 mkdir ./tmp
 cd    ./tmp
 
-myUsername=USERNAME
+#myUsername=USERNAME
+myUsername=`whoami`
 myHOME=/home/${myUsername}
 minicondaDIR=${myHOME}/miniconda
 echo minicondaDIR=${minicondaDIR}
