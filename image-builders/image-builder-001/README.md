@@ -26,3 +26,15 @@ $ ./gcloud-compute-ssh.sh
 ~~~
 paradisepilot@voyager:~/gcp/image-builders/image-builder-001$ ./image-builder-001.sh > stdout.sh.image-builder-001 2> stderr.sh.image-builder-001
 ~~~
+
+ *  In order to test the freshly installed Python, launch Python in the GCE instance:
+~~~
+cd ~/miniconda/bin/
+./python3
+~~~
+
+ *  At the Python prompt, import the following Python modules:
+ ~~~
+ >>> import matplotlib, seaborn, h5py, pandas, sklearn, gensim, pydot_ng, tensorflow, keras
+ ~~~
+
