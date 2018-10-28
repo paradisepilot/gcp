@@ -23,7 +23,8 @@ myHOME=/home/${myUsername}
 minicondaDIR=${myHOME}/miniconda
 echo minicondaDIR=${minicondaDIR}
 
-minicondaInstaller=Miniconda3-latest-Linux-x86_64.sh
+#minicondaInstaller=Miniconda3-latest-Linux-x86_64.sh
+minicondaInstaller=Miniconda3-4.5.1-Linux-x86_64.sh
 curl -O https://repo.continuum.io/miniconda/${minicondaInstaller}
 bash ${minicondaInstaller} -b -p ${minicondaDIR}
 #export PATH="$minicondaDIR/bin:$PATH"
