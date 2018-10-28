@@ -1,5 +1,5 @@
 
-How to launch a Google Cloud Engine (GCE) instance, and install certain software tools on it using these scripts:
+How to create a Google Cloud Engine (GCE) instance, and install certain software tools on it using these scripts:
 =================================================================================================================
 
  *  At the Google cloudshell prompt, clone the following GitHub project:
@@ -12,7 +12,7 @@ paradisepilot@cloudshell:~ (alert-basis-204816)$ git clone https://github.com/pa
 paradisepilot@cloudshell:~ (alert-basis-204816)$ cd gcp/image-builders/image-builder-001/
  ~~~
 
- *  Execute the following in order to launch the GCE instance:
+ *  Execute the following in order to create a new GCE instance:
 ~~~
 paradisepilot@cloudshell:~/gcp/image-builders/image-builder-001 (alert-basis-204816)$ ./gcloud-compute-instances-create.sh
 ~~~
