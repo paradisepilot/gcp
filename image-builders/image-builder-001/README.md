@@ -5,6 +5,10 @@ How to launch a Google Cloud Engine (GCE) instance, and install certain software
  *  At the Google cloudshell prompt, clone the following GitHub project:
  ~~~
 $ git clone https://github.com/paradisepilot/gcp
+ ~~~
+
+ *  Change directory (cd) as follows:
+ ~~~
 $ cd gcp/image-builders/image-builder-001
  ~~~
 
