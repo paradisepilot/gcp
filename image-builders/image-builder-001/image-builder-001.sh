@@ -36,17 +36,25 @@ echo >> ${myHOME}/.bashrc
 conda update  --yes conda
 ${minicondaDIR}/bin/pip install --upgrade pip
 
-conda install --yes --channel conda-forge matplotlib
-conda install --yes --channel anaconda    seaborn
-conda install --yes --channel anaconda    h5py
-conda install --yes --channel anaconda    pyyaml
-conda install --yes --channel anaconda    pandas
-conda install --yes --channel anaconda    scikit-learn
-conda install --yes --channel anaconda    gensim
-conda install --yes --channel conda-forge opencv
+#conda install --yes --channel conda-forge matplotlib
+#conda install --yes --channel anaconda    seaborn
+#conda install --yes --channel anaconda    h5py
+#conda install --yes --channel anaconda    pyyaml
+#conda install --yes --channel anaconda    pandas
+#conda install --yes --channel anaconda    scikit-learn
+#conda install --yes --channel anaconda    gensim
+#conda install --yes --channel conda-forge opencv
+
+${minicondaDIR}/bin/pip install matplotlib
+${minicondaDIR}/bin/pip install seaborn
+${minicondaDIR}/bin/pip install h5py
+${minicondaDIR}/bin/pip install pyyaml
+${minicondaDIR}/bin/pip install pandas
+${minicondaDIR}/bin/pip install scikit-learn
+${minicondaDIR}/bin/pip install gensim
+${minicondaDIR}/bin/pip install opencv
 
 ${minicondaDIR}/bin/pip install pydot-ng
-
 ${minicondaDIR}/bin/pip install tensorflow
 ${minicondaDIR}/bin/pip install keras
 
