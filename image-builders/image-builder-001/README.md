@@ -1,6 +1,6 @@
 
-How to launch a Google Cloud VM instance, and install some tools on it using these scripts:
-===========================================================================================
+How to launch a Google Cloud VM instance, and install certain software tools on it using these scripts:
+=======================================================================================================
 
  *  At the Google cloudshell prompt, clone the following GitHub project:
  ~~~
@@ -18,3 +18,7 @@ $ ./gcloud-compute-instances-create.sh
 $ ./gcloud-compute-ssh.sh
 ~~~
 
+ *  At the shell prompt of the GCE VM, execute the following in order to install the software tools:
+~~~
+paradisepilot@voyager:~/gcp/image-builders/image-builder-001$ ./image-builder-001.sh > stdout.sh.image-builder-001 2> stderr.sh.image-builder-001
+~~~
