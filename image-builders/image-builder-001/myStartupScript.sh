@@ -4,7 +4,6 @@ myUsername=`whoami`
 myHOME=/home/${myUsername}
 touch ${myHOME}/STARTUP-BEGINS.txt
 
-
 sudo apt-get -y update
 sudo apt-get -y upgrade
 
