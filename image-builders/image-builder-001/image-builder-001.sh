@@ -66,7 +66,7 @@ chgrp --recursive ${myUsername} ${myHOME}/tmp
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### install R
-#sudo apt-get --yes install r-base r-base-dev
+sudo apt-get --yes install r-base r-base-dev
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 touch  ${myHOME}/STARTUP-COMPLETE.txt
