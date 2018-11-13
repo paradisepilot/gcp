@@ -61,8 +61,6 @@ ${minicondaDIR}/bin/pip install keras
 
 chown --recursive ${myUsername} ${minicondaDIR}
 chgrp --recursive ${myUsername} ${minicondaDIR}
-chown --recursive ${myUsername} ${myHOME}/tmp
-chgrp --recursive ${myUsername} ${myHOME}/tmp
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### install R
