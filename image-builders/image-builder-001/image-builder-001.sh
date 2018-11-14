@@ -94,7 +94,7 @@ if [ ! -d ${outputDIR} ]; then
         mkdir -p ${outputDIR}
 fi
 
-stdoutFile=stdout.R.`basename ${myRscript} .R`
+stdoutFile=${outputDIR}/stdout.R.`basename ${myRscript} .R`
 sudo R --no-save --args ${outputDIR} ${rpackagesFILE} < ${myRscript} 2>&1 > ${stdoutFile}
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
