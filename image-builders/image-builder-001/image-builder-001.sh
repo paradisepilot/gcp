@@ -63,6 +63,16 @@ chown --recursive ${myUsername} ${minicondaDIR}
 chgrp --recursive ${myUsername} ${minicondaDIR}
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
+# The following FOR loop is to avoid the following error:
+# E: Could not get lock /var/lib/apt/lists/lock - open (11: Resource temporarily unavailable)
+# E: Unable to lock directory /var/lib/apt/lists/
+for tempID in `ps -A | egrep 'apt-get' | awk '{print $1}'`
+do
+    # kill -9 ${tempID}
+    echo ${tempID}
+done
+
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### install R
 sudo apt-get --yes install r-base r-base-dev
 
