@@ -74,21 +74,16 @@ do
 done
 
 sleep 2
-echo AAA
 sudo rm /var/lib/dpkg/lock
-echo BBB
 sudo dpkg --configure -a
-echo CCC
 sudo apt-get update
-echo DDD
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### install R
-echo EEE
+echo starting to install r-basse, r-base-dev ...
 sudo dpkg --configure -a
-echo FFF
 sudo apt-get --yes install r-base r-base-dev
-echo GGG
+echo successfully installed r-base, r-base-dev
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 touch  ${myHOME}/STARTUP-COMPLETE.txt
