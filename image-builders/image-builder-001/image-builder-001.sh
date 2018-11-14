@@ -73,9 +73,14 @@ do
     echo successfully killed process ${tempID}.
 done
 
+sleep 2
+echo AAA
 sudo rm /var/lib/dpkg/lock
+echo BBB
 sudo dpkg --configure -a
+echo CCC
 sudo apt-get update
+echo DDD
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### install R
