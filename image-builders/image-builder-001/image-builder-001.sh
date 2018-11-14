@@ -16,7 +16,7 @@ sudo apt-get --yes install libgl1-mesa-glx
 sudo apt-get --yes install libxml2-dev
 
 ### the following are needed to install the R package kableExtra
-sudo apt-get --yes install libssl-dev
+sudo apt-get --yes install libssl-dev libcurl4-openssl-dev
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### install miniconda
