@@ -95,7 +95,7 @@ if [ ! -d ${outputDIR} ]; then
 fi
 
 stdoutFile=stdout.R.`basename ${myRscript} .R`
-R --no-save --args ${outputDIR} ${rpackagesFILE} < ${myRscript} 2>&1 > ${stdoutFile}
+sudo R --no-save --args ${outputDIR} ${rpackagesFILE} < ${myRscript} 2>&1 > ${stdoutFile}
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 touch  ${myHOME}/STARTUP-COMPLETE.txt
