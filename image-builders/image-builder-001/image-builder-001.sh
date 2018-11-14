@@ -12,6 +12,9 @@ sudo apt-get --yes install graphviz
 ### the following is needed for opencv (cv2)
 sudo apt-get --yes install libgl1-mesa-glx
 
+### the following is needed to install the R package tm
+sudo apt-get --yes install libxml2-dev
+
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### install miniconda
 mkdir ./tmp
