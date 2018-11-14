@@ -68,9 +68,14 @@ chgrp --recursive ${myUsername} ${minicondaDIR}
 # E: Unable to lock directory /var/lib/apt/lists/
 for tempID in `ps -A | egrep 'apt-get' | awk '{print $1}'`
 do
-    # kill -9 ${tempID}
-    echo ${tempID}
+    echo starting to kill process ${tempID} ...
+    sudo kill -9 ${tempID}
+    echo successfully killed process ${tempID}.
 done
+
+sudo rm /var/lib/dpkg/lock
+sudo dpkg --configure -a
+sudo apt-get update
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### install R
