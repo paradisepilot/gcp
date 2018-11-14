@@ -85,8 +85,10 @@ echo DDD
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### install R
 echo EEE
-sudo apt-get --yes install r-base r-base-dev
+sudo dpkg --configure -a
 echo FFF
+sudo apt-get --yes install r-base r-base-dev
+echo GGG
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 touch  ${myHOME}/STARTUP-COMPLETE.txt
