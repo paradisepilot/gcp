@@ -18,6 +18,9 @@ sudo apt-get --yes install libxml2-dev
 ### the following are needed to install the R package kableExtra
 sudo apt-get --yes install libssl-dev libcurl4-openssl-dev
 
+### the following are needed to install the R package ggiraph
+sudo apt-get --yes install libcairo2-dev
+
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### install miniconda
 mkdir ./tmp
