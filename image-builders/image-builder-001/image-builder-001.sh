@@ -88,7 +88,12 @@ echo successfully installed r-base, r-base-dev
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 rpackagesFILE=Rpackages-desired.txt
 myRscript=install_R_packages.R
+
 outputDIR=./output.`basename ${myRscript} .R`
+if [ ! -d ${outputDIR} ]; then
+        mkdir -p ${outputDIR}
+fi
+
 stdoutFile=stdout.R.`basename ${myRscript} .R`
 R --no-save --args ${outputDIR} ${rpackagesFILE} < ${myRscript} 2>&1 > ${stdoutFile}
 
