@@ -86,6 +86,13 @@ sudo apt-get --yes install r-base r-base-dev
 echo successfully installed r-base, r-base-dev
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
+rpackagesFILE=Rpackages-desired.txt
+myRscript=install_R_packages.R
+outputDIR=./output.`basename ${myRscript} .R`
+stdoutFile=stdout.R.`basename ${myRscript} .R`
+R --no-save --args ${outputDIR} ${rpackagesFILE} < ${myRscript} 2>&1 > ${stdoutFile}
+
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 touch  ${myHOME}/STARTUP-COMPLETE.txt
 chown --recursive ${myUsername} ${myHOME}/STARTUP-COMPLETE.txt
 chgrp --recursive ${myUsername} ${myHOME}/STARTUP-COMPLETE.txt

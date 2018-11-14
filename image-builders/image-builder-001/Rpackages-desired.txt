@@ -1,0 +1,64 @@
+##### general
+futile.logger
+testthat
+tidyverse
+kableExtra
+tinytex
+
+##### visualization
+GGally
+ggvis
+plotly
+shiny
+ggiraph
+highcharter
+networkD3
+dygraphs
+
+##### Bayesian
+abc
+bnlearn
+
+##### machine learning
+caret
+doParallel
+e1071
+FNN
+gbm
+glmnet
+kernlab
+packrat
+randomForest
+ranger
+tree
+xgboost
+# mboost
+
+##### natural language processing
+qdap
+text2vec
+tm
+
+##### big data sets
+data.table
+
+##### optimization
+# alabama
+# minqa
+# optimx
+# quadprog
+
+##### DBMS interfaces
+RMySQL
+# RODBC
+# RPostgreSQL
+# ROracle
+
+##### official statistics
+# hbsae
+# RecordLinkage
+# sampling
+# StatMatch
+# stratification
+# survey
+
