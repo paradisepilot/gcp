@@ -17,7 +17,7 @@ dygraphs
 
 ##### Bayesian
 abc
-bnlearn
+# bnlearn
 
 ##### machine learning
 caret
