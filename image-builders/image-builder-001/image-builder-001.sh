@@ -23,6 +23,7 @@ sudo apt-get --yes install libmagick++-dev
 sudo apt-get --yes install libgeos-dev
 sudo apt-get --yes install libpoppler-cpp-dev
 sudo apt-get --yes install libgdal-dev
+sudo apt-get --yes install libmpfr-dev libmpfr-doc
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### install miniconda
