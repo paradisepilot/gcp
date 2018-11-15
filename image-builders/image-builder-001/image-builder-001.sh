@@ -113,9 +113,9 @@ stderrFile=${outputDIR}/stderr.R.`basename ${myRscript} .R`
 sudo R --no-save --args ${outputDIR} ${rpackagesFILE} < ${myRscript} > ${stdoutFile} 2> ${stderrFile}
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
-touch  ${myHOME}/STARTUP-COMPLETE.txt
-chown --recursive ${myUsername} ${myHOME}/STARTUP-COMPLETE.txt
-chgrp --recursive ${myUsername} ${myHOME}/STARTUP-COMPLETE.txt
+sudo touch  ${myHOME}/STARTUP-COMPLETE.txt
+sudo chown --recursive ${myUsername} ${myHOME}/STARTUP-COMPLETE.txt
+sudo chgrp --recursive ${myUsername} ${myHOME}/STARTUP-COMPLETE.txt
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 source ${myHOME}/.bashrc
