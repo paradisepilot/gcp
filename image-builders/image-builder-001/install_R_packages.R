@@ -80,7 +80,8 @@ print("\n##### installation of packages complete ...");
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 my.colnames <- c("Package","Version","License","License_restricts_use","NeedsCompilation","Built");
-DF.installed.packages <- as.data.frame(installed.packages(lib = myLibrary)[,my.colnames]);
+#DF.installed.packages <- as.data.frame(installed.packages(lib = myLibrary)[,my.colnames]);
+DF.installed.packages <- as.data.frame(installed.packages()[,my.colnames]);
 
 write.table(
     file      = "Rpackages-newlyInstalled.txt",
@@ -94,7 +95,7 @@ write.table(
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 pkgs.notInstalled <- setdiff(
     pkgs.desired,
-    as.character(installed.packages(lib = myLibrary)[,"Package"])
+    as.character(installed.packages()[,"Package"])
     );
 
 write.table(
