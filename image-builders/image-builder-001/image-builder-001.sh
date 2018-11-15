@@ -15,6 +15,7 @@ sudo apt-get --yes install openjdk-11-jdk
 sudo apt-get --yes install libgl1-mesa-glx
 sudo apt-get --yes install libxml2-dev
 sudo apt-get --yes install libssl-dev libcurl4-openssl-dev
+sudo apt-get --yes install libssh2-1-dev
 sudo apt-get --yes install libcairo2-dev
 sudo apt-get --yes install libudunits2-dev
 sudo apt-get --yes install libgmp-dev
