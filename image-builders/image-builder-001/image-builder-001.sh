@@ -17,6 +17,7 @@ sudo apt-get --yes install libxml2-dev
 sudo apt-get --yes install libssl-dev libcurl4-openssl-dev
 sudo apt-get --yes install libcairo2-dev
 sudo apt-get --yes install libudunits2-dev
+sudo apt-get --yes install libgmp-dev
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### install miniconda
