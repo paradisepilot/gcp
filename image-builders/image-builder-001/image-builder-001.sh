@@ -19,6 +19,8 @@ sudo apt-get --yes install libcairo2-dev
 sudo apt-get --yes install libudunits2-dev
 sudo apt-get --yes install libgmp-dev
 sudo apt-get --yes install libpoppler-glib-dev
+sudo apt-get --yes install libmagick++-dev
+sudo apt-get --yes install libgeos-dev
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### install miniconda
