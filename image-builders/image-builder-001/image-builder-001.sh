@@ -21,6 +21,7 @@ sudo apt-get --yes install libgmp-dev
 sudo apt-get --yes install libpoppler-glib-dev
 sudo apt-get --yes install libmagick++-dev
 sudo apt-get --yes install libgeos-dev
+sudo apt-get --yes install libpoppler-cpp-dev
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### install miniconda
