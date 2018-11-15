@@ -9,16 +9,12 @@ sudo apt-get --yes install build-essential cmake unzip pkg-config libopenblas-de
 sudo apt-get --yes install libhdf5-serial-dev
 sudo apt-get --yes install graphviz
 
-### the following is needed for opencv (cv2)
+### install R dependencies
+sudo apt-get --yes install default-jre
+sudo apt-get --yes install openjdk-11-jdk
 sudo apt-get --yes install libgl1-mesa-glx
-
-### the following are needed to install the R package tm
 sudo apt-get --yes install libxml2-dev
-
-### the following are needed to install the R package kableExtra
 sudo apt-get --yes install libssl-dev libcurl4-openssl-dev
-
-### the following are needed to install the R package ggiraph
 sudo apt-get --yes install libcairo2-dev
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
