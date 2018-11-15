@@ -20,10 +20,6 @@ Sys.time();
 start.proc.time <- proc.time();
 
 ###################################################
-default.libPaths <- setdiff(gsub(x=.libPaths(),pattern="^/Users/.+",replacement=""),c(""));
-.libPaths(default.libPaths);
-
-### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 # read list of desired R packages
 pkgs.desired <- read.table(
     file = pkgs.desired.FILE,
