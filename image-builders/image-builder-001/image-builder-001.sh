@@ -16,6 +16,7 @@ sudo apt-get --yes install libgl1-mesa-glx
 sudo apt-get --yes install libxml2-dev
 sudo apt-get --yes install libssl-dev libcurl4-openssl-dev
 sudo apt-get --yes install libcairo2-dev
+sudo apt-get --yes install libudunits2-dev
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### install miniconda
