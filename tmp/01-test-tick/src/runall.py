@@ -12,8 +12,10 @@ sys.path.append(srcDIR)
 # change directory to outDIR
 os.chdir(outDIR)
 
+time_string = str(datetime.datetime.now())
+tz_string   = datetime.datetime.now(datetime.timezone.utc).astimezone().tzname()
+print( "\n### system time: " + time_string + " " + tz_string )
 print( "\n########################################" )
-print( "\n### datetime.datetime.now(): " + str(datetime.datetime.now()) )
 
 #################################################
 #################################################
@@ -21,7 +23,7 @@ import sinfo, IPython
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 from testHawkesEM import test_HawkesEM
-test_HawkesEM()
+#test_HawkesEM()
 
 #################################################
 #################################################
@@ -33,6 +35,9 @@ print(       IPython.sys_info()  )
 print("\n### sinfo.info():")
 print(       sinfo.sinfo(print_std_lib = True, print_implicit = True)  )
 
-print("\n### datetime.datetime.now(): " + str(datetime.datetime.now()) + "\n" )
+print("\n########################################" )
+time_string = str(datetime.datetime.now())
+tz_string   = datetime.datetime.now(datetime.timezone.utc).astimezone().tzname()
+print( "\n### system time: " + time_string + " " + tz_string + "\n" )
 sys.exit(0)
 
