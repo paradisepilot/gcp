@@ -23,7 +23,7 @@ import sinfo, IPython
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 from testHawkesEM import test_HawkesEM
-#test_HawkesEM()
+test_HawkesEM()
 
 #################################################
 #################################################
