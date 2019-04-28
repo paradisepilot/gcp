@@ -61,6 +61,9 @@ ${minicondaDIR}/bin/pip install scikit-learn
 ${minicondaDIR}/bin/pip install gensim
 ${minicondaDIR}/bin/pip install opencv
 
+${minicondaDIR}/bin/pip install stdlib_list
+${minicondaDIR}/bin/pip install sinfo
+
 ${minicondaDIR}/bin/pip install dill
 ${minicondaDIR}/bin/pip install tick
 
