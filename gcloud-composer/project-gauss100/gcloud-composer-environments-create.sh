@@ -36,6 +36,11 @@ gcloud composer environments create ${ENVIRONMENT_NAME} \
     --web-server-machine-type ${WS_MACHINE_TYPE}
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
+# set kubectl credentials (required by next command -- setting AirFlow variables)
+CLUSTER_NAME=`gcloud container clusters list | tail -n +2 | awk '{print $1}'`
+gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
+
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 # set AirFlow variables
 gcloud composer environments run ${ENVIRONMENT_NAME} \
     --location ${LOCATION} \
