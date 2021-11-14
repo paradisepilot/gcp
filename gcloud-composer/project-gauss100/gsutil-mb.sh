@@ -13,3 +13,7 @@ gcloud config set project ${PROJECT_ID}
 # create bucket: https://cloud.google.com/storage/docs/quickstart-gsutil
 gsutil mb -l ${LOCATION} -c standard ${BUCKET_NAME}
 
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
+# upload data to bucket
+gsutil -m cp input-file-0* ${BUCKET_NAME}
+
