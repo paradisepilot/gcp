@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
-source ./project-id.txt
+source ./global-parameters.txt
 
 # set the active project
 echo
@@ -17,9 +17,6 @@ gcloud config set project ${PROJECT_ID}
 # https://cloud.google.com/composer/pricing#db-machine-types
 # https://cloud.google.com/composer/pricing#ws-machine-types
 
-ENVIRONMENT_NAME=${PROJECT_ID}
-LOCATION=us-central1
-ZONE=us-central1-a
 IMAGE_VERSION="composer-1.17.4-airflow-1.10.15"
 NODE_COUNT=3
 SCHEDULER_COUNT=1
@@ -37,11 +34,6 @@ gcloud composer environments create ${ENVIRONMENT_NAME} \
     --machine-type ${NODE_MACHINE_TYPE} \
     --cloud-sql-machine-type ${SQL_MACHINE_TYPE} \
     --web-server-machine-type ${WS_MACHINE_TYPE}
-
-### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
-# create bucket: https://cloud.google.com/storage/docs/quickstart-gsutil
-BUCKET_NAME=gs://${PROJECT_ID}-bucket
-gsutil mb -l ${LOCATION} -c standard ${BUCKET_NAME}
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 # set AirFlow variables

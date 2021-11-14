@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./project-id.txt
+source ./global-parameters.txt
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 # following instructions from: https://cloud.google.com/endpoints/docs/openapi/enable-api

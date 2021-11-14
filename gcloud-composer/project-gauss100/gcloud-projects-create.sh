@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./project-id.txt
+source ./global-parameters.txt
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 # create project
