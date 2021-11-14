@@ -1,11 +1,11 @@
 #!/bin/bash
 
-PROJECT_ID=stc-eccc-gauss100
+source ./project-id.txt
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 # following instructions from: https://cloud.google.com/endpoints/docs/openapi/enable-api
 echo
-echo listing projects:
+echo list projects:
 gcloud projects list
 
 # set the active project 

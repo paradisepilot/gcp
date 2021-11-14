@@ -1,6 +1,8 @@
 #!/bin/bash
 
-ENVIRONMENT_NAME=stc-eccc-gauss100
+source ./project-id.txt
+
+ENVIRONMENT_NAME=${PROJECT_ID}
 LOCATION=us-central1
 ZONE=us-central1-a
 

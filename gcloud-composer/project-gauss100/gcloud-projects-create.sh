@@ -1,12 +1,12 @@
 #!/bin/bash
 
-PROJECT_ID=stc-eccc-gauss100
+source ./project-id.txt
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
-# create project to 'stc-eccc-gauss100'
+# create project
 echo
 echo creating project: ${PROJECT_ID}
 echo
-gcloud projects create ${PROJECT_ID} \
-    --name=${PROJECT_ID}
+#gcloud projects create ${PROJECT_ID} \
+#    --name=${PROJECT_ID}
 

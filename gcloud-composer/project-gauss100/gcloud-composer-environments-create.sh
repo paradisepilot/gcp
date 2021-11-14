@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
-PROJECT_ID=stc-eccc-gauss100
+source ./project-id.txt
 
 # set the active project
 echo
@@ -37,4 +37,9 @@ gcloud composer environments create ${ENVIRONMENT_NAME} \
     --machine-type ${NODE_MACHINE_TYPE} \
     --cloud-sql-machine-type ${SQL_MACHINE_TYPE} \
     --web-server-machine-type ${WS_MACHINE_TYPE}
+
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
+# create bucket: https://cloud.google.com/storage/docs/quickstart-gsutil
+BUCKET_NAME=gs://${PROJECT_ID}-bucket
+gsutil mb -l ${LOCATION} -c standard ${BUCKET_NAME}
 

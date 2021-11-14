@@ -1,9 +1,9 @@
 #!/bin/bash
 
-PROJECT_ID=stc-eccc-gauss100
+source ./project-id.txt
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
-#  deleting 'stc-eccc-gauss100'
+#  deleting project
 echo
 echo deleting project: ${PROJECT_ID}
 echo
