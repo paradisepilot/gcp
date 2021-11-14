@@ -15,5 +15,5 @@ gsutil mb -l ${LOCATION} -c standard ${BUCKET_NAME}
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 # upload data to bucket
-gsutil -m cp input-file-0* ${BUCKET_NAME}
+gsutil -m cp input-files/input-file-0* ${BUCKET_NAME}
 
