@@ -37,6 +37,9 @@ gcloud composer environments create ${ENVIRONMENT_NAME} \
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 # set kubectl credentials (required by next command -- setting AirFlow variables)
+# Use the gcloud composer command to connect the kubectl command to the cluster.
+# https://cloud.google.com/composer/docs/how-to/using/installing-python-dependencies#viewing_installed_python_packages
+
 CLUSTER_NAME=`gcloud container clusters list | tail -n +2 | awk '{print $1}'`
 gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
 
