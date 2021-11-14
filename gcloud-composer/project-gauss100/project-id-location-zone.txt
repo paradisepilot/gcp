@@ -1,3 +1,6 @@
 
 PROJECT_ID=gauss100-2021-11-13-a
+ENVIRONMENT_NAME=${PROJECT_ID}
+LOCATION=us-central1
+ZONE=us-central1-a
 
