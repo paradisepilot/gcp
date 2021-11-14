@@ -43,3 +43,10 @@ gcloud composer environments create ${ENVIRONMENT_NAME} \
 BUCKET_NAME=gs://${PROJECT_ID}-bucket
 gsutil mb -l ${LOCATION} -c standard ${BUCKET_NAME}
 
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
+# set AirFlow variables
+gcloud composer environments run ${ENVIRONMENT_NAME} \
+    --location ${LOCATION} \
+    variables -- \
+    --set gcs_bucket  ${BUCKET_NAME}
+
