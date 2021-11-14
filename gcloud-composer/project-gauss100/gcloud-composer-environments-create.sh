@@ -41,6 +41,12 @@ CLUSTER_NAME=`gcloud container clusters list | tail -n +2 | awk '{print $1}'`
 gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
+# install Python dependencies
+gcloud composer environments update ${ENVIRONMENT_NAME} \
+   --update-pypi-packages-from-file python-dependencies.txt \
+   --location ${LOCATION}
+
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 # set AirFlow variables
 gcloud composer environments run ${ENVIRONMENT_NAME} \
     --location ${LOCATION} \
