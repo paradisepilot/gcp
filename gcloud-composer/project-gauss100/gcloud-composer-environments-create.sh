@@ -48,5 +48,5 @@ gsutil mb -l ${LOCATION} -c standard ${BUCKET_NAME}
 gcloud composer environments run ${ENVIRONMENT_NAME} \
     --location ${LOCATION} \
     variables -- \
-    --set gcs_bucket  ${BUCKET_NAME}
+    --set gcs_bucket ${BUCKET_NAME}
 
