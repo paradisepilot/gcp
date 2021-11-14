@@ -43,9 +43,16 @@ gcloud composer environments create ${ENVIRONMENT_NAME} \
 CLUSTER_NAME=`gcloud container clusters list | tail -n +2 | awk '{print $1}'`
 gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
 
-# Connect to a remote shell in an Airflow worker container:
-# (Kubernetes cluster namespace: composer-1-17-4-airflow-1-10-15-27457a66)
-# (Airflow worker pod name: airflow-worker-57ff5d7f48-22l9t)
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
+# Here, we include instructions for how to connect to an Airflow worker pod.
+
+##### (1) List the pods that are running in a given
+#####     Kubernetes cluster namespace (composer-1-17-4-airflow-1-10-15-27457a66):
+# kubectl get pods -n composer-1-17-4-airflow-1-10-15-27457a66
+
+##### (2) Connect to a remote shell in an Airflow worker container:
+#####     (Kubernetes cluster namespace: composer-1-17-4-airflow-1-10-15-27457a66)
+#####     (Airflow worker pod name: airflow-worker-57ff5d7f48-22l9t)
 # kubectl -n composer-1-17-4-airflow-1-10-15-27457a66 exec -it airflow-worker-57ff5d7f48-22l9t -c airflow-worker -- /bin/bash
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
