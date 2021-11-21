@@ -8,7 +8,7 @@ from airflow.models import Variable
 
 import os
 
-JOB_NAME = 'sample_dag_task_running_on_gke'
+JOB_NAME = 'gauss100_gke'
 start_date = datetime.datetime(2021, 1, 31)
 
 default_args = {
