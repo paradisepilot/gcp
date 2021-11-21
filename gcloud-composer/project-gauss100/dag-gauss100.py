@@ -53,10 +53,31 @@ with models.DAG(JOB_NAME,
 
     injest_input_data_command = """
     # Assume that the environment variable EXTERNAL_BUCKET has been set.
-    echo ${EXTERNAL_BUCKET}
+    echo
+    echo EXTERNAL_BUCKET=${EXTERNAL_BUCKET}
+
+    echo
+    echo "# gsutil ls ${EXTERNAL_BUCKET}/input/"
     gsutil ls ${EXTERNAL_BUCKET}/input/
+
+    echo
+    echo "# ls -l"
+    ls -l
+
+    echo
+    echo "# ls -l /home/airflow"
+    ls -l /home/airflow
+
+    echo
+    echo "# ls -l gcs"
     ls -l gcs
+
+    echo
+    echo "# ls -l gcs/data"
     ls -l gcs/data
+
+    echo
+    echo "gsutil cp -r ${EXTERNAL_BUCKET}/input gcs/data"
     gsutil cp -r ${EXTERNAL_BUCKET}/input gcs/data
     """
 
