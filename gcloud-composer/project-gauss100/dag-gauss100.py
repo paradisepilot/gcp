@@ -54,14 +54,15 @@ with models.DAG(JOB_NAME,
     injest_input_data_command = """
     # Assume that the environment variable EXTERNAL_BUCKET has been set.
     echo ${EXTERNAL_BUCKET}
-    gsutil --help
     gsutil ls ${EXTERNAL_BUCKET}/input/
-    gsutil cp -r ${EXTERNAL_BUCKET}/input gcs/data/input
+    ls -l gcs
+    ls -l gcs/data
+    gsutil cp -r ${EXTERNAL_BUCKET}/input gcs/data
     """
 
     persist_output_data_command = """
     # Assume that the environment variable EXTERNAL_BUCKET has been set.
-    gsutil cp -r gcs/data/input ${EXTERNAL_BUCKET}/output
+    gsutil cp -r gcs/data/output ${EXTERNAL_BUCKET}/output
     """
 
     # Tasks definitions
