@@ -23,6 +23,6 @@ gcloud config set project ${PROJECT_ID}
 ### copy (input) data from an existing Cloud Storage bucket
 # mkdir ~/gcs/data/input ; gsutil cp gs://gauss100-2021-11-13-a-bucket/input/input-file-01.csv ~/gcs/data/input
 
-### copy the worker node folder 'output-00' to a Cloud Storage bucket with a specified folder name ('output-00-a')
-# gsutil cp -r ~/gcs/data/output-00 gs://gauss100-2021-11-13-a-bucket/output-00-a
+### copy the worker node folder 'output' to a Cloud Storage bucket with a specified folder name ('output-00')
+# gsutil cp -r ~/gcs/data/output gs://gauss100-2021-11-13-a-bucket/output-00
 
