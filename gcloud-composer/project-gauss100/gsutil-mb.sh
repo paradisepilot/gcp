@@ -18,15 +18,25 @@ gcloud config set project ${PROJECT_ID}
 # gsutil -m cp -r input-files ${BUCKET_NAME}/input
 
 ### ########################################### ###
-### The following gsutil commands work on a Composer worker node
+### The following gsutil commands work on a Composer worker node.
+###
+### Below, we assume the following environment variables have been set:
+###     EXTERNAL_BUCKET=gs://gauss100-2021-11-13-a-bucket
+###     PROJECT_ID=gauss100-2021-11-13-a
+###     ENVIRONMENT_NAME=gauss100-2021-11-13-a
+###     LOCATION=us-central1
+###     ZONE=us-central1-a
+###
+
+### list contents of a bucket folder
+# gsutil ls ${EXTERNAL_BUCKET}/input/input*
 
 ### copy (input) folder from an existing Cloud Storage bucket
-# gsutil cp -r gs://gauss100-2021-11-13-a-bucket/input ~/gcs/data/input
+# gsutil cp -r ${EXTERNAL_BUCKET}/input ~/gcs/data/input
 
 ### copy (input) file from an existing Cloud Storage bucket
-# gsutil cp gs://gauss100-2021-11-13-a-bucket/input/input-file-01.csv ~/gcs/data/input
+# gsutil cp ${EXTERNAL_BUCKET}/input/input-file-01.csv ~/gcs/data/input
 
-### copy the worker node folder to a Cloud Storage bucket with a specified folder name ('output-00')
-# gsutil cp -r gcs/data/output gs://gauss100-2021-11-13-a-bucket/output/output-00
-# gsutil cp -r gcs/data/output gs://gauss100-2021-11-13-a-bucket/output-00
+### copy the worker node folder to a Cloud Storage bucket with a specified folder name ('output')
+# gsutil cp -r gcs/data/output ${EXTERNAL_BUCKET}/output
 
