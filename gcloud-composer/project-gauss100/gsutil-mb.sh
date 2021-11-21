@@ -32,10 +32,10 @@ gcloud config set project ${PROJECT_ID}
 # gsutil ls ${EXTERNAL_BUCKET}/input/input*
 
 ### copy (input) folder from an existing Cloud Storage bucket
-# gsutil cp -r ${EXTERNAL_BUCKET}/input ~/gcs/data/input
+# gsutil cp -r ${EXTERNAL_BUCKET}/input gcs/data
 
 ### copy (input) file from an existing Cloud Storage bucket
-# gsutil cp ${EXTERNAL_BUCKET}/input/input-file-01.csv ~/gcs/data/input
+# gsutil cp ${EXTERNAL_BUCKET}/input/input-file-01.csv gcs/data/input
 
 ### copy the worker node folder to a Cloud Storage bucket with a specified folder name ('output')
 # gsutil cp -r gcs/data/output ${EXTERNAL_BUCKET}/output
