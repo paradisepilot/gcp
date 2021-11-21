@@ -53,6 +53,9 @@ with models.DAG(JOB_NAME,
 
     injest_input_data_command = """
     # Assume that the environment variable EXTERNAL_BUCKET has been set.
+    echo ${EXTERNAL_BUCKET}
+    gsutil --help
+    gsutil ls ${EXTERNAL_BUCKET}/input/
     gsutil cp -r ${EXTERNAL_BUCKET}/input gcs/data/input
     """
 
