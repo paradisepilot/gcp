@@ -77,13 +77,13 @@ with models.DAG(JOB_NAME,
     ls -l gcs/data
 
     echo
-    echo "gsutil cp -r ${EXTERNAL_BUCKET}/input gcs/data"
-    gsutil cp -r ${EXTERNAL_BUCKET}/input gcs/data
+    echo "gsutil cp -r ${EXTERNAL_BUCKET}/input /home/airflow/gcs/data"
+    gsutil cp -r ${EXTERNAL_BUCKET}/input /home/airflow/gcs/data
     """
 
     persist_output_data_command = """
     # Assume that the environment variable EXTERNAL_BUCKET has been set.
-    gsutil cp -r gcs/data/output ${EXTERNAL_BUCKET}/output
+    gsutil cp -r /home/airflow/gcs/data/output ${EXTERNAL_BUCKET}/output
     """
 
     # Tasks definitions
@@ -122,7 +122,7 @@ with models.DAG(JOB_NAME,
       # image='gcr.io/gcp-runtimes/ubuntu_18_0_4',
         image='paradisepilot/miniconda3-r-base:0.1',
       # cmds=["sh", "-c", 'echo \'Sleeping..\'; sleep 120; echo \'Done!\''],
-        cmds=["sh", "-c", 'R -e "DF.temp <- utils::read.csv(\'gcs/data/input/input-file-00.csv\'); DF.results <- sum(DF.temp[,1]); if (\!dir.exists(\'gcs/data/output\')) {base::dir.create(\'gcs/data/output\',recursive=TRUE)}; write.csv(x = DF.results, file = \'gcs/data/output/output-00.csv\', row.names = FALSE)"'],
+        cmds=["sh", "-c", 'R -e "DF.temp <- utils::read.csv(\'/home/airflow/gcs/data/input/input-file-00.csv\'); DF.results <- sum(DF.temp[,1]); if (\!dir.exists(\'/home/airflow/gcs/data/output\')) {base::dir.create(\'/home/airflow/gcs/data/output\',recursive=TRUE)}; write.csv(x = DF.results, file = \'/home/airflow/gcs/data/output/output-00.csv\', row.names = FALSE)"'],
         startup_timeout_seconds=720,
         # affinity allows you to constrain which nodes your pod is eligible to
         # be scheduled on, based on labels on the node. In this case, if the
@@ -166,7 +166,7 @@ with models.DAG(JOB_NAME,
       # image='gcr.io/gcp-runtimes/ubuntu_18_0_4',
         image='paradisepilot/miniconda3-r-base:0.1',
       # cmds=["sh", "-c", 'echo \'Sleeping..\'; sleep 120; echo \'Done!\''],
-        cmds=["sh", "-c", 'R -e "DF.temp <- utils::read.csv(\'gcs/data/input/input-file-01.csv\'); DF.results <- sum(DF.temp[,1]); if (\!dir.exists(\'gcs/data/output\')) {base::dir.create(\'gcs/data/output\',recursive=TRUE)}; write.csv(x = DF.results, file = \'gcs/data/output/output-01.csv\', row.names = FALSE)"'],
+        cmds=["sh", "-c", 'R -e "DF.temp <- utils::read.csv(\'/home/airflow/gcs/data/input/input-file-01.csv\'); DF.results <- sum(DF.temp[,1]); if (\!dir.exists(\'/home/airflow/gcs/data/output\')) {base::dir.create(\'/home/airflow/gcs/data/output\',recursive=TRUE)}; write.csv(x = DF.results, file = \'/home/airflow/gcs/data/output/output-01.csv\', row.names = FALSE)"'],
         startup_timeout_seconds=720,
         # affinity allows you to constrain which nodes your pod is eligible to
         # be scheduled on, based on labels on the node. In this case, if the
@@ -210,7 +210,7 @@ with models.DAG(JOB_NAME,
       # image='gcr.io/gcp-runtimes/ubuntu_18_0_4',
         image='paradisepilot/miniconda3-r-base:0.1',
       # cmds=["sh", "-c", 'echo \'Sleeping..\'; sleep 120; echo \'Done!\''],
-        cmds=["sh", "-c", 'R -e "DF.temp <- utils::read.csv(\'gcs/data/input/input-file-02.csv\'); DF.results <- sum(DF.temp[,1]); if (\!dir.exists(\'gcs/data/output\')) {base::dir.create(\'gcs/data/output\',recursive=TRUE)}; write.csv(x = DF.results, file = \'gcs/data/output/output-02.csv\', row.names = FALSE)"'],
+        cmds=["sh", "-c", 'R -e "DF.temp <- utils::read.csv(\'/home/airflow/gcs/data/input/input-file-02.csv\'); DF.results <- sum(DF.temp[,1]); if (\!dir.exists(\'/home/airflow/gcs/data/output\')) {base::dir.create(\'/home/airflow/gcs/data/output\',recursive=TRUE)}; write.csv(x = DF.results, file = \'/home/airflow/gcs/data/output/output-02.csv\', row.names = FALSE)"'],
         startup_timeout_seconds=720,
         # affinity allows you to constrain which nodes your pod is eligible to
         # be scheduled on, based on labels on the node. In this case, if the
