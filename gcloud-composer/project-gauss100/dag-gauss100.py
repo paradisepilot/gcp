@@ -60,8 +60,8 @@ with models.DAG(JOB_NAME,
     echo Executing: gcloud container node-pools create ...
     echo
     gcloud container node-pools create "$NODE_POOL" --project $GCP_PROJECT --cluster $COMPOSER_GKE_NAME \
-    --num-nodes "$NODE_COUNT" --zone $COMPOSER_GKE_ZONE --machine-type $MACHINE_TYPE --scopes $SCOPES \
-    --enable-autoupgrade
+        --num-nodes "$NODE_COUNT" --zone $COMPOSER_GKE_ZONE --machine-type $MACHINE_TYPE --scopes $SCOPES \
+        --enable-autoupgrade
 
     # Set the airflow variable name
     echo
