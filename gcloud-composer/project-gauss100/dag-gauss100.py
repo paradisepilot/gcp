@@ -32,7 +32,7 @@ with models.DAG(JOB_NAME,
     create_node_pool_command = """
     # Set some environment variables in case they were not set already
     [ -z "${NODE_COUNT}" ] && NODE_COUNT=3
-    [ -z "${MACHINE_TYPE}" ] && MACHINE_TYPE=e2-standard-8
+    [ -z "${MACHINE_TYPE}" ] && MACHINE_TYPE=n1-standard-2
     [ -z "${SCOPES}" ] && SCOPES=default,cloud-platform
 
     # Generate node-pool name
@@ -77,7 +77,7 @@ with models.DAG(JOB_NAME,
     echo
     echo Executing: gcloud container node-pools delete ${NODE_POOL} --zone $COMPOSER_GKE_ZONE --cluster $COMPOSER_GKE_NAME --quiet
     echo
-    gcloud container node-pools delete "$NODE_POOL" --zone $COMPOSER_GKE_ZONE --cluster $COMPOSER_GKE_NAME --quiet
+    gcloud container node-pools delete ${NODE_POOL} --zone $COMPOSER_GKE_ZONE --cluster $COMPOSER_GKE_NAME --quiet
     """
 
     injest_input_data_command = """
