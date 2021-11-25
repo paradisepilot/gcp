@@ -34,6 +34,7 @@ with models.DAG(JOB_NAME,
     [ -z "${NODE_COUNT}" ] && NODE_COUNT=3
     [ -z "${MACHINE_TYPE}" ] && MACHINE_TYPE=n1-standard-2
     [ -z "${SCOPES}" ] && SCOPES=default,cloud-platform
+    [ -z "${NODE_DISK_SIZE}" ] && NODE_DISK_SIZE=20
 
     # Generate node-pool name
     NODE_POOL=""" + node_pool_value + """
@@ -48,26 +49,36 @@ with models.DAG(JOB_NAME,
     echo NODE_POOL=${NODE_POOL}
 
     echo
+    echo MACHINE_TYPE=${MACHINE_TYPE}
+
+    echo
     echo NODE_COUNT=${NODE_COUNT}
 
     echo
-    echo MACHINE_TYPE=${MACHINE_TYPE}
+    echo NODE_DISK_SIZE=${NODE_DISK_SIZE}
 
     echo
     echo SCOPES=${SCOPES}
 
     echo
+    echo Executing: gcloud config set container/cluster ${COMPOSER_GKE_NAME}
+    echo
+    gcloud config set container/cluster ${COMPOSER_GKE_NAME}
+
+    echo
     echo Executing: gcloud container node-pools create ...
     echo
-    gcloud container node-pools create "$NODE_POOL" --project $GCP_PROJECT --cluster $COMPOSER_GKE_NAME \
-        --num-nodes "$NODE_COUNT" --zone $COMPOSER_GKE_ZONE --machine-type $MACHINE_TYPE --scopes $SCOPES \
+    gcloud container node-pools create ${NODE_POOL} \
+        --project=${GCP_PROJECT}       --cluster=${COMPOSER_GKE_NAME} --zone=${COMPOSER_GKE_ZONE} \
+        --machine-type=${MACHINE_TYPE} --num-nodes=${NODE_COUNT}      --disk-size=${NODE_DISK_SIZE}   \
+        --scopes=${SCOPES} \
         --enable-autoupgrade
 
     # Set the airflow variable name
     echo
-    echo Executing: airflow variables -s node_pool $NODE_POOL
+    echo Executing: airflow variables -s node_pool ${NODE_POOL}
     echo
-    airflow variables -s node_pool $NODE_POOL
+    airflow variables -s node_pool ${NODE_POOL}
     """
 
     delete_node_pools_command = """
@@ -75,9 +86,9 @@ with models.DAG(JOB_NAME,
     NODE_POOL=""" + node_pool_value + """
 
     echo
-    echo Executing: gcloud container node-pools delete ${NODE_POOL} --zone $COMPOSER_GKE_ZONE --cluster $COMPOSER_GKE_NAME --quiet
+    echo Executing: gcloud container node-pools delete ${NODE_POOL} --zone ${COMPOSER_GKE_ZONE} --cluster ${COMPOSER_GKE_NAME} --quiet
     echo
-    gcloud container node-pools delete ${NODE_POOL} --zone $COMPOSER_GKE_ZONE --cluster $COMPOSER_GKE_NAME --quiet
+    gcloud container node-pools delete ${NODE_POOL} --zone ${COMPOSER_GKE_ZONE} --cluster ${COMPOSER_GKE_NAME} --quiet
     """
 
     injest_input_data_command = """
