@@ -26,7 +26,8 @@ with models.DAG(JOB_NAME,
 
     # This value can be customized to whatever format is preferred for the node pool name
     # Default node pool naming format is <cluster name>-node-pool-<execution_date>
-    node_pool_value = "$COMPOSER_ENVIRONMENT-node-pool-$(echo {{ ts_nodash }} | awk '{print tolower($0)}')"
+    # node_pool_value = "$COMPOSER_ENVIRONMENT-node-pool-$(echo {{ ts_nodash }} | awk '{print tolower($0)}')"
+    node_pool_value = "ndpl-$(echo {{ ts_nodash }} | awk '{print tolower($0)}')"
 
     create_node_pool_command = """
     # Set some environment variables in case they were not set already
@@ -36,11 +37,36 @@ with models.DAG(JOB_NAME,
 
     # Generate node-pool name
     NODE_POOL=""" + node_pool_value + """
+
+    echo
+    echo COMPOSER_GKE_ZONE=${COMPOSER_GKE_ZONE}
+
+    echo
+    echo COMPOSER_GKE_NAME=${COMPOSER_GKE_NAME}
+
+    echo
+    echo NODE_POOL=${NODE_POOL}
+
+    echo
+    echo NODE_COUNT=${NODE_COUNT}
+
+    echo
+    echo MACHINE_TYPE=${MACHINE_TYPE}
+
+    echo
+    echo SCOPES=${SCOPES}
+
+    echo
+    echo Executing: gcloud container node-pools create ...
+    echo
     gcloud container node-pools create "$NODE_POOL" --project $GCP_PROJECT --cluster $COMPOSER_GKE_NAME \
     --num-nodes "$NODE_COUNT" --zone $COMPOSER_GKE_ZONE --machine-type $MACHINE_TYPE --scopes $SCOPES \
     --enable-autoupgrade
 
     # Set the airflow variable name
+    echo
+    echo Executing: airflow variables -s node_pool $NODE_POOL
+    echo
     airflow variables -s node_pool $NODE_POOL
     """
 
@@ -61,22 +87,6 @@ with models.DAG(JOB_NAME,
     gsutil ls ${EXTERNAL_BUCKET}/input/
 
     echo
-    echo "# ls -l"
-    ls -l
-
-    echo
-    echo "# ls -l /home/airflow"
-    ls -l /home/airflow
-
-    echo
-    echo "# ls -l gcs"
-    ls -l gcs
-
-    echo
-    echo "# ls -l gcs/data"
-    ls -l gcs/data
-
-    echo
     echo "gsutil cp -r ${EXTERNAL_BUCKET}/input /home/airflow/gcs/data"
     gsutil cp -r ${EXTERNAL_BUCKET}/input /home/airflow/gcs/data
     """
@@ -94,12 +104,12 @@ with models.DAG(JOB_NAME,
         dag=dag
     )
 
-    delete_node_pool_task = BashOperator(
-        task_id="delete_node_pool",
-        bash_command=delete_node_pools_command,
-        trigger_rule='all_done',        # Always run even if failures so the node pool is deleted
-        dag=dag
-    )
+#    delete_node_pool_task = BashOperator(
+#        task_id="delete_node_pool",
+#        bash_command=delete_node_pools_command,
+#        trigger_rule='all_done',        # Always run even if failures so the node pool is deleted
+#        dag=dag
+#    )
 
     injest_input_data_task = BashOperator(
         task_id="injest_input_data",
@@ -248,4 +258,5 @@ with models.DAG(JOB_NAME,
         })
 
     # Tasks order
-    create_node_pool_task >> injest_input_data_task >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task >> delete_node_pool_task
+    # create_node_pool_task >> injest_input_data_task >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task >> delete_node_pool_task
+    create_node_pool_task >> injest_input_data_task >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task
