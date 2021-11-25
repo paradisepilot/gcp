@@ -62,11 +62,14 @@ echo
 # kubectl -n composer-1-17-4-airflow-1-10-15-27457a66 exec -it airflow-worker-57ff5d7f48-22l9t -c airflow-worker -- /bin/bash
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
-# install Python dependencies, set environment variables
+# install Python dependencies
 sleep 20
-gcloud composer environments update ${ENVIRONMENT_NAME} \
-   --location ${LOCATION} \
-   --update-pypi-packages-from-file python-dependencies.txt \
+gcloud composer environments update ${ENVIRONMENT_NAME} --location ${LOCATION} \
+   --update-pypi-packages-from-file python-dependencies.txt
+
+# set environment variables
+sleep 20
+gcloud composer environments update ${ENVIRONMENT_NAME} --location ${LOCATION} \
    --update-env-variables=EXTERNAL_BUCKET=${BUCKET_NAME},PROJECT_ID=${PROJECT_ID},ENVIRONMENT_NAME=${ENVIRONMENT_NAME},LOCATION=${LOCATION},ZONE=${ZONE}
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
