@@ -131,12 +131,12 @@ with models.DAG(JOB_NAME,
         dag=dag
     )
 
-   delete_node_pool_task = BashOperator(
-       task_id="delete_node_pool",
-       bash_command=delete_node_pools_command,
-       trigger_rule='all_done',        # Always run even if failures so the node pool is deleted
-       dag=dag
-   )
+    delete_node_pool_task = BashOperator(
+        task_id="delete_node_pool",
+        bash_command=delete_node_pools_command,
+        trigger_rule='all_done',        # Always run even if failures so the node pool is deleted
+        dag=dag
+    )
 
     injest_input_data_task = BashOperator(
         task_id="injest_input_data",
