@@ -42,6 +42,9 @@ gcloud composer environments create ${ENVIRONMENT_NAME} \
 
 CLUSTER_NAME=`gcloud container clusters list | tail -n +2 | awk '{print $1}'`
 gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
+echo
+echo CLUSTER_NAME=${CLUSTER_NAME}
+echo
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 # Here, we include instructions for how to connect to an Airflow worker pod.
@@ -59,6 +62,7 @@ gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
 # kubectl -n composer-1-17-4-airflow-1-10-15-27457a66 exec -it airflow-worker-57ff5d7f48-22l9t -c airflow-worker -- /bin/bash
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
+sleep 20
 # install Python dependencies, set environment variables
 gcloud composer environments update ${ENVIRONMENT_NAME} \
    --location ${LOCATION} \
