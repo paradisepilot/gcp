@@ -90,6 +90,11 @@ with models.DAG(JOB_NAME,
     NODE_POOL=""" + node_pool_value + """
 
     echo
+    echo Executing: gcloud config set container/cluster ${COMPOSER_GKE_NAME}
+    echo
+    gcloud config set container/cluster ${COMPOSER_GKE_NAME}
+
+    echo
     echo Executing: gcloud container node-pools delete ${NODE_POOL} --zone ${COMPOSER_GKE_ZONE} --cluster ${COMPOSER_GKE_NAME} --quiet
     echo
     gcloud container node-pools delete ${NODE_POOL} --zone ${COMPOSER_GKE_ZONE} --cluster ${COMPOSER_GKE_NAME} --quiet
