@@ -116,9 +116,11 @@ with models.DAG(JOB_NAME,
 
     persist_output_data_command = """
     # Assume that the environment variable EXTERNAL_BUCKET has been set.
+    # echo
+    # echo "Executing: gsutil cp -r /home/airflow/gcs/data/output ${EXTERNAL_BUCKET}/output"
+    # gsutil cp -r /home/airflow/gcs/data/output ${EXTERNAL_BUCKET}/output
     echo
-    echo "Executing: gsutil cp -r /home/airflow/gcs/data/output ${EXTERNAL_BUCKET}/output"
-    gsutil cp -r /home/airflow/gcs/data/output ${EXTERNAL_BUCKET}/output
+    echo Doing nothing.
     """
 
     # Tasks definitions
@@ -129,12 +131,12 @@ with models.DAG(JOB_NAME,
         dag=dag
     )
 
-#    delete_node_pool_task = BashOperator(
-#        task_id="delete_node_pool",
-#        bash_command=delete_node_pools_command,
-#        trigger_rule='all_done',        # Always run even if failures so the node pool is deleted
-#        dag=dag
-#    )
+   delete_node_pool_task = BashOperator(
+       task_id="delete_node_pool",
+       bash_command=delete_node_pools_command,
+       trigger_rule='all_done',        # Always run even if failures so the node pool is deleted
+       dag=dag
+   )
 
     injest_input_data_task = BashOperator(
         task_id="injest_input_data",
@@ -289,5 +291,5 @@ with models.DAG(JOB_NAME,
         })
 
     # Tasks order
-    # create_node_pool_task >> injest_input_data_task >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task >> delete_node_pool_task
-    create_node_pool_task >> injest_input_data_task >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task
+    create_node_pool_task >> injest_input_data_task >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task >> delete_node_pool_task
+    # create_node_pool_task >> injest_input_data_task >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task
