@@ -56,7 +56,7 @@ echo
 #####     Kubernetes cluster namespace (composer-1-17-4-airflow-1-10-15-27457a66):
 AIRFLOW_CLUSTER_NAMESPACE=`kubectl get namespaces | egrep 'airflow' | awk '{print $1}'`
 echo
-echo ${AIRFLOW_CLUSTER_NAMESPACE}
+echo AIRFLOW_CLUSTER_NAMESPACE=${AIRFLOW_CLUSTER_NAMESPACE}
 echo
 # kubectl get pods -n ${AIRFLOW_CLUSTER_NAMESPACE}
 # kubectl get pods -n composer-1-17-4-airflow-1-10-15-27457a66
@@ -66,7 +66,7 @@ echo
 #####     (Airflow worker pod name: airflow-worker-57ff5d7f48-22l9t)
 AIRFLOW_POD_NAME=`kubectl get pods -n ${AIRFLOW_CLUSTER_NAMESPACE} | egrep 'worker' | head -n 1 | awk '{print $1}'`
 echo
-echo ${AIRFLOW_POD_NAME}
+echo AIRFLOW_POD_NAME=${AIRFLOW_POD_NAME}
 echo
 # kubectl -n ${AIRFLOW_CLUSTER_NAMESPACE}             exec -it ${AIRFLOW_POD_NAME}             -c airflow-worker -- /bin/bash
 # kubectl -n composer-1-17-4-airflow-1-10-15-27457a66 exec -it airflow-worker-57ff5d7f48-22l9t -c airflow-worker -- /bin/bash
@@ -89,4 +89,3 @@ gcloud composer environments run ${ENVIRONMENT_NAME} \
     --location ${LOCATION} \
     variables -- \
     --set gcs_bucket ${BUCKET_NAME}
-
