@@ -60,6 +60,10 @@ with models.DAG(JOB_NAME,
     echo
     echo SCOPES=${SCOPES}
 
+    # It is important to set container/cluster; otherwise, Composer would
+    # throw an error at the node pool creation command below
+    # due to the fact that the node pool creation would require more vCPU
+    # than regional vCPU quota.
     echo
     echo Executing: gcloud config set container/cluster ${COMPOSER_GKE_NAME}
     echo
