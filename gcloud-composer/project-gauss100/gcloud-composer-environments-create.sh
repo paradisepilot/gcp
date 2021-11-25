@@ -44,7 +44,6 @@ CLUSTER_NAME=`gcloud container clusters list | tail -n +2 | awk '{print $1}'`
 gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
 echo
 echo CLUSTER_NAME=${CLUSTER_NAME}
-echo
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 # Here, we include instructions for how to connect to an Airflow worker pod.
@@ -57,7 +56,6 @@ echo
 AIRFLOW_CLUSTER_NAMESPACE=`kubectl get namespaces | egrep 'airflow' | awk '{print $1}'`
 echo
 echo AIRFLOW_CLUSTER_NAMESPACE=${AIRFLOW_CLUSTER_NAMESPACE}
-echo
 # kubectl get pods -n ${AIRFLOW_CLUSTER_NAMESPACE}
 # kubectl get pods -n composer-1-17-4-airflow-1-10-15-27457a66
 
@@ -67,25 +65,28 @@ echo
 AIRFLOW_POD_NAME=`kubectl get pods -n ${AIRFLOW_CLUSTER_NAMESPACE} | egrep 'worker' | head -n 1 | awk '{print $1}'`
 echo
 echo AIRFLOW_POD_NAME=${AIRFLOW_POD_NAME}
-echo
 # kubectl -n ${AIRFLOW_CLUSTER_NAMESPACE}             exec -it ${AIRFLOW_POD_NAME}             -c airflow-worker -- /bin/bash
 # kubectl -n composer-1-17-4-airflow-1-10-15-27457a66 exec -it airflow-worker-57ff5d7f48-22l9t -c airflow-worker -- /bin/bash
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 # install Python dependencies
 sleep 20
+echo
+echo Executing: gcloud composer environments update -- adding python dependencies
 gcloud composer environments update ${ENVIRONMENT_NAME} --location ${LOCATION} \
    --update-pypi-packages-from-file python-dependencies.txt
 
 # set environment variables
 sleep 20
+echo
+echo Executing: gcloud composer environments update -- setting environment variables
 gcloud composer environments update ${ENVIRONMENT_NAME} --location ${LOCATION} \
    --update-env-variables=EXTERNAL_BUCKET=${BUCKET_NAME},PROJECT_ID=${PROJECT_ID},ENVIRONMENT_NAME=${ENVIRONMENT_NAME},LOCATION=${LOCATION},ZONE=${ZONE}
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 # set AirFlow variables
-sleep 20
-gcloud composer environments run ${ENVIRONMENT_NAME} \
-    --location ${LOCATION} \
-    variables -- \
-    --set gcs_bucket ${BUCKET_NAME}
+# sleep 20
+# gcloud composer environments run ${ENVIRONMENT_NAME} \
+#     --location ${LOCATION} \
+#     variables -- \
+#     --set gcs_bucket ${BUCKET_NAME}
