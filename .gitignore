@@ -17,6 +17,7 @@
 *.toc
 *.png
 *.jpg
+*ARCHIVE*
 *.DELETEME.*
 DELETEME
 *.BACKUP.*
