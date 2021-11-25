@@ -74,6 +74,9 @@ with models.DAG(JOB_NAME,
     # Generate node-pool name
     NODE_POOL=""" + node_pool_value + """
 
+    echo
+    echo Executing: gcloud container node-pools delete ${NODE_POOL} --zone $COMPOSER_GKE_ZONE --cluster $COMPOSER_GKE_NAME --quiet
+    echo
     gcloud container node-pools delete "$NODE_POOL" --zone $COMPOSER_GKE_ZONE --cluster $COMPOSER_GKE_NAME --quiet
     """
 
@@ -83,16 +86,18 @@ with models.DAG(JOB_NAME,
     echo EXTERNAL_BUCKET=${EXTERNAL_BUCKET}
 
     echo
-    echo "# gsutil ls ${EXTERNAL_BUCKET}/input/"
+    echo "Executing: gsutil ls ${EXTERNAL_BUCKET}/input/"
     gsutil ls ${EXTERNAL_BUCKET}/input/
 
     echo
-    echo "gsutil cp -r ${EXTERNAL_BUCKET}/input /home/airflow/gcs/data"
+    echo "Executing: gsutil cp -r ${EXTERNAL_BUCKET}/input /home/airflow/gcs/data"
     gsutil cp -r ${EXTERNAL_BUCKET}/input /home/airflow/gcs/data
     """
 
     persist_output_data_command = """
     # Assume that the environment variable EXTERNAL_BUCKET has been set.
+    echo
+    echo "Executing: gsutil cp -r /home/airflow/gcs/data/output ${EXTERNAL_BUCKET}/output"
     gsutil cp -r /home/airflow/gcs/data/output ${EXTERNAL_BUCKET}/output
     """
 
