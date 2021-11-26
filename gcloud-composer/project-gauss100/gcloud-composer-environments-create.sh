@@ -3,6 +3,7 @@
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 source ./global-parameters.txt
 
+echo
 echo PROJECT_ID=${PROJECT_ID}
 echo ENVIRONMENT_NAME=${ENVIRONMENT_NAME}
 echo LOCATION=${LOCATION}
