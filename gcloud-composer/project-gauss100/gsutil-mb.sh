@@ -3,20 +3,6 @@
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 source ./global-parameters.txt
 
-# set the active project
-echo
-echo setting active project to: ${PROJECT_ID}
-echo
-gcloud config set project ${PROJECT_ID}
-
-### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
-### create bucket: https://cloud.google.com/storage/docs/quickstart-gsutil
-# gsutil mb -l ${LOCATION} -c standard ${BUCKET_NAME}
-
-### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
-### upload data to bucket
-# gsutil -m cp -r input-files ${BUCKET_NAME}/input
-
 ### ########################################### ###
 ### The following gsutil commands work on a Composer worker node.
 ###
@@ -28,6 +14,24 @@ gcloud config set project ${PROJECT_ID}
 ###     ZONE=us-central1-a
 ###
 
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
+# set the active project
+echo
+echo setting active project to: ${PROJECT_ID}
+gcloud config set project ${PROJECT_ID}
+
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
+### create bucket: https://cloud.google.com/storage/docs/quickstart-gsutil
+# gsutil mb -l ${LOCATION} -c standard ${EXTERNAL_BUCKET}
+
+### upload data to bucket
+# gsutil -m cp -r input-files ${EXTERNAL_BUCKET}/input
+
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
+### get IAM permissions of external bucket
+# gsutil iam get ${EXTERNAL_BUCKET}
+
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ### list contents of a bucket folder
 # gsutil ls ${EXTERNAL_BUCKET}/input/input*
 
@@ -39,7 +43,4 @@ gcloud config set project ${PROJECT_ID}
 
 ### copy the worker node folder to a Cloud Storage bucket with a specified folder name ('output')
 # gsutil cp -r gcs/data/output ${EXTERNAL_BUCKET}/output
-
-### get IAM permissions of external bucket
-# gsutil iam get ${EXTERNAL_BUCKET}
 
