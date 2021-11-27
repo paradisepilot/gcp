@@ -40,3 +40,6 @@ gcloud config set project ${PROJECT_ID}
 ### copy the worker node folder to a Cloud Storage bucket with a specified folder name ('output')
 # gsutil cp -r gcs/data/output ${EXTERNAL_BUCKET}/output
 
+### get IAM permissions of external bucket
+# gsutil iam get ${EXTERNAL_BUCKET}
+
