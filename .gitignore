@@ -20,6 +20,7 @@
 *ARCHIVE*
 *.DELETEME.*
 DELETEME
+*SECRETS*
 *.BACKUP.*
 *output*
 stderr.*
