@@ -91,6 +91,22 @@ gcloud composer environments update ${ENVIRONMENT_NAME} --location ${LOCATION} \
    --update-env-variables=EXTERNAL_BUCKET=${BUCKET_NAME},PROJECT_ID=${PROJECT_ID},ENVIRONMENT_NAME=${ENVIRONMENT_NAME},LOCATION=${LOCATION},ZONE=${ZONE}
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
+# creating Kubernetes secret that holds service account key
+sleep 20
+cp ${SERVICE_ACCOUNT_KEY_JSON} service-account-key.json
+
+sleep 5
+echo;echo Executing: kubectl create secret generic airflow-secret ...
+kubectl create secret generic airflow-secret --from-literal external_bucket=${EXTERNAL_BUCKET}
+
+sleep 5
+echo;echo Executing: kubectl create secret generic airflow-secret-file ...
+kubectl create secret generic airflow-secret-file --from-file service_account_key=service-account-key.json
+
+sleep 5
+rm -f service-account-key.json
+
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 # set AirFlow variables
 # sleep 20
 # gcloud composer environments run ${ENVIRONMENT_NAME} \
