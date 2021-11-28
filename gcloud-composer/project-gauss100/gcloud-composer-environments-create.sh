@@ -116,3 +116,4 @@ gcloud composer environments update ${ENVIRONMENT_NAME} --location ${LOCATION} \
 #     --location ${LOCATION} \
 #     variables -- \
 #     --set gcs_bucket ${BUCKET_NAME}
+
