@@ -5,4 +5,4 @@ LOCATION=us-central1
 ZONE=us-central1-a
 BUCKET_NAME=gs://${PROJECT_ID}-bucket
 SERVICE_ACCOUNT_ID=gauss100-service-account
-
+source ./global-parameters-secrets.txt
