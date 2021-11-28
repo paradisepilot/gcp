@@ -79,10 +79,10 @@ echo; echo AIRFLOW_POD_NAME=${AIRFLOW_POD_NAME}
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ##### install Python dependencies
-# sleep 20
-# echo; echo Executing: gcloud composer environments update -- adding python dependencies
-# gcloud composer environments update ${ENVIRONMENT_NAME} --location ${LOCATION} \
-#     --update-pypi-packages-from-file python-dependencies.txt
+sleep 20
+echo; echo Executing: gcloud composer environments update -- adding python dependencies
+gcloud composer environments update ${ENVIRONMENT_NAME} --location ${LOCATION} \
+    --update-pypi-packages-from-file python-dependencies.txt
 
 ### set environment variables
 sleep 20
@@ -95,20 +95,20 @@ gcloud composer environments update ${ENVIRONMENT_NAME} --location ${LOCATION} \
 ##### (a)  Kubernetes secret environment variable that holds external bucket name
 ##### (b)  Kubernetes secret volume that holds service account key
 
-sleep 20
-cp ${SERVICE_ACCOUNT_KEY_JSON} service-account-key.json
-
-sleep 5
-echo;echo Executing: kubectl create secret generic airflow-secret ...
-kubectl create secret generic airflow-secret-external-bucket --from-literal external_bucket=${EXTERNAL_BUCKET}
-
-sleep 5
-echo;echo Executing: kubectl create secret generic airflow-secret-file ...
-kubectl create secret generic airflow-secret-file-service-account-key --from-file service_account_key=service-account-key.json
-
-sleep 5
-rm -f service-account-key.json
-
+# sleep 20
+# cp ${SERVICE_ACCOUNT_KEY_JSON} service-account-key.json
+#
+# sleep 5
+# echo;echo Executing: kubectl create secret generic airflow-secret ...
+# kubectl create secret generic airflow-secret-external-bucket --from-literal external_bucket=${EXTERNAL_BUCKET}
+#
+# sleep 5
+# echo;echo Executing: kubectl create secret generic airflow-secret-file ...
+# kubectl create secret generic airflow-secret-file-service-account-key --from-file service_account_key=service-account-key.json
+#
+# sleep 5
+# rm -f service-account-key.json
+#
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 # set AirFlow variables
 # sleep 20
@@ -116,4 +116,3 @@ rm -f service-account-key.json
 #     --location ${LOCATION} \
 #     variables -- \
 #     --set gcs_bucket ${BUCKET_NAME}
-
