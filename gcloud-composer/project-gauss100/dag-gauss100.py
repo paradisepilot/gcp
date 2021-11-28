@@ -195,9 +195,9 @@ with models.DAG(
       # secrets=[secret_envvar_external_bucket,secret_volume_service_account_key],
       ##### env_vars allows you to specify environment variables for your
       ##### container to use. env_vars is templated.
-        env_vars={
-            'SERVICE_ACCOUNT_KEY_JSON': '/var/secrets/google/service-account-key.json'
-            },
+      # env_vars={
+      #     'SERVICE_ACCOUNT_KEY_JSON': '/var/secrets/google/service-account-key.json'
+      #     },
       # is_delete_operator_pod=True,
         # affinity allows you to constrain which nodes your pod is eligible to
         # be scheduled on, based on labels on the node. In this case, if the
