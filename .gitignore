@@ -21,6 +21,7 @@
 *.DELETEME.*
 DELETEME
 *SECRETS*
+*secrets*
 *.BACKUP.*
 *output*
 stderr.*
