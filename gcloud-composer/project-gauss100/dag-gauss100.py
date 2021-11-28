@@ -5,6 +5,7 @@ from airflow.operators.bash_operator import BashOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.providers.cncf.kubernetes.operators import kubernetes_pod
 from airflow.models import Variable
+from airflow.kubernetes.secret import Secret
 
 import os
 
