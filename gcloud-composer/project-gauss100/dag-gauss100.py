@@ -5,6 +5,7 @@ from airflow.operators.bash_operator import BashOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.providers.cncf.kubernetes.operators import kubernetes_pod
 from airflow.models import Variable
+from airflow.kubernetes.secret import Secret
 
 import os
 
@@ -18,6 +19,28 @@ default_args = {
     'retries': 0,
     'retry_delay': datetime.timedelta(minutes=1),
 }
+
+secret_envvar_external_bucket = Secret(
+    # Name of the Kubernetes Secret
+    secret='external-bucket',
+    # Expose the secret as environment variable.
+    deploy_type='env',
+    # Key of a secret stored in this Secret object
+    key='external_bucket',
+    # The name of the environment variable, since deploy_type is `env` rather than `volume`.
+    deploy_target='EXTERNAL_BUCKET'
+    )
+
+secret_volume_service_account_key = Secret(
+    # Name of Kubernetes Secret
+    secret='service-account-key',
+    # type of secret
+    deploy_type='volume',
+    # Path where we mount the secret as volume
+    deploy_target='/var/secrets/google',
+    # Key in the form of service account file name
+    key='service-account-key.json'
+    )
 
 with models.DAG(JOB_NAME,
                 default_args=default_args,
@@ -160,10 +183,15 @@ with models.DAG(JOB_NAME,
       # image='gcr.io/gcp-runtimes/ubuntu_18_0_4',
       # image='paradisepilot/miniconda3-r-base:0.1',
         image='paradisepilot/fpca-base:0.7',
-        cmds=["sh", "-c", "echo;echo \'Sleeping ...\' ; sleep 10 ; echo;echo whoami=`whoami` ; echo;echo ls -l /usr/local/bin ; ls -l /usr/local/bin ; echo;echo ls -l /data ; ls -l /data ; echo;echo ls -l /opt/conda/bin ; ls -l /opt/conda/bin/ ; echo;echo \'Done\'"],
       # cmds=["sh", "-c", 'R -e "DF.temp <- utils::read.csv(\'/home/airflow/gcs/data/input/input-file-00.csv\'); DF.results <- sum(DF.temp[,1]); if (\!dir.exists(\'/home/airflow/gcs/data/output\')) {base::dir.create(\'/home/airflow/gcs/data/output\',recursive=TRUE)}; write.csv(x = DF.results, file = \'/home/airflow/gcs/data/output/output-00.csv\', row.names = FALSE)"'],
       # cmds=["/opt/conda/bin/Rscript", "-e", "DF.temp <- utils::read.csv('/home/airflow/gcs/data/input/input-file-00.csv'); DF.results <- sum(DF.temp[,1]); if (\!dir.exists('/home/airflow/gcs/data/output')) {base::dir.create('/home/airflow/gcs/data/output',recursive=TRUE)}; write.csv(x = DF.results, file = '/home/airflow/gcs/data/output/output-00.csv', row.names = FALSE)"],
+      # cmds=["sh", "-c", "echo;echo \'Sleeping ...\' ; sleep 10 ; echo;echo whoami=`whoami` ; echo;echo ls -l /usr/local/bin ; ls -l /usr/local/bin ; echo;echo ls -l /data ; ls -l /data ; echo;echo ls -l /opt/conda/bin ; ls -l /opt/conda/bin/ ; echo;echo \'Done\'"],
+        cmds=["sh", "-c", "echo;echo \'Sleeping ...\' ; sleep 10 ; echo;echo whoami=`whoami` ; echo;echo ls -l /usr/local/bin ; ls -l /usr/local/bin ; echo;echo EXTERNAL_BUCKET=${EXTERNAL_BUCKET}; echo;echo SERVICE_ACCOUNT_KEY_JSON=${SERVICE_ACCOUNT_KEY_JSON}; echo;echo ls -l /opt/conda/bin ; ls -l /opt/conda/bin/ ; echo;echo \'Done\'"],
       # volumes=["/home/airflow/gcs/data:/data"],
+        secrets=[secret_envvar_external_bucket,secret_volume_service_account_key],
+        env_vars={
+            'SERVICE_ACCOUNT_KEY_JSON': '/var/secrets/google/service-account-key.json'
+            },
       # is_delete_operator_pod=True,
         # affinity allows you to constrain which nodes your pod is eligible to
         # be scheduled on, based on labels on the node. In this case, if the
