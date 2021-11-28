@@ -1,0 +1,48 @@
+
+
+*** Reading remote log from gs://us-central1-gauss100-2021-1-46ca948c-bucket/logs/gauss100_gke/delete_node_pool/2021-11-28T18:34:31.889508+00:00/1.log.
+[2021-11-28 18:40:01,797] {taskinstance.py:671} INFO - Dependencies all met for <TaskInstance: gauss100_gke.delete_node_pool 2021-11-28T18:34:31.889508+00:00 [queued]>
+[2021-11-28 18:40:02,155] {taskinstance.py:671} INFO - Dependencies all met for <TaskInstance: gauss100_gke.delete_node_pool 2021-11-28T18:34:31.889508+00:00 [queued]>
+[2021-11-28 18:40:02,155] {taskinstance.py:881} INFO - 
+--------------------------------------------------------------------------------
+[2021-11-28 18:40:02,156] {taskinstance.py:882} INFO - Starting attempt 1 of 1
+[2021-11-28 18:40:02,156] {taskinstance.py:883} INFO - 
+--------------------------------------------------------------------------------
+[2021-11-28 18:40:02,178] {taskinstance.py:902} INFO - Executing <Task(BashOperator): delete_node_pool> on 2021-11-28T18:34:31.889508+00:00
+[2021-11-28 18:40:02,182] {standard_task_runner.py:54} INFO - Started process 2559 to run task
+[2021-11-28 18:40:02,247] {standard_task_runner.py:77} INFO - Running: ['airflow', 'run', 'gauss100_gke', 'delete_node_pool', '2021-11-28T18:34:31.889508+00:00', '--job_id', '49', '--pool', 'default_pool', '--raw', '-sd', 'DAGS_FOLDER/dag-gauss100.py', '--cfg_path', '/tmp/tmpgjhol2f7']
+[2021-11-28 18:40:02,251] {standard_task_runner.py:78} INFO - Job 49: Subtask delete_node_pool
+[2021-11-28 18:40:02,831] {logging_mixin.py:120} INFO - Running <TaskInstance: gauss100_gke.delete_node_pool 2021-11-28T18:34:31.889508+00:00 [running]> on host airflow-worker-6cc67f6545-lltsr
+[2021-11-28 18:40:02,999] {bash_operator.py:114} INFO - Tmp dir root location: 
+ /tmp
+[2021-11-28 18:40:03,002] {bash_operator.py:137} INFO - Temporary script location: /tmp/airflowtmp1zltle7u/delete_node_pooljo4qm18y
+[2021-11-28 18:40:03,002] {bash_operator.py:147} INFO - Running command: 
+    # Generate node-pool name
+    NODE_POOL=ndpl-$(echo 20211128T183431 | awk '{print tolower($0)}')
+
+    echo
+    echo Executing: gcloud config set container/cluster ${COMPOSER_GKE_NAME}
+    echo
+    gcloud config set container/cluster ${COMPOSER_GKE_NAME}
+
+    echo
+    echo Executing: gcloud container node-pools delete ${NODE_POOL} --zone ${COMPOSER_GKE_ZONE} --cluster ${COMPOSER_GKE_NAME} --quiet
+    echo
+    gcloud container node-pools delete ${NODE_POOL} --zone ${COMPOSER_GKE_ZONE} --cluster ${COMPOSER_GKE_NAME} --quiet
+    
+[2021-11-28 18:40:03,144] {bash_operator.py:154} INFO - Output:
+[2021-11-28 18:40:03,148] {bash_operator.py:158} INFO - 
+[2021-11-28 18:40:03,148] {bash_operator.py:158} INFO - Executing: gcloud config set container/cluster us-central1-gauss100-2021-1-46ca948c-gke
+[2021-11-28 18:40:03,149] {bash_operator.py:158} INFO - 
+[2021-11-28 18:40:04,104] {bash_operator.py:158} INFO - Updated property [container/cluster].
+[2021-11-28 18:40:04,262] {bash_operator.py:158} INFO - 
+[2021-11-28 18:40:04,263] {bash_operator.py:158} INFO - Executing: gcloud container node-pools delete ndpl-20211128t183431 --zone us-central1-a --cluster us-central1-gauss100-2021-1-46ca948c-gke --quiet
+[2021-11-28 18:40:04,264] {bash_operator.py:158} INFO - 
+[2021-11-28 18:40:10,491] {bash_operator.py:158} INFO - Deleting node pool ndpl-20211128t183431...
+[2021-11-28 18:42:31,529] {bash_operator.py:158} INFO - ................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................done.
+[2021-11-28 18:42:31,710] {bash_operator.py:158} INFO - Deleted [https://container.googleapis.com/v1/projects/gauss100-2021-11-13-a/zones/us-central1-a/clusters/us-central1-gauss100-2021-1-46ca948c-gke/nodePools/ndpl-20211128t183431].
+[2021-11-28 18:42:31,842] {bash_operator.py:162} INFO - Command exited with return code 0
+[2021-11-28 18:42:31,885] {taskinstance.py:1071} INFO - Marking task as SUCCESS.dag_id=gauss100_gke, task_id=delete_node_pool, execution_date=20211128T183431, start_date=20211128T184001, end_date=20211128T184231
+[2021-11-28 18:42:35,405] {local_task_job.py:102} INFO - Task exited with return code 0
+
+

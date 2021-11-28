@@ -1,0 +1,838 @@
+
+
+*** Reading remote log from gs://us-central1-gauss100-2021-1-46ca948c-bucket/logs/gauss100_gke/sum_task_0/2021-11-28T18:34:31.889508+00:00/1.log.
+[2021-11-28 18:37:49,366] {taskinstance.py:671} INFO - Dependencies all met for <TaskInstance: gauss100_gke.sum_task_0 2021-11-28T18:34:31.889508+00:00 [queued]>
+[2021-11-28 18:37:49,500] {taskinstance.py:671} INFO - Dependencies all met for <TaskInstance: gauss100_gke.sum_task_0 2021-11-28T18:34:31.889508+00:00 [queued]>
+[2021-11-28 18:37:49,500] {taskinstance.py:881} INFO - 
+--------------------------------------------------------------------------------
+[2021-11-28 18:37:49,500] {taskinstance.py:882} INFO - Starting attempt 1 of 1
+[2021-11-28 18:37:49,501] {taskinstance.py:883} INFO - 
+--------------------------------------------------------------------------------
+[2021-11-28 18:37:49,560] {taskinstance.py:902} INFO - Executing <Task(KubernetesPodOperator): sum_task_0> on 2021-11-28T18:34:31.889508+00:00
+[2021-11-28 18:37:49,563] {standard_task_runner.py:54} INFO - Started process 2476 to run task
+[2021-11-28 18:37:49,616] {standard_task_runner.py:77} INFO - Running: ['airflow', 'run', 'gauss100_gke', 'sum_task_0', '2021-11-28T18:34:31.889508+00:00', '--job_id', '44', '--pool', 'default_pool', '--raw', '-sd', 'DAGS_FOLDER/dag-gauss100.py', '--cfg_path', '/tmp/tmpej0joc15']
+[2021-11-28 18:37:49,619] {standard_task_runner.py:78} INFO - Job 44: Subtask sum_task_0
+[2021-11-28 18:37:50,453] {logging_mixin.py:120} INFO - Running <TaskInstance: gauss100_gke.sum_task_0 2021-11-28T18:34:31.889508+00:00 [running]> on host airflow-worker-6cc67f6545-lltsr
+[2021-11-28 18:37:56,978] {kubernetes_pod.py:360} INFO - creating pod with labels {'dag_id': 'gauss100_gke', 'task_id': 'sum_task_0', 'execution_date': '2021-11-28T183431.8895080000-3ec10eae2', 'try_number': '1'} and launcher <airflow.kubernetes.pod_launcher.PodLauncher object at 0x7f5efe896240>
+[2021-11-28 18:37:56,987] {logging_mixin.py:120} WARNING - /usr/local/lib/airflow/airflow/kubernetes/pod_launcher.py:331: DeprecationWarning: Using `airflow.contrib.kubernetes.pod.Pod` is deprecated. Please use `k8s.V1Pod`.
+  security_context=_extract_security_context(pod.spec.security_context)
+[2021-11-28 18:37:56,988] {logging_mixin.py:120} WARNING - /usr/local/lib/airflow/airflow/kubernetes/pod_launcher.py:77: DeprecationWarning: Using `airflow.contrib.kubernetes.pod.Pod` is deprecated. Please use `k8s.V1Pod` instead.
+  pod = self._mutate_pod_backcompat(pod)
+[2021-11-28 18:37:57,053] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:37:57,053] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:37:58,063] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:37:58,064] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:37:59,074] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:37:59,075] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:00,083] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:00,084] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:01,093] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:01,094] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:02,104] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:02,104] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:03,112] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:03,112] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:04,120] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:04,121] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:05,129] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:05,129] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:06,139] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:06,139] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:07,147] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:07,148] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:08,156] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:08,156] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:09,165] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:09,165] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:10,175] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:10,175] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:11,183] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:11,183] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:12,192] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:12,192] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:13,201] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:13,201] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:14,212] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:14,212] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:15,222] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:15,222] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:16,233] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:16,233] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:17,242] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:17,242] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:18,251] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:18,251] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:19,267] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:19,268] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:20,276] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:20,277] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:21,285] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:21,285] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:22,293] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:22,293] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:23,302] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:23,302] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:24,311] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:24,312] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:25,320] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:25,320] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:26,328] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:26,328] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:27,335] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:27,335] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:28,344] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:28,344] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:29,351] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:29,352] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:30,366] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:30,366] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:31,374] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:31,375] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:32,383] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:32,383] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:33,391] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:33,391] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:34,399] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:34,399] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:35,408] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:35,409] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:36,418] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:36,418] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:37,427] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:37,427] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:38,436] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:38,436] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:39,444] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:39,445] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:40,453] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:40,453] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:41,462] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:41,463] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:42,471] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:42,471] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:43,479] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:43,479] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:44,487] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:44,487] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:45,495] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:45,495] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:46,509] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:46,509] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:47,517] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:47,518] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:48,526] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:48,526] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:49,534] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:49,534] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:50,542] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:50,543] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:51,550] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:51,550] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:52,558] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:52,559] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:53,566] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:53,567] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:54,584] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:54,584] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:55,595] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:55,595] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:56,606] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:56,606] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:57,614] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:57,614] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:58,623] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:58,623] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:38:59,633] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:38:59,634] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:39:00,641] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:39:00,641] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:39:01,652] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:39:01,653] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:39:02,660] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:39:02,661] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:39:03,669] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:39:03,669] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:39:04,676] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:39:04,677] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:39:05,685] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:39:05,686] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:39:06,694] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:39:06,695] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:39:07,702] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:39:07,702] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:39:08,711] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:39:08,711] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:39:09,719] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:39:09,719] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:39:10,727] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:39:10,727] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:39:11,735] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:39:11,735] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:39:12,743] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:39:12,743] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:39:13,751] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:39:13,752] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:39:14,762] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:39:14,762] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:39:15,770] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:39:15,770] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:39:16,780] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Pending
+[2021-11-28 18:39:16,780] {pod_launcher.py:139} WARNING - Pod not yet started: etl-ce5777b43dba4174889b07e54c75d380
+[2021-11-28 18:39:17,789] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Running
+[2021-11-28 18:39:17,845] {pod_launcher.py:156} INFO - b'\n'
+[2021-11-28 18:39:17,845] {pod_launcher.py:156} INFO - b'Sleeping ...\n'
+[2021-11-28 18:39:26,844] {pod_launcher.py:156} INFO - b'\n'
+[2021-11-28 18:39:26,845] {pod_launcher.py:156} INFO - b'whoami=root\n'
+[2021-11-28 18:39:26,845] {pod_launcher.py:156} INFO - b'\n'
+[2021-11-28 18:39:26,846] {pod_launcher.py:156} INFO - b'ls -l /usr/local/bin\n'
+[2021-11-28 18:39:26,847] {pod_launcher.py:156} INFO - b'total 0\n'
+[2021-11-28 18:39:26,847] {pod_launcher.py:156} INFO - b'\n'
+[2021-11-28 18:39:26,848] {pod_launcher.py:156} INFO - b'ls -l /data\n'
+[2021-11-28 18:39:26,850] {pod_launcher.py:156} INFO - b"ls: cannot access '/data': No such file or directory\n"
+[2021-11-28 18:39:26,850] {pod_launcher.py:156} INFO - b'\n'
+[2021-11-28 18:39:26,850] {pod_launcher.py:156} INFO - b'ls -l /opt/conda/bin\n'
+[2021-11-28 18:39:26,865] {pod_launcher.py:156} INFO - b'total 145124\n'
+[2021-11-28 18:39:26,865] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        8 Nov 19 22:26 2to3 -> 2to3-3.9\n'
+[2021-11-28 18:39:26,866] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      101 Nov 19 22:26 2to3-3.9\n'
+[2021-11-28 18:39:26,866] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    24656 Jan 14  2021 CreateDOMDocument\n'
+[2021-11-28 18:39:26,867] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    40744 Jan 14  2021 DOMCount\n'
+[2021-11-28 18:39:26,867] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    52400 Jan 14  2021 DOMPrint\n'
+[2021-11-28 18:39:26,867] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    32024 Jan 14  2021 EnumVal\n'
+[2021-11-28 18:39:26,868] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     1508 Nov 15 18:40 Magick++-config\n'
+[2021-11-28 18:39:26,868] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     1681 Nov 15 18:40 MagickCore-config\n'
+[2021-11-28 18:39:26,868] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     1490 Nov 15 18:40 MagickWand-config\n'
+[2021-11-28 18:39:26,869] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    49816 Jan 14  2021 MemParse\n'
+[2021-11-28 18:39:26,869] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    50120 Jan 14  2021 PParse\n'
+[2021-11-28 18:39:26,869] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   198864 Jan 14  2021 PSVIWriter\n'
+[2021-11-28 18:39:26,875] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     9016 Nov 15 18:40 R\n'
+[2021-11-28 18:39:26,875] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    50128 Jan 14  2021 Redirect\n'
+[2021-11-28 18:39:26,875] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17032 Nov 15 18:40 Rscript\n'
+[2021-11-28 18:39:26,876] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    61120 Jan 14  2021 SAX2Count\n'
+[2021-11-28 18:39:26,876] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   100480 Jan 14  2021 SAX2Print\n'
+[2021-11-28 18:39:26,876] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    50432 Jan 14  2021 SAXCount\n'
+[2021-11-28 18:39:26,877] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    52064 Jan 14  2021 SAXPrint\n'
+[2021-11-28 18:39:26,877] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    71688 Jan 14  2021 SCMPrint\n'
+[2021-11-28 18:39:26,877] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    68248 Jan 14  2021 SEnumVal\n'
+[2021-11-28 18:39:26,877] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    51344 Jan 14  2021 StdInParse\n'
+[2021-11-28 18:39:26,878] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    31568 Jan 14  2021 XInclude\n'
+[2021-11-28 18:39:26,878] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    34408 Oct 27 16:39 acountry\n'
+[2021-11-28 18:39:26,878] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      184 Nov 15 18:40 activate\n'
+[2021-11-28 18:39:26,878] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    19104 Jul 17 22:52 acyclic\n'
+[2021-11-28 18:39:26,879] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    30672 Oct 27 16:39 adig\n'
+[2021-11-28 18:39:26,879] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    21744 Oct 27 16:39 ahost\n'
+[2021-11-28 18:39:26,879] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 15 18:40 animate -> magick\n'
+[2021-11-28 18:39:26,880] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17560 Mar 29  2021 annotate\n'
+[2021-11-28 18:39:26,880] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    36240 May 28  2021 applygeo\n'
+[2021-11-28 18:39:26,881] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    26597 Nov 15 18:40 autopoint\n'
+[2021-11-28 18:39:26,881] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    28368 Jul 17 22:52 bcomps\n'
+[2021-11-28 18:39:26,881] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     3997 Mar 29  2021 bdftogd\n'
+[2021-11-28 18:39:26,882] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   384272 Nov 28  2020 bunzip2\n'
+[2021-11-28 18:39:26,882] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   384272 Nov 28  2020 bzcat\n'
+[2021-11-28 18:39:26,882] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 15 18:40 bzcmp -> bzdiff\n'
+[2021-11-28 18:39:26,882] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     2140 Nov 28  2020 bzdiff\n'
+[2021-11-28 18:39:26,883] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 15 18:40 bzegrep -> bzgrep\n'
+[2021-11-28 18:39:26,883] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 15 18:40 bzfgrep -> bzgrep\n'
+[2021-11-28 18:39:26,883] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     2054 Nov 28  2020 bzgrep\n'
+[2021-11-28 18:39:26,884] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   384272 Nov 28  2020 bzip2\n'
+[2021-11-28 18:39:26,884] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    35944 Nov 28  2020 bzip2recover\n'
+[2021-11-28 18:39:26,884] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 15 18:40 bzless -> bzmore\n'
+[2021-11-28 18:39:26,884] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     1259 Nov 28  2020 bzmore\n'
+[2021-11-28 18:39:26,885] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     6186 Nov 19 22:26 c_rehash\n'
+[2021-11-28 18:39:26,885] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     3006 Nov 15 18:40 cairo-trace\n'
+[2021-11-28 18:39:26,885] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        3 Nov 19 22:26 captoinfo -> tic\n'
+[2021-11-28 18:39:26,885] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    33816 Jul 17 22:52 ccomps\n'
+[2021-11-28 18:39:26,886] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    37824 May  5  2021 cct\n'
+[2021-11-28 18:39:26,886] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      230 Nov 19 22:26 chardetect\n'
+[2021-11-28 18:39:26,886] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        3 Nov 15 18:40 circo -> dot\n'
+[2021-11-28 18:39:26,886] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    49624 Oct 31  2020 cjpeg\n'
+[2021-11-28 18:39:26,887] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    14344 Nov 14  2020 clear\n'
+[2021-11-28 18:39:26,887] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   707264 Jul 17 22:52 cluster\n'
+[2021-11-28 18:39:26,887] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    70464 Nov 15 18:40 clusterdb\n'
+[2021-11-28 18:39:26,887] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 15 18:40 compare -> magick\n'
+[2021-11-28 18:39:26,888] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      824 Nov 15 18:40 compile_et\n'
+[2021-11-28 18:39:26,888] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 15 18:40 composite -> magick\n'
+[2021-11-28 18:39:26,888] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      511 Nov 15 18:40 conda\n'
+[2021-11-28 18:39:26,888] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      148 Nov 15 18:40 conda-env\n'
+[2021-11-28 18:39:26,889] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 15 18:40 conjure -> magick\n'
+[2021-11-28 18:39:26,889] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 15 18:40 convert -> magick\n'
+[2021-11-28 18:39:26,889] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    15384 Nov 15 18:40 corelist\n'
+[2021-11-28 18:39:26,889] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     8369 Nov 15 18:40 cpan\n'
+[2021-11-28 18:39:26,890] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      234 Nov 19 22:26 cph\n'
+[2021-11-28 18:39:26,890] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    74080 Nov 15 18:40 createdb\n'
+[2021-11-28 18:39:26,890] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    66000 Nov 15 18:40 createuser\n'
+[2021-11-28 18:39:26,890] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    55192 May  5  2021 cs2cs\n'
+[2021-11-28 18:39:26,891] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   272088 Jul 27 16:27 curl\n'
+[2021-11-28 18:39:26,891] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     7737 Nov 15 18:40 curl-config\n'
+[2021-11-28 18:39:26,891] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    74032 Jan 31  2021 cwebp\n'
+[2021-11-28 18:39:26,891] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     2694 Nov 15 18:40 dap-config\n'
+[2021-11-28 18:39:26,892] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     1504 Mar 26  2021 dap-config-pkgconfig\n'
+[2021-11-28 18:39:26,892] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      272 Nov 15 18:40 deactivate\n'
+[2021-11-28 18:39:26,892] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    28728 Jan 23  2021 delaunay\n'
+[2021-11-28 18:39:26,893] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    35760 Nov 20  2020 derb\n'
+[2021-11-28 18:39:26,893] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    18816 Jul 17 22:52 diffimg\n'
+[2021-11-28 18:39:26,893] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    24200 Jul 17 22:52 dijkstra\n'
+[2021-11-28 18:39:26,893] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 15 18:40 display -> magick\n'
+[2021-11-28 18:39:26,894] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    40624 Oct 31  2020 djpeg\n'
+[2021-11-28 18:39:26,894] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    18744 Jul 17 22:52 dot\n'
+[2021-11-28 18:39:26,894] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 15 18:40 dot2gxl -> gxl2gv\n'
+[2021-11-28 18:39:26,894] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    21680 Jul 17 22:52 dot_builtins\n'
+[2021-11-28 18:39:26,895] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    60368 Nov 15 18:40 dropdb\n'
+[2021-11-28 18:39:26,895] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    60304 Nov 15 18:40 dropuser\n'
+[2021-11-28 18:39:26,895] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     1007 May 14  2021 dvipdf\n'
+[2021-11-28 18:39:26,896] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    36304 Jan 31  2021 dwebp\n'
+[2021-11-28 18:39:26,896] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   948576 Nov 15 18:40 ecpg\n'
+[2021-11-28 18:39:26,896] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   112880 Jul 17 22:52 edgepaint\n'
+[2021-11-28 18:39:26,897] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    41761 Nov 15 18:40 enc2xs\n'
+[2021-11-28 18:39:26,897] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     3078 Nov 15 18:40 encguess\n'
+[2021-11-28 18:39:26,897] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    46336 Nov 15 18:40 envsubst\n'
+[2021-11-28 18:39:26,898] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      639 May 14  2021 eps2eps\n'
+[2021-11-28 18:39:26,898] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      254 Nov 19 22:26 f2py\n'
+[2021-11-28 18:39:26,898] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      254 Nov 19 22:26 f2py3\n'
+[2021-11-28 18:39:26,898] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      254 Nov 19 22:26 f2py3.9\n'
+[2021-11-28 18:39:26,899] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    31336 May 20  2021 fax2ps\n'
+[2021-11-28 18:39:26,899] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22792 May 20  2021 fax2tiff\n'
+[2021-11-28 18:39:26,901] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    23048 Apr 11  2021 fc-cache\n'
+[2021-11-28 18:39:26,903] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22712 Apr 11  2021 fc-cat\n'
+[2021-11-28 18:39:26,905] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17576 Apr 11  2021 fc-conflist\n'
+[2021-11-28 18:39:26,907] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17936 Apr 11  2021 fc-list\n'
+[2021-11-28 18:39:26,909] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22376 Apr 11  2021 fc-match\n'
+[2021-11-28 18:39:26,911] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17912 Apr 11  2021 fc-pattern\n'
+[2021-11-28 18:39:26,913] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17744 Apr 11  2021 fc-query\n'
+[2021-11-28 18:39:26,915] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17960 Apr 11  2021 fc-scan\n'
+[2021-11-28 18:39:26,917] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    18000 Apr 11  2021 fc-validate\n'
+[2021-11-28 18:39:26,919] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        3 Nov 15 18:40 fdp -> dot\n'
+[2021-11-28 18:39:26,921] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root  2451744 Mar  5  2021 fftw-wisdom\n'
+[2021-11-28 18:39:26,923] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     2279 Mar  5  2021 fftw-wisdom-to-conf\n'
+[2021-11-28 18:39:26,925] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root  2501864 Mar  5  2021 fftwf-wisdom\n'
+[2021-11-28 18:39:26,927] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root  1104120 Mar  5  2021 fftwl-wisdom\n'
+[2021-11-28 18:39:26,929] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17024 Nov 11  2020 fitscopy\n'
+[2021-11-28 18:39:26,931] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    70976 Nov 11  2020 fpack\n'
+[2021-11-28 18:39:26,933] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     5029 Nov 15 18:40 freetype-config\n'
+[2021-11-28 18:39:26,935] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    50736 Nov  3  2020 fribidi\n'
+[2021-11-28 18:39:26,939] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    66880 Nov 11  2020 funpack\n'
+[2021-11-28 18:39:26,941] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    23360 Nov 15 18:40 gapplication\n'
+[2021-11-28 18:39:26,943] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    24176 Jul 17 22:52 gc\n'
+[2021-11-28 18:39:26,945] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17056 Mar 29  2021 gd2copypal\n'
+[2021-11-28 18:39:26,947] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17016 Mar 29  2021 gd2togif\n'
+[2021-11-28 18:39:26,949] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17104 Mar 29  2021 gd2topng\n'
+[2021-11-28 18:39:26,951] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     2725 Nov 15 18:40 gdal-config\n'
+[2021-11-28 18:39:26,953] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   177608 Jul 20 22:43 gdal_contour\n'
+[2021-11-28 18:39:26,955] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   169168 Jul 20 22:43 gdal_create\n'
+[2021-11-28 18:39:26,957] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    52264 Jul 20 22:43 gdal_grid\n'
+[2021-11-28 18:39:26,959] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    59672 Jul 20 22:43 gdal_rasterize\n'
+[2021-11-28 18:39:26,961] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   131840 Jul 20 22:43 gdal_translate\n'
+[2021-11-28 18:39:26,963] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   106528 Jul 20 22:43 gdal_viewshed\n'
+[2021-11-28 18:39:26,965] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   164720 Jul 20 22:43 gdaladdo\n'
+[2021-11-28 18:39:26,968] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    56944 Jul 20 22:43 gdalbuildvrt\n'
+[2021-11-28 18:39:26,970] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    54784 Jul 20 22:43 gdaldem\n'
+[2021-11-28 18:39:26,972] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   132560 Jul 20 22:43 gdalenhance\n'
+[2021-11-28 18:39:26,974] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    59672 Jul 20 22:43 gdalinfo\n'
+[2021-11-28 18:39:26,978] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   181248 Jul 20 22:43 gdallocationinfo\n'
+[2021-11-28 18:39:26,980] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   105280 Jul 20 22:43 gdalmanage\n'
+[2021-11-28 18:39:26,982] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    51936 Jul 20 22:43 gdalmdiminfo\n'
+[2021-11-28 18:39:26,984] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    52376 Jul 20 22:43 gdalmdimtranslate\n'
+[2021-11-28 18:39:26,986] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    81616 Jul 20 22:43 gdalsrsinfo\n'
+[2021-11-28 18:39:26,988] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   171912 Jul 20 22:43 gdaltindex\n'
+[2021-11-28 18:39:26,990] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    77072 Jul 20 22:43 gdaltransform\n'
+[2021-11-28 18:39:26,992] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   142400 Jul 20 22:43 gdalwarp\n'
+[2021-11-28 18:39:26,994] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17104 Mar 29  2021 gdcmpgif\n'
+[2021-11-28 18:39:26,996] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17632 Apr  9  2021 gdk-pixbuf-csource\n'
+[2021-11-28 18:39:26,998] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17368 Apr  9  2021 gdk-pixbuf-pixdata\n'
+[2021-11-28 18:39:27,000] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22448 Nov 15 18:40 gdk-pixbuf-query-loaders\n'
+[2021-11-28 18:39:27,002] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22640 Apr  9  2021 gdk-pixbuf-thumbnailer\n'
+[2021-11-28 18:39:27,003] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17112 Mar 29  2021 gdparttopng\n'
+[2021-11-28 18:39:27,006] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17016 Mar 29  2021 gdtopng\n'
+[2021-11-28 18:39:27,008] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    23000 Nov 20  2020 genbrk\n'
+[2021-11-28 18:39:27,010] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    18304 Nov 20  2020 gencfu\n'
+[2021-11-28 18:39:27,012] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    35992 Nov 20  2020 gencnval\n'
+[2021-11-28 18:39:27,016] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    38296 Nov 20  2020 gendict\n'
+[2021-11-28 18:39:27,018] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   176928 Nov 20  2020 genrb\n'
+[2021-11-28 18:39:27,020] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    27792 May  5  2021 geod\n'
+[2021-11-28 18:39:27,021] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     1397 Nov 15 18:40 geos-config\n'
+[2021-11-28 18:39:27,024] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   129408 May 28  2021 geotifcp\n'
+[2021-11-28 18:39:27,025] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   562888 Mar 26  2021 getdap\n'
+[2021-11-28 18:39:27,028] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   572008 Mar 26  2021 getdap4\n'
+[2021-11-28 18:39:27,030] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    45704 Nov 15 18:40 gettext\n'
+[2021-11-28 18:39:27,032] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     4629 Nov 25  2020 gettext.sh\n'
+[2021-11-28 18:39:27,034] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    43759 Nov 15 18:40 gettextize\n'
+[2021-11-28 18:39:27,036] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root     5126 Nov 11  2018 gflags_completions.sh\n'
+[2021-11-28 18:39:27,038] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    45448 May  5  2021 gie\n'
+[2021-11-28 18:39:27,040] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    26720 Jan  8  2021 gif2h5\n'
+[2021-11-28 18:39:27,042] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    28528 May 19  2021 gif2hdf\n'
+[2021-11-28 18:39:27,045] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    26760 Oct 31  2020 gif2rgb\n'
+[2021-11-28 18:39:27,047] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    36432 Jan 31  2021 gif2webp\n'
+[2021-11-28 18:39:27,049] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    35464 Oct 31  2020 gifbuild\n'
+[2021-11-28 18:39:27,051] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22856 Oct 31  2020 gifclrmp\n'
+[2021-11-28 18:39:27,055] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22120 Oct 31  2020 giffix\n'
+[2021-11-28 18:39:27,057] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    26728 Oct 31  2020 giftext\n'
+[2021-11-28 18:39:27,059] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17056 Mar 29  2021 giftogd2\n'
+[2021-11-28 18:39:27,061] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    26144 Oct 31  2020 giftool\n'
+[2021-11-28 18:39:27,063] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    47880 Jul 17 22:52 gml2gv\n'
+[2021-11-28 18:39:27,065] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   126072 Jul 20 22:43 gnmanalyse\n'
+[2021-11-28 18:39:27,067] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   151960 Jul 20 22:43 gnmmanage\n'
+[2021-11-28 18:39:27,069] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    29584 Jul 17 22:52 graphml2gv\n'
+[2021-11-28 18:39:27,071] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root   106128 Jun 21 21:49 grpc_cpp_plugin\n'
+[2021-11-28 18:39:27,073] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    29080 Jun 21 21:49 grpc_csharp_plugin\n'
+[2021-11-28 18:39:27,075] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    28688 Jun 21 21:49 grpc_node_plugin\n'
+[2021-11-28 18:39:27,077] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    74680 Jun 21 21:49 grpc_objective_c_plugin\n'
+[2021-11-28 18:39:27,079] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    34464 Jun 21 21:49 grpc_php_plugin\n'
+[2021-11-28 18:39:27,081] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    17856 Jun 21 21:49 grpc_python_plugin\n'
+[2021-11-28 18:39:27,083] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    23832 Jun 21 21:49 grpc_ruby_plugin\n'
+[2021-11-28 18:39:27,085] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root 25545344 Nov 15 18:40 gs\n'
+[2021-11-28 18:39:27,087] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      350 May 14  2021 gsbj\n'
+[2021-11-28 18:39:27,089] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      352 May 14  2021 gsdj\n'
+[2021-11-28 18:39:27,093] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      352 May 14  2021 gsdj500\n'
+[2021-11-28 18:39:27,095] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     1260 Nov 15 18:40 gsl-config\n'
+[2021-11-28 18:39:27,097] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17280 Jan 15  2021 gsl-histogram\n'
+[2021-11-28 18:39:27,100] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    31312 Jan 15  2021 gsl-randist\n'
+[2021-11-28 18:39:27,103] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      353 May 14  2021 gslj\n'
+[2021-11-28 18:39:27,105] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      350 May 14  2021 gslp\n'
+[2021-11-28 18:39:27,107] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      277 May 14  2021 gsnd\n'
+[2021-11-28 18:39:27,109] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    32080 Jul 27 23:13 gss-client\n'
+[2021-11-28 18:39:27,111] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    28762 Mar 24  2021 gtk-builder-convert\n'
+[2021-11-28 18:39:27,113] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   264152 Nov 15 18:40 gtk-demo\n'
+[2021-11-28 18:39:27,115] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22392 Mar 24  2021 gtk-query-immodules-2.0\n'
+[2021-11-28 18:39:27,117] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    47240 Nov 15 18:40 gtk-update-icon-cache\n'
+[2021-11-28 18:39:27,119] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     2794 Nov 15 18:40 gts-config\n'
+[2021-11-28 18:39:27,121] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17616 Jan 23  2021 gts2dxf\n'
+[2021-11-28 18:39:27,123] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    38256 Jan 23  2021 gts2oogl\n'
+[2021-11-28 18:39:27,126] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17880 Jan 23  2021 gts2stl\n'
+[2021-11-28 18:39:27,128] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17688 Jan 23  2021 gtscheck\n'
+[2021-11-28 18:39:27,130] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    31912 Jan 23  2021 gtscompare\n'
+[2021-11-28 18:39:27,135] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     6110 Jan 23  2021 gtstemplate\n'
+[2021-11-28 18:39:27,137] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    32440 Jul 17 22:52 gv2gml\n'
+[2021-11-28 18:39:27,139] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 15 18:40 gv2gxl -> gxl2gv\n'
+[2021-11-28 18:39:27,141] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    55240 Jul 17 22:52 gvcolor\n'
+[2021-11-28 18:39:27,144] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    32192 Jul 17 22:52 gvgen\n'
+[2021-11-28 18:39:27,146] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   568424 Jul 17 22:52 gvmap\n'
+[2021-11-28 18:39:27,148] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     2279 Jul 17 22:52 gvmap.sh\n'
+[2021-11-28 18:39:27,150] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    32640 Jul 17 22:52 gvpack\n'
+[2021-11-28 18:39:27,153] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17704 Jul 17 22:52 gvpr\n'
+[2021-11-28 18:39:27,155] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 15 18:40 gxl2dot -> gxl2gv\n'
+[2021-11-28 18:39:27,157] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    52528 Jul 17 22:52 gxl2gv\n'
+[2021-11-28 18:39:27,159] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   262312 Feb  2  2021 h2load\n'
+[2021-11-28 18:39:27,162] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    29236 Nov 15 18:40 h2ph\n'
+[2021-11-28 18:39:27,164] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    60943 Nov 15 18:40 h2xs\n'
+[2021-11-28 18:39:27,166] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    39904 May 19  2021 h4_ncdump\n'
+[2021-11-28 18:39:27,168] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    72472 May 19  2021 h4_ncgen\n'
+[2021-11-28 18:39:27,170] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     8227 Nov 15 18:40 h4cc\n'
+[2021-11-28 18:39:27,172] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     3670 May 19  2021 h4redeploy\n'
+[2021-11-28 18:39:27,176] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    26744 Jan  8  2021 h52gif\n'
+[2021-11-28 18:39:27,178] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    13655 Nov 15 18:40 h5c++\n'
+[2021-11-28 18:39:27,180] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    13802 Nov 15 18:40 h5cc\n'
+[2021-11-28 18:39:27,182] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    43704 Jan  8  2021 h5clear\n'
+[2021-11-28 18:39:27,184] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    51544 Jan  8  2021 h5copy\n'
+[2021-11-28 18:39:27,186] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    26624 Jan  8  2021 h5debug\n'
+[2021-11-28 18:39:27,188] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   178600 Jan  8  2021 h5diff\n'
+[2021-11-28 18:39:27,190] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   230256 Jan  8  2021 h5dump\n'
+[2021-11-28 18:39:27,192] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    12848 Nov 15 18:40 h5fc\n'
+[2021-11-28 18:39:27,194] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    47592 Jan  8  2021 h5format_convert\n'
+[2021-11-28 18:39:27,196] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    76360 Jan  8  2021 h5import\n'
+[2021-11-28 18:39:27,198] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    31080 Jan  8  2021 h5jam\n'
+[2021-11-28 18:39:27,200] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   150120 Jan  8  2021 h5ls\n'
+[2021-11-28 18:39:27,202] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    43272 Jan  8  2021 h5mkgrp\n'
+[2021-11-28 18:39:27,204] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    62096 Jan  8  2021 h5perf_serial\n'
+[2021-11-28 18:39:27,206] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     5913 Jan  8  2021 h5redeploy\n'
+[2021-11-28 18:39:27,208] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   133752 Jan  8  2021 h5repack\n'
+[2021-11-28 18:39:27,210] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    18432 Jan  8  2021 h5repart\n'
+[2021-11-28 18:39:27,212] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    57496 Jan  8  2021 h5stat\n'
+[2021-11-28 18:39:27,216] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    31064 Jan  8  2021 h5unjam\n'
+[2021-11-28 18:39:27,218] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   117576 Jan  8  2021 h5watch\n'
+[2021-11-28 18:39:27,220] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    47608 Jul  9 05:28 hb-ot-shape-closure\n'
+[2021-11-28 18:39:27,222] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    58160 Jul  9 05:28 hb-shape\n'
+[2021-11-28 18:39:27,224] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    51864 Jul  9 05:28 hb-subset\n'
+[2021-11-28 18:39:27,226] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    79256 Jul  9 05:28 hb-view\n'
+[2021-11-28 18:39:27,228] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    21304 May 19  2021 hdf24to8\n'
+[2021-11-28 18:39:27,230] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22824 May 19  2021 hdf2gif\n'
+[2021-11-28 18:39:27,232] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17472 May 19  2021 hdf2jpeg\n'
+[2021-11-28 18:39:27,234] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17472 May 19  2021 hdf8to24\n'
+[2021-11-28 18:39:27,236] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22064 May 19  2021 hdfcomp\n'
+[2021-11-28 18:39:27,238] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    74256 May 19  2021 hdfed\n'
+[2021-11-28 18:39:27,240] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    59904 May 19  2021 hdfimport\n'
+[2021-11-28 18:39:27,242] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    26936 May 19  2021 hdfls\n'
+[2021-11-28 18:39:27,244] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22624 May 19  2021 hdfpack\n'
+[2021-11-28 18:39:27,246] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17064 May 19  2021 hdftopal\n'
+[2021-11-28 18:39:27,248] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17816 May 19  2021 hdftor8\n'
+[2021-11-28 18:39:27,250] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17424 May 19  2021 hdfunpac\n'
+[2021-11-28 18:39:27,254] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    72056 May 19  2021 hdiff\n'
+[2021-11-28 18:39:27,256] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   150064 May 19  2021 hdp\n'
+[2021-11-28 18:39:27,258] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    81384 May 19  2021 hrepack\n'
+[2021-11-28 18:39:27,260] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    41224 Nov 15 18:40 iconv\n'
+[2021-11-28 18:39:27,262] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22777 Nov 15 18:40 icu-config\n'
+[2021-11-28 18:39:27,265] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17920 Nov 20  2020 icuinfo\n'
+[2021-11-28 18:39:27,267] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 15 18:40 identify -> magick\n'
+[2021-11-28 18:39:27,269] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        7 Nov 19 22:26 idle3 -> idle3.9\n'
+[2021-11-28 18:39:27,271] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root       99 Nov 19 22:26 idle3.9\n'
+[2021-11-28 18:39:27,273] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    21696 Nov 11  2020 imcopy\n'
+[2021-11-28 18:39:27,275] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    56992 Jan 31  2021 img2webp\n'
+[2021-11-28 18:39:27,277] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 15 18:40 import -> magick\n'
+[2021-11-28 18:39:27,279] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    63568 Nov 14  2020 infocmp\n'
+[2021-11-28 18:39:27,281] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        3 Nov 19 22:26 infotocap -> tic\n'
+[2021-11-28 18:39:27,283] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   142768 Nov 15 18:40 initdb\n'
+[2021-11-28 18:39:27,285] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     4299 Nov 15 18:40 instmodsh\n'
+[2021-11-28 18:39:27,287] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        4 Nov 15 18:40 invgeod -> geod\n'
+[2021-11-28 18:39:27,289] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        4 Nov 15 18:40 invproj -> proj\n'
+[2021-11-28 18:39:27,293] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17728 May 19  2021 jpeg2hdf\n'
+[2021-11-28 18:39:27,295] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    52664 Oct 31  2020 jpegtran\n'
+[2021-11-28 18:39:27,297] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     5001 Nov 15 18:40 json_pp\n'
+[2021-11-28 18:39:27,299] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     2004 Jul 27 23:13 k5srvutil\n'
+[2021-11-28 18:39:27,301] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   107488 Jul 27 23:13 kadmin\n'
+[2021-11-28 18:39:27,303] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17240 Jul 27 23:13 kdestroy\n'
+[2021-11-28 18:39:27,305] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      977 Nov 15 18:40 kea-config\n'
+[2021-11-28 18:39:27,307] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    41352 Jul 27 23:13 kinit\n'
+[2021-11-28 18:39:27,309] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    36552 Jul 27 23:13 klist\n'
+[2021-11-28 18:39:27,311] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    21640 Jul 27 23:13 kpasswd\n'
+[2021-11-28 18:39:27,313] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     6989 Nov 15 18:40 krb5-config\n'
+[2021-11-28 18:39:27,315] {pod_launcher.py:156} INFO - b'-rw-rw-r-- 1 root root    65440 Jul 27 23:13 ksu\n'
+[2021-11-28 18:39:27,317] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    16896 Jul 27 23:13 kswitch\n'
+[2021-11-28 18:39:27,319] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    42656 Jul 27 23:13 ktutil\n'
+[2021-11-28 18:39:27,321] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    27440 Jul 27 23:13 kvno\n'
+[2021-11-28 18:39:27,323] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    79800 Jan 15  2021 libdeflate-gunzip\n'
+[2021-11-28 18:39:27,325] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    79800 Jan 15  2021 libdeflate-gzip\n'
+[2021-11-28 18:39:27,327] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    15787 Nov 15 18:40 libnetcfg\n'
+[2021-11-28 18:39:27,329] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       15 Nov 15 18:40 libpng-config -> libpng16-config\n'
+[2021-11-28 18:39:27,333] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     2327 Nov 15 18:40 libpng16-config\n'
+[2021-11-28 18:39:27,335] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   368970 Nov 15 18:40 libtool\n'
+[2021-11-28 18:39:27,337] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   129210 Nov 15 18:40 libtoolize\n'
+[2021-11-28 18:39:27,340] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    54248 May 28  2021 listgeo\n'
+[2021-11-28 18:39:27,342] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     5470 May 14  2021 lprsetup.sh\n'
+[2021-11-28 18:39:27,344] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   279216 Jul 30 18:17 lz4\n'
+[2021-11-28 18:39:27,346] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        3 Nov 15 18:40 lz4c -> lz4\n'
+[2021-11-28 18:39:27,348] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        3 Nov 15 18:40 lz4cat -> lz4\n'
+[2021-11-28 18:39:27,350] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        2 Nov 19 22:26 lzcat -> xz\n'
+[2021-11-28 18:39:27,352] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 19 22:26 lzcmp -> xzdiff\n'
+[2021-11-28 18:39:27,354] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 19 22:26 lzdiff -> xzdiff\n'
+[2021-11-28 18:39:27,356] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 19 22:26 lzegrep -> xzgrep\n'
+[2021-11-28 18:39:27,358] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 19 22:26 lzfgrep -> xzgrep\n'
+[2021-11-28 18:39:27,360] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 19 22:26 lzgrep -> xzgrep\n'
+[2021-11-28 18:39:27,363] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 19 22:26 lzless -> xzless\n'
+[2021-11-28 18:39:27,366] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        2 Nov 19 22:26 lzma -> xz\n'
+[2021-11-28 18:39:27,368] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    21240 Jul  9  2020 lzmadec\n'
+[2021-11-28 18:39:27,373] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    21152 Nov 19 22:26 lzmainfo\n'
+[2021-11-28 18:39:27,375] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 19 22:26 lzmore -> xzmore\n'
+[2021-11-28 18:39:27,377] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22608 May 31 21:00 magick\n'
+[2021-11-28 18:39:27,379] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 15 18:40 magick-script -> magick\n'
+[2021-11-28 18:39:27,381] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   272472 Oct 14  2020 make\n'
+[2021-11-28 18:39:27,383] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    72648 Nov 20  2020 makeconv\n'
+[2021-11-28 18:39:27,385] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    39760 May 28  2021 makegeo\n'
+[2021-11-28 18:39:27,387] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    45664 Jul 17 22:52 mm2gv\n'
+[2021-11-28 18:39:27,389] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 15 18:40 mogrify -> magick\n'
+[2021-11-28 18:39:27,391] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 15 18:40 montage -> magick\n'
+[2021-11-28 18:39:27,393] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    31608 Nov 15 18:40 msgattrib\n'
+[2021-11-28 18:39:27,395] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    27520 Nov 15 18:40 msgcat\n'
+[2021-11-28 18:39:27,397] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    32472 Nov 15 18:40 msgcmp\n'
+[2021-11-28 18:39:27,399] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    27536 Nov 15 18:40 msgcomm\n'
+[2021-11-28 18:39:27,401] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    27224 Nov 15 18:40 msgconv\n'
+[2021-11-28 18:39:27,403] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    27208 Nov 15 18:40 msgen\n'
+[2021-11-28 18:39:27,405] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    23152 Nov 15 18:40 msgexec\n'
+[2021-11-28 18:39:27,407] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    36816 Nov 15 18:40 msgfilter\n'
+[2021-11-28 18:39:27,409] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   102864 Nov 15 18:40 msgfmt\n'
+[2021-11-28 18:39:27,414] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    50688 Nov 15 18:40 msggrep\n'
+[2021-11-28 18:39:27,416] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    76896 Nov 15 18:40 msginit\n'
+[2021-11-28 18:39:27,418] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    81848 Nov 15 18:40 msgmerge\n'
+[2021-11-28 18:39:27,420] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    41752 Nov 15 18:40 msgunfmt\n'
+[2021-11-28 18:39:27,422] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    27416 Nov 15 18:40 msguniq\n'
+[2021-11-28 18:39:27,424] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     9380 Nov 15 18:40 nc-config\n'
+[2021-11-28 18:39:27,426] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    74496 May 17  2021 nccopy\n'
+[2021-11-28 18:39:27,428] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   104688 May 17  2021 ncdump\n'
+[2021-11-28 18:39:27,430] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   229536 May 17  2021 ncgen\n'
+[2021-11-28 18:39:27,432] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   106624 May 17  2021 ncgen3\n'
+[2021-11-28 18:39:27,434] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     8061 Nov 19 22:26 ncurses6-config\n'
+[2021-11-28 18:39:27,436] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     8065 Nov 19 22:26 ncursesw6-config\n'
+[2021-11-28 18:39:27,438] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    51496 Jul 20 22:43 nearblack\n'
+[2021-11-28 18:39:27,440] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        3 Nov 15 18:40 neato -> dot\n'
+[2021-11-28 18:39:27,442] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    45792 Nov 15 18:40 ngettext\n'
+[2021-11-28 18:39:27,444] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   246824 Feb  2  2021 nghttp\n'
+[2021-11-28 18:39:27,446] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   192080 Feb  2  2021 nghttpd\n'
+[2021-11-28 18:39:27,448] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root  1249288 Nov 15 18:40 nghttpx\n'
+[2021-11-28 18:39:27,452] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    19024 Jul 17 22:52 nop\n'
+[2021-11-28 18:39:27,454] {pod_launcher.py:156} INFO - b'-rwxr-xr-x 1 root root      255 Nov 19 22:26 normalizer\n'
+[2021-11-28 18:39:27,456] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   388384 Jul 20 22:43 ogr2ogr\n'
+[2021-11-28 18:39:27,458] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   344456 Jul 20 22:43 ogrinfo\n'
+[2021-11-28 18:39:27,460] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   519528 Jul 20 22:43 ogrlineref\n'
+[2021-11-28 18:39:27,462] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   195216 Jul 20 22:43 ogrtindex\n'
+[2021-11-28 18:39:27,464] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    46504 May 14  2021 oid2name\n'
+[2021-11-28 18:39:27,467] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root   831152 Sep  3 10:19 openssl\n'
+[2021-11-28 18:39:27,469] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   149064 May 17  2021 opj_compress\n'
+[2021-11-28 18:39:27,471] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   140808 May 17  2021 opj_decompress\n'
+[2021-11-28 18:39:27,473] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   127504 May 17  2021 opj_dump\n'
+[2021-11-28 18:39:27,475] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root   206776 May 23  2021 orc-contents\n'
+[2021-11-28 18:39:27,477] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root   644552 May 23  2021 orc-metadata\n'
+[2021-11-28 18:39:27,479] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root   185120 May 23  2021 orc-statistics\n'
+[2021-11-28 18:39:27,481] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        3 Nov 15 18:40 osage -> dot\n'
+[2021-11-28 18:39:27,483] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    18008 May 20  2021 pal2rgb\n'
+[2021-11-28 18:39:27,485] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17056 May 19  2021 paltohdf\n'
+[2021-11-28 18:39:27,487] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22432 Jul  4 14:08 pango-list\n'
+[2021-11-28 18:39:27,491] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    21712 Jul  4 14:08 pango-segmentation\n'
+[2021-11-28 18:39:27,493] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    70200 Jul  4 14:08 pango-view\n'
+[2021-11-28 18:39:27,495] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        3 Nov 15 18:40 patchwork -> dot\n'
+[2021-11-28 18:39:27,497] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     2363 Nov 15 18:40 pcre-config\n'
+[2021-11-28 18:39:27,499] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     2179 Nov 15 18:40 pcre2-config\n'
+[2021-11-28 18:39:27,501] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   133936 May 31 13:21 pcre2_jit_test\n'
+[2021-11-28 18:39:27,503] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    72080 May 31 13:21 pcre2grep\n'
+[2021-11-28 18:39:27,505] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   189872 May 31 13:21 pcre2test\n'
+[2021-11-28 18:39:27,507] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    57256 Jun 15 20:26 pcregrep\n'
+[2021-11-28 18:39:27,509] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    83328 Jun 15 20:26 pcretest\n'
+[2021-11-28 18:39:27,511] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      698 May 14  2021 pdf2dsc\n'
+[2021-11-28 18:39:27,513] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      909 May 14  2021 pdf2ps\n'
+[2021-11-28 18:39:27,515] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   695200 Mar  3  2021 pdfattach\n'
+[2021-11-28 18:39:27,517] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   737440 Mar  3  2021 pdfdetach\n'
+[2021-11-28 18:39:27,519] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   779792 Mar  3  2021 pdffonts\n'
+[2021-11-28 18:39:27,521] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   876800 Mar  3  2021 pdfimages\n'
+[2021-11-28 18:39:27,523] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root  1393600 Mar  3  2021 pdfinfo\n'
+[2021-11-28 18:39:27,525] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   685136 Mar  3  2021 pdfseparate\n'
+[2021-11-28 18:39:27,529] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root  1873696 Mar  3  2021 pdftocairo\n'
+[2021-11-28 18:39:27,531] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root  2074920 Mar  3  2021 pdftohtml\n'
+[2021-11-28 18:39:27,533] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   756008 Mar  3  2021 pdftoppm\n'
+[2021-11-28 18:39:27,535] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   783392 Mar  3  2021 pdftops\n'
+[2021-11-28 18:39:27,537] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root  1039000 Mar  3  2021 pdftotext\n'
+[2021-11-28 18:39:27,539] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   849744 Mar  3  2021 pdfunite\n'
+[2021-11-28 18:39:27,541] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    21864 Jun  4 11:15 perl\n'
+[2021-11-28 18:39:27,543] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    21864 Jun  4 11:15 perl5.32.1\n'
+[2021-11-28 18:39:27,545] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    45270 Nov 15 18:40 perlbug\n'
+[2021-11-28 18:39:27,547] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      274 Nov 15 18:40 perldoc\n'
+[2021-11-28 18:39:27,549] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    10831 Nov 15 18:40 perlivp\n'
+[2021-11-28 18:39:27,551] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    45270 Nov 15 18:40 perlthanks\n'
+[2021-11-28 18:39:27,553] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      498 May 14  2021 pf2afm\n'
+[2021-11-28 18:39:27,555] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      516 May 14  2021 pfbtopfa\n'
+[2021-11-28 18:39:27,557] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    45944 Nov 15 18:40 pg_archivecleanup\n'
+[2021-11-28 18:39:27,560] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   123056 Nov 15 18:40 pg_basebackup\n'
+[2021-11-28 18:39:27,562] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    68728 Nov 15 18:40 pg_checksums\n'
+[2021-11-28 18:39:27,564] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    53616 Nov 15 18:40 pg_config\n'
+[2021-11-28 18:39:27,568] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    62568 Nov 15 18:40 pg_controldata\n'
+[2021-11-28 18:39:27,593] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    78872 Nov 15 18:40 pg_ctl\n'
+[2021-11-28 18:39:27,593] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   452792 Nov 15 18:40 pg_dump\n'
+[2021-11-28 18:39:27,594] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   114880 Nov 15 18:40 pg_dumpall\n'
+[2021-11-28 18:39:27,594] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    46224 Nov 15 18:40 pg_isready\n'
+[2021-11-28 18:39:27,594] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    85208 Nov 15 18:40 pg_receivewal\n'
+[2021-11-28 18:39:27,594] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    71456 Nov 15 18:40 pg_recvlogical\n'
+[2021-11-28 18:39:27,594] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    68880 Nov 15 18:40 pg_resetwal\n'
+[2021-11-28 18:39:27,595] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   185232 Nov 15 18:40 pg_restore\n'
+[2021-11-28 18:39:27,595] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   121392 Nov 15 18:40 pg_rewind\n'
+[2021-11-28 18:39:27,595] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    41232 May 14  2021 pg_standby\n'
+[2021-11-28 18:39:27,595] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    50704 Nov 15 18:40 pg_test_fsync\n'
+[2021-11-28 18:39:27,595] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    40592 Nov 15 18:40 pg_test_timing\n'
+[2021-11-28 18:39:27,596] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   162912 Nov 15 18:40 pg_upgrade\n'
+[2021-11-28 18:39:27,596] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   106848 Nov 15 18:40 pg_verifybackup\n'
+[2021-11-28 18:39:27,596] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   109640 Nov 15 18:40 pg_waldump\n'
+[2021-11-28 18:39:27,596] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   172984 May 14  2021 pgbench\n'
+[2021-11-28 18:39:27,596] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     8369 Nov 15 18:40 piconv\n'
+[2021-11-28 18:39:27,597] {pod_launcher.py:156} INFO - b'-rwxr-xr-x 1 root root      232 Nov 19 22:26 pip\n'
+[2021-11-28 18:39:27,597] {pod_launcher.py:156} INFO - b'-rwxr-xr-x 1 root root      232 Nov 19 22:26 pip3\n'
+[2021-11-28 18:39:27,597] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     3521 Oct 31  2020 pkg-config\n'
+[2021-11-28 18:39:27,597] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   293000 Nov 15 18:40 pkg-config.bin\n'
+[2021-11-28 18:39:27,597] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    55720 Nov 20  2020 pkgdata\n'
+[2021-11-28 18:39:27,597] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     4545 Nov 15 18:40 pl2pm\n'
+[2021-11-28 18:39:27,598] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root   246528 Sep 29 09:13 plasma-store-server\n'
+[2021-11-28 18:39:27,598] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    16848 Oct 31  2020 png-fix-itxt\n'
+[2021-11-28 18:39:27,598] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    57488 Oct 31  2020 pngfix\n'
+[2021-11-28 18:39:27,598] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17016 Mar 29  2021 pngtogd\n'
+[2021-11-28 18:39:27,599] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17056 Mar 29  2021 pngtogd2\n'
+[2021-11-28 18:39:27,599] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     4146 Nov 15 18:40 pod2html\n'
+[2021-11-28 18:39:27,599] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    15046 Nov 15 18:40 pod2man\n'
+[2021-11-28 18:39:27,599] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    10815 Nov 15 18:40 pod2text\n'
+[2021-11-28 18:39:27,600] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     3954 Nov 15 18:40 pod2usage\n'
+[2021-11-28 18:39:27,600] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     3664 Nov 15 18:40 podchecker\n'
+[2021-11-28 18:39:27,600] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root  9219936 Nov 15 18:40 postgres\n'
+[2021-11-28 18:39:27,600] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        8 Nov 15 18:40 postmaster -> postgres\n'
+[2021-11-28 18:39:27,600] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      404 May 14  2021 pphs\n'
+[2021-11-28 18:39:27,600] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    18432 May 20  2021 ppm2tiff\n'
+[2021-11-28 18:39:27,601] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      395 May 14  2021 printafm\n'
+[2021-11-28 18:39:27,601] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    33024 May  5  2021 proj\n'
+[2021-11-28 18:39:27,601] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   113640 May  5  2021 projinfo\n'
+[2021-11-28 18:39:27,601] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   154888 Nov 15 18:40 projsync\n'
+[2021-11-28 18:39:27,602] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    27472 May  7  2021 protoc\n'
+[2021-11-28 18:39:27,602] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    13667 Nov 15 18:40 prove\n'
+[2021-11-28 18:39:27,602] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    23968 Jul 17 22:52 prune\n'
+[2021-11-28 18:39:27,602] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      631 May 14  2021 ps2ascii\n'
+[2021-11-28 18:39:27,602] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     1264 May 14  2021 ps2epsi\n'
+[2021-11-28 18:39:27,602] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      272 May 14  2021 ps2pdf\n'
+[2021-11-28 18:39:27,602] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      215 May 14  2021 ps2pdf12\n'
+[2021-11-28 18:39:27,602] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      215 May 14  2021 ps2pdf13\n'
+[2021-11-28 18:39:27,602] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      215 May 14  2021 ps2pdf14\n'
+[2021-11-28 18:39:27,603] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     1078 May 14  2021 ps2pdfwr\n'
+[2021-11-28 18:39:27,603] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      647 May 14  2021 ps2ps\n'
+[2021-11-28 18:39:27,603] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root      669 May 14  2021 ps2ps2\n'
+[2021-11-28 18:39:27,603] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   723216 Nov 15 18:40 psql\n'
+[2021-11-28 18:39:27,603] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     3561 Nov 15 18:40 ptar\n'
+[2021-11-28 18:39:27,603] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     2640 Nov 15 18:40 ptardiff\n'
+[2021-11-28 18:39:27,603] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     4404 Nov 15 18:40 ptargrep\n'
+[2021-11-28 18:39:27,603] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        8 Nov 19 22:26 pydoc -> pydoc3.9\n'
+[2021-11-28 18:39:27,603] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        8 Nov 19 22:26 pydoc3 -> pydoc3.9\n'
+[2021-11-28 18:39:27,603] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root       84 Nov 19 22:26 pydoc3.9\n'
+[2021-11-28 18:39:27,603] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        9 Nov 19 22:26 python -> python3.9\n'
+[2021-11-28 18:39:27,603] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        9 Nov 19 22:26 python3 -> python3.9\n'
+[2021-11-28 18:39:27,604] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       16 Nov 19 22:26 python3-config -> python3.9-config\n'
+[2021-11-28 18:39:27,604] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root 24568000 Nov 19 22:26 python3.9\n'
+[2021-11-28 18:39:27,604] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     3488 Nov 19 22:26 python3.9-config\n'
+[2021-11-28 18:39:27,604] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17352 May 19  2021 r8tohdf\n'
+[2021-11-28 18:39:27,605] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    30600 May 20  2021 raw2tiff\n'
+[2021-11-28 18:39:27,605] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17744 Oct 31  2020 rdjpgcom\n'
+[2021-11-28 18:39:27,605] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22624 Nov 15 18:40 recode-sr-latin\n'
+[2021-11-28 18:39:27,605] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    79736 Nov 15 18:40 reindexdb\n'
+[2021-11-28 18:39:27,605] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        4 Nov 19 22:26 reset -> tset\n'
+[2021-11-28 18:39:27,606] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17336 May 19  2021 ristosds\n'
+[2021-11-28 18:39:27,606] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    27872 Jun  6 22:38 rsvg-convert\n'
+[2021-11-28 18:39:27,606] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    28272 Jul 17 22:52 sccmap\n'
+[2021-11-28 18:39:27,607] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    21672 Jul 27 23:13 sclient\n'
+[2021-11-28 18:39:27,607] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   204360 Nov 15 18:40 sed\n'
+[2021-11-28 18:39:27,607] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        3 Nov 15 18:40 sfdp -> dot\n'
+[2021-11-28 18:39:27,607] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    17656 Jun 15 23:51 sha256_profile\n'
+[2021-11-28 18:39:27,608] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     9988 Nov 15 18:40 shasum\n'
+[2021-11-28 18:39:27,608] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17480 Jul 27 23:13 sim_client\n'
+[2021-11-28 18:39:27,608] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17064 Nov 11  2020 smem\n'
+[2021-11-28 18:39:27,608] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    19423 Nov 15 18:40 splain\n'
+[2021-11-28 18:39:27,609] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  1584584 Sep 25 19:44 sqlite3\n'
+[2021-11-28 18:39:27,609] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    30392 Sep  2 06:25 sqlite3_analyzer\n'
+[2021-11-28 18:39:27,609] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22848 Jan 23  2021 stl2gts\n'
+[2021-11-28 18:39:27,609] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 15 18:40 stream -> magick\n'
+[2021-11-28 18:39:27,610] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     5533 Nov 15 18:40 streamzip\n'
+[2021-11-28 18:39:27,610] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    18432 Nov 14  2020 tabs\n'
+[2021-11-28 18:39:27,610] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        8 Nov 19 22:26 tclsh -> tclsh8.6\n'
+[2021-11-28 18:39:27,610] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    16144 Sep  2 06:25 tclsh8.6\n'
+[2021-11-28 18:39:27,611] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    60952 Jul 20 22:43 testepsg\n'
+[2021-11-28 18:39:27,611] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    88176 Nov 14  2020 tic\n'
+[2021-11-28 18:39:27,611] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22288 May 20  2021 tiff2bw\n'
+[2021-11-28 18:39:27,611] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    85136 May 20  2021 tiff2pdf\n'
+[2021-11-28 18:39:27,611] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    62272 May 20  2021 tiff2ps\n'
+[2021-11-28 18:39:27,612] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    26584 May 20  2021 tiff2rgba\n'
+[2021-11-28 18:39:27,612] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22504 May 20  2021 tiffcmp\n'
+[2021-11-28 18:39:27,612] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    54104 May 20  2021 tiffcp\n'
+[2021-11-28 18:39:27,612] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   116464 May 20  2021 tiffcrop\n'
+[2021-11-28 18:39:27,613] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    18016 May 20  2021 tiffdither\n'
+[2021-11-28 18:39:27,613] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    31448 May 20  2021 tiffdump\n'
+[2021-11-28 18:39:27,613] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    27424 May 20  2021 tiffinfo\n'
+[2021-11-28 18:39:27,613] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    26536 May 20  2021 tiffmedian\n'
+[2021-11-28 18:39:27,614] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    18064 May 20  2021 tiffset\n'
+[2021-11-28 18:39:27,614] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22128 May 20  2021 tiffsplit\n'
+[2021-11-28 18:39:27,614] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    22528 Nov 14  2020 toe\n'
+[2021-11-28 18:39:27,614] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    22560 Nov 14  2020 tput\n'
+[2021-11-28 18:39:27,615] {pod_launcher.py:156} INFO - b'-rwxr-xr-x 1 root root      218 Nov 19 22:26 tqdm\n'
+[2021-11-28 18:39:27,615] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22592 Jan 23  2021 transform\n'
+[2021-11-28 18:39:27,615] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    23808 Jul 17 22:52 tred\n'
+[2021-11-28 18:39:27,615] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    30728 Nov 14  2020 tset\n'
+[2021-11-28 18:39:27,616] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        3 Nov 15 18:40 twopi -> dot\n'
+[2021-11-28 18:39:27,616] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    15306 Jul  7 17:14 tzselect\n'
+[2021-11-28 18:39:27,616] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    23872 Mar 26  2021 udunits2\n'
+[2021-11-28 18:39:27,616] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    19680 Jul 17 22:52 unflatten\n'
+[2021-11-28 18:39:27,616] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     4165 May 14  2021 unix-lpr.sh\n'
+[2021-11-28 18:39:27,616] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        3 Nov 15 18:40 unlz4 -> lz4\n'
+[2021-11-28 18:39:27,617] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        2 Nov 19 22:26 unlzma -> xz\n'
+[2021-11-28 18:39:27,617] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        2 Nov 19 22:26 unxz -> xz\n'
+[2021-11-28 18:39:27,617] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        4 Nov 15 18:40 unzstd -> zstd\n'
+[2021-11-28 18:39:27,617] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22160 Jul 27 23:13 uuclient\n'
+[2021-11-28 18:39:27,617] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    79640 Nov 15 18:40 vacuumdb\n'
+[2021-11-28 18:39:27,618] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    41840 May 14  2021 vacuumlo\n'
+[2021-11-28 18:39:27,618] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    26816 May 19  2021 vmake\n'
+[2021-11-28 18:39:27,618] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    27096 May 19  2021 vshow\n'
+[2021-11-28 18:39:27,619] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    34568 Mar 17  2021 webpinfo\n'
+[2021-11-28 18:39:27,619] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    40056 Mar 17  2021 webpmux\n'
+[2021-11-28 18:39:27,619] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    18096 Mar 29  2021 webpng\n'
+[2021-11-28 18:39:27,620] {pod_launcher.py:156} INFO - b'-rwxr-xr-x 1 root root      219 Nov 19 22:26 wheel\n'
+[2021-11-28 18:39:27,620] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        7 Nov 19 22:26 wish -> wish8.6\n'
+[2021-11-28 18:39:27,620] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    16296 Sep  2 06:25 wish8.6\n'
+[2021-11-28 18:39:27,620] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    17848 Oct 31  2020 wrjpgcom\n'
+[2021-11-28 18:39:27,621] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  1052760 Jul 28 00:54 x86_64-conda-linux-gnu-addr2line\n'
+[2021-11-28 18:39:27,621] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  1085336 Jul 28 00:54 x86_64-conda-linux-gnu-ar\n'
+[2021-11-28 18:39:27,621] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  1698472 Jul 28 00:54 x86_64-conda-linux-gnu-as\n'
+[2021-11-28 18:39:27,622] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  1092032 Oct 13 04:04 x86_64-conda-linux-gnu-c++\n'
+[2021-11-28 18:39:27,622] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  1052184 Jul 28 00:54 x86_64-conda-linux-gnu-c++filt\n'
+[2021-11-28 18:39:27,622] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root      225 Oct 13 04:00 x86_64-conda-linux-gnu-c89\n'
+[2021-11-28 18:39:27,622] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root      216 Oct 13 04:00 x86_64-conda-linux-gnu-c99\n'
+[2021-11-28 18:39:27,623] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       26 Nov 19 22:26 x86_64-conda-linux-gnu-cc -> x86_64-conda-linux-gnu-gcc\n'
+[2021-11-28 18:39:27,623] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  1092032 Oct 13 04:00 x86_64-conda-linux-gnu-cpp\n'
+[2021-11-28 18:39:27,623] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  2546000 Jul 28 00:54 x86_64-conda-linux-gnu-dwp\n'
+[2021-11-28 18:39:27,624] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    32968 Jul 28 00:54 x86_64-conda-linux-gnu-elfedit\n'
+[2021-11-28 18:39:27,624] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       31 Nov 19 22:26 x86_64-conda-linux-gnu-f95 -> x86_64-conda-linux-gnu-gfortran\n'
+[2021-11-28 18:39:27,624] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  1092032 Oct 13 04:04 x86_64-conda-linux-gnu-g++\n'
+[2021-11-28 18:39:27,625] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  1092032 Oct 13 04:00 x86_64-conda-linux-gnu-gcc\n'
+[2021-11-28 18:39:27,625] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    35304 Oct 13 04:00 x86_64-conda-linux-gnu-gcc-ar\n'
+[2021-11-28 18:39:27,625] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    35304 Oct 13 04:00 x86_64-conda-linux-gnu-gcc-nm\n'
+[2021-11-28 18:39:27,625] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    35304 Oct 13 04:00 x86_64-conda-linux-gnu-gcc-ranlib\n'
+[2021-11-28 18:39:27,626] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root   683648 Oct 13 04:00 x86_64-conda-linux-gnu-gcov\n'
+[2021-11-28 18:39:27,626] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root   495128 Oct 13 04:00 x86_64-conda-linux-gnu-gcov-dump\n'
+[2021-11-28 18:39:27,626] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root   511576 Oct 13 04:00 x86_64-conda-linux-gnu-gcov-tool\n'
+[2021-11-28 18:39:27,627] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  1092032 Oct 13 04:03 x86_64-conda-linux-gnu-gfortran\n'
+[2021-11-28 18:39:27,627] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  1114520 Jul 28 00:54 x86_64-conda-linux-gnu-gprof\n'
+[2021-11-28 18:39:27,627] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  2742376 Jul 28 00:54 x86_64-conda-linux-gnu-ld\n'
+[2021-11-28 18:39:27,628] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  2742376 Jul 28 00:54 x86_64-conda-linux-gnu-ld.bfd\n'
+[2021-11-28 18:39:27,628] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  4978800 Jul 28 00:54 x86_64-conda-linux-gnu-ld.gold\n'
+[2021-11-28 18:39:27,628] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  1065712 Jul 28 00:54 x86_64-conda-linux-gnu-nm\n'
+[2021-11-28 18:39:27,628] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  1191792 Jul 28 00:54 x86_64-conda-linux-gnu-objcopy\n'
+[2021-11-28 18:39:27,628] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  2205296 Jul 28 00:54 x86_64-conda-linux-gnu-objdump\n'
+[2021-11-28 18:39:27,629] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       10 Nov 15 18:40 x86_64-conda-linux-gnu-pkg-config -> pkg-config\n'
+[2021-11-28 18:39:27,629] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  1085368 Jul 28 00:54 x86_64-conda-linux-gnu-ranlib\n'
+[2021-11-28 18:39:27,629] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root   877176 Jul 28 00:54 x86_64-conda-linux-gnu-readelf\n'
+[2021-11-28 18:39:27,629] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  1053808 Jul 28 00:54 x86_64-conda-linux-gnu-size\n'
+[2021-11-28 18:39:27,630] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  1053144 Jul 28 00:54 x86_64-conda-linux-gnu-strings\n'
+[2021-11-28 18:39:27,630] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root  1191792 Jul 28 00:54 x86_64-conda-linux-gnu-strip\n'
+[2021-11-28 18:39:27,630] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       32 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-addr2line -> x86_64-conda-linux-gnu-addr2line\n'
+[2021-11-28 18:39:27,631] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       25 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-ar -> x86_64-conda-linux-gnu-ar\n'
+[2021-11-28 18:39:27,631] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       25 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-as -> x86_64-conda-linux-gnu-as\n'
+[2021-11-28 18:39:27,631] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       26 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-c++ -> x86_64-conda-linux-gnu-c++\n'
+[2021-11-28 18:39:27,631] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       30 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-c++filt -> x86_64-conda-linux-gnu-c++filt\n'
+[2021-11-28 18:39:27,632] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       26 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-c89 -> x86_64-conda-linux-gnu-c89\n'
+[2021-11-28 18:39:27,632] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       26 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-c99 -> x86_64-conda-linux-gnu-c99\n'
+[2021-11-28 18:39:27,632] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       26 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-cc -> x86_64-conda-linux-gnu-gcc\n'
+[2021-11-28 18:39:27,633] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       26 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-cpp -> x86_64-conda-linux-gnu-cpp\n'
+[2021-11-28 18:39:27,633] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       26 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-dwp -> x86_64-conda-linux-gnu-dwp\n'
+[2021-11-28 18:39:27,633] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       30 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-elfedit -> x86_64-conda-linux-gnu-elfedit\n'
+[2021-11-28 18:39:27,634] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       31 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-f95 -> x86_64-conda-linux-gnu-gfortran\n'
+[2021-11-28 18:39:27,634] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       26 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-g++ -> x86_64-conda-linux-gnu-g++\n'
+[2021-11-28 18:39:27,634] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       26 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-gcc -> x86_64-conda-linux-gnu-gcc\n'
+[2021-11-28 18:39:27,635] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       29 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-gcc-ar -> x86_64-conda-linux-gnu-gcc-ar\n'
+[2021-11-28 18:39:27,635] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       29 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-gcc-nm -> x86_64-conda-linux-gnu-gcc-nm\n'
+[2021-11-28 18:39:27,635] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       33 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-gcc-ranlib -> x86_64-conda-linux-gnu-gcc-ranlib\n'
+[2021-11-28 18:39:27,636] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       27 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-gcov -> x86_64-conda-linux-gnu-gcov\n'
+[2021-11-28 18:39:27,636] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       32 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-gcov-dump -> x86_64-conda-linux-gnu-gcov-dump\n'
+[2021-11-28 18:39:27,636] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       32 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-gcov-tool -> x86_64-conda-linux-gnu-gcov-tool\n'
+[2021-11-28 18:39:27,636] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       31 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-gfortran -> x86_64-conda-linux-gnu-gfortran\n'
+[2021-11-28 18:39:27,637] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       28 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-gprof -> x86_64-conda-linux-gnu-gprof\n'
+[2021-11-28 18:39:27,637] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       25 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-ld -> x86_64-conda-linux-gnu-ld\n'
+[2021-11-28 18:39:27,637] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       29 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-ld.bfd -> x86_64-conda-linux-gnu-ld.bfd\n'
+[2021-11-28 18:39:27,637] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       30 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-ld.gold -> x86_64-conda-linux-gnu-ld.gold\n'
+[2021-11-28 18:39:27,638] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       25 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-nm -> x86_64-conda-linux-gnu-nm\n'
+[2021-11-28 18:39:27,638] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       30 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-objcopy -> x86_64-conda-linux-gnu-objcopy\n'
+[2021-11-28 18:39:27,638] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       30 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-objdump -> x86_64-conda-linux-gnu-objdump\n'
+[2021-11-28 18:39:27,639] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       29 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-ranlib -> x86_64-conda-linux-gnu-ranlib\n'
+[2021-11-28 18:39:27,639] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       30 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-readelf -> x86_64-conda-linux-gnu-readelf\n'
+[2021-11-28 18:39:27,639] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       27 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-size -> x86_64-conda-linux-gnu-size\n'
+[2021-11-28 18:39:27,640] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       30 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-strings -> x86_64-conda-linux-gnu-strings\n'
+[2021-11-28 18:39:27,640] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root       28 Nov 19 22:26 x86_64-conda_cos6-linux-gnu-strip -> x86_64-conda-linux-gnu-strip\n'
+[2021-11-28 18:39:27,640] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   308608 Nov 15 18:40 xgettext\n'
+[2021-11-28 18:39:27,640] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     1934 Nov 15 18:40 xml2-config\n'
+[2021-11-28 18:39:27,641] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    27320 May 14  2021 xmlcatalog\n'
+[2021-11-28 18:39:27,641] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    90248 May 14  2021 xmllint\n'
+[2021-11-28 18:39:27,641] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    42768 May 24  2021 xmlwf\n'
+[2021-11-28 18:39:27,642] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     5176 Nov 15 18:40 xsubpp\n'
+[2021-11-28 18:39:27,642] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    99712 Nov 19 22:26 xz\n'
+[2021-11-28 18:39:27,642] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        2 Nov 19 22:26 xzcat -> xz\n'
+[2021-11-28 18:39:27,642] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 19 22:26 xzcmp -> xzdiff\n'
+[2021-11-28 18:39:27,643] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root    21240 Jul  9  2020 xzdec\n'
+[2021-11-28 18:39:27,643] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root     6633 Jul  9  2020 xzdiff\n'
+[2021-11-28 18:39:27,643] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 19 22:26 xzegrep -> xzgrep\n'
+[2021-11-28 18:39:27,644] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        6 Nov 19 22:26 xzfgrep -> xzgrep\n'
+[2021-11-28 18:39:27,644] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root     5630 Jul  9  2020 xzgrep\n'
+[2021-11-28 18:39:27,644] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root     1799 Jul  9  2020 xzless\n'
+[2021-11-28 18:39:27,645] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 2 root root     2162 Jul  9  2020 xzmore\n'
+[2021-11-28 18:39:27,645] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    53048 Jul  7 17:14 zdump\n'
+[2021-11-28 18:39:27,645] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    62480 Jul  7 17:14 zic\n'
+[2021-11-28 18:39:27,645] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    37264 Jun 18 21:15 zipcmp\n'
+[2021-11-28 18:39:27,646] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    51251 Nov 15 18:40 zipdetails\n'
+[2021-11-28 18:39:27,646] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    22960 Jun 18 21:15 zipmerge\n'
+[2021-11-28 18:39:27,646] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root    47120 Jun 18 21:15 ziptool\n'
+[2021-11-28 18:39:27,646] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root   156616 May 14  2021 zstd\n'
+[2021-11-28 18:39:27,647] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        4 Nov 15 18:40 zstdcat -> zstd\n'
+[2021-11-28 18:39:27,647] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root     3869 May 14  2021 zstdgrep\n'
+[2021-11-28 18:39:27,647] {pod_launcher.py:156} INFO - b'-rwxrwxr-x 1 root root       30 May 14  2021 zstdless\n'
+[2021-11-28 18:39:27,648] {pod_launcher.py:156} INFO - b'lrwxrwxrwx 1 root root        4 Nov 15 18:40 zstdmt -> zstd\n'
+[2021-11-28 18:39:27,648] {pod_launcher.py:156} INFO - b'\n'
+[2021-11-28 18:39:27,648] {pod_launcher.py:156} INFO - b'Done\n'
+[2021-11-28 18:39:27,894] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Succeeded
+[2021-11-28 18:39:27,895] {pod_launcher.py:287} INFO - Event with job id etl-ce5777b43dba4174889b07e54c75d380 Succeeded
+[2021-11-28 18:39:27,901] {pod_launcher.py:173} INFO - Event: etl-ce5777b43dba4174889b07e54c75d380 had an event of type Succeeded
+[2021-11-28 18:39:27,902] {pod_launcher.py:287} INFO - Event with job id etl-ce5777b43dba4174889b07e54c75d380 Succeeded
+[2021-11-28 18:39:27,938] {taskinstance.py:1071} INFO - Marking task as SUCCESS.dag_id=gauss100_gke, task_id=sum_task_0, execution_date=20211128T183431, start_date=20211128T183749, end_date=20211128T183927
+[2021-11-28 18:39:30,345] {local_task_job.py:102} INFO - Task exited with return code 0
+
+

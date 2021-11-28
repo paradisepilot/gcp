@@ -1,0 +1,108 @@
+
+
+*** Reading remote log from gs://us-central1-gauss100-2021-1-46ca948c-bucket/logs/gauss100_gke/injest_input_data/2021-11-28T18:34:31.889508+00:00/1.log.
+[2021-11-28 18:36:49,301] {taskinstance.py:671} INFO - Dependencies all met for <TaskInstance: gauss100_gke.injest_input_data 2021-11-28T18:34:31.889508+00:00 [queued]>
+[2021-11-28 18:36:50,781] {taskinstance.py:671} INFO - Dependencies all met for <TaskInstance: gauss100_gke.injest_input_data 2021-11-28T18:34:31.889508+00:00 [queued]>
+[2021-11-28 18:36:50,781] {taskinstance.py:881} INFO - 
+--------------------------------------------------------------------------------
+[2021-11-28 18:36:50,782] {taskinstance.py:882} INFO - Starting attempt 1 of 1
+[2021-11-28 18:36:50,782] {taskinstance.py:883} INFO - 
+--------------------------------------------------------------------------------
+[2021-11-28 18:36:50,803] {taskinstance.py:902} INFO - Executing <Task(BashOperator): injest_input_data> on 2021-11-28T18:34:31.889508+00:00
+[2021-11-28 18:36:50,807] {standard_task_runner.py:54} INFO - Started process 2503 to run task
+[2021-11-28 18:36:50,858] {standard_task_runner.py:77} INFO - Running: ['airflow', 'run', 'gauss100_gke', 'injest_input_data', '2021-11-28T18:34:31.889508+00:00', '--job_id', '43', '--pool', 'default_pool', '--raw', '-sd', 'DAGS_FOLDER/dag-gauss100.py', '--cfg_path', '/tmp/tmpsmx52e3_']
+[2021-11-28 18:36:50,859] {standard_task_runner.py:78} INFO - Job 43: Subtask injest_input_data
+[2021-11-28 18:36:51,674] {logging_mixin.py:120} INFO - Running <TaskInstance: gauss100_gke.injest_input_data 2021-11-28T18:34:31.889508+00:00 [running]> on host airflow-worker-6cc67f6545-hqd7s
+[2021-11-28 18:36:52,651] {bash_operator.py:114} INFO - Tmp dir root location: 
+ /tmp
+[2021-11-28 18:36:52,653] {bash_operator.py:137} INFO - Temporary script location: /tmp/airflowtmphbvjr2rk/injest_input_data7ltiunds
+[2021-11-28 18:36:52,653] {bash_operator.py:147} INFO - Running command: 
+    # Assume that the environment variable EXTERNAL_BUCKET has been set.
+    echo
+    echo EXTERNAL_BUCKET=${EXTERNAL_BUCKET}
+
+    echo
+    echo "Executing: gsutil ls ${EXTERNAL_BUCKET}/input/"
+    gsutil ls ${EXTERNAL_BUCKET}/input/
+
+    echo
+    echo "Executing: gsutil cp -r ${EXTERNAL_BUCKET}/input /home/airflow/gcs/data"
+    gsutil cp -r ${EXTERNAL_BUCKET}/input /home/airflow/gcs/data
+    
+[2021-11-28 18:36:52,780] {bash_operator.py:154} INFO - Output:
+[2021-11-28 18:36:52,782] {bash_operator.py:158} INFO - 
+[2021-11-28 18:36:52,783] {bash_operator.py:158} INFO - EXTERNAL_BUCKET=gs://gauss100-2021-11-13-a-bucket
+[2021-11-28 18:36:52,783] {bash_operator.py:158} INFO - 
+[2021-11-28 18:36:52,784] {bash_operator.py:158} INFO - Executing: gsutil ls gs://gauss100-2021-11-13-a-bucket/input/
+[2021-11-28 18:37:05,594] {bash_operator.py:158} INFO - gs://gauss100-2021-11-13-a-bucket/input/input-file-00.csv
+[2021-11-28 18:37:05,597] {bash_operator.py:158} INFO - gs://gauss100-2021-11-13-a-bucket/input/input-file-01.csv
+[2021-11-28 18:37:05,600] {bash_operator.py:158} INFO - gs://gauss100-2021-11-13-a-bucket/input/input-file-02.csv
+[2021-11-28 18:37:05,601] {bash_operator.py:158} INFO - gs://gauss100-2021-11-13-a-bucket/input/input-file-03.csv
+[2021-11-28 18:37:05,603] {bash_operator.py:158} INFO - gs://gauss100-2021-11-13-a-bucket/input/input-file-04.csv
+[2021-11-28 18:37:05,604] {bash_operator.py:158} INFO - gs://gauss100-2021-11-13-a-bucket/input/input-file-05.csv
+[2021-11-28 18:37:05,606] {bash_operator.py:158} INFO - gs://gauss100-2021-11-13-a-bucket/input/input-file-06.csv
+[2021-11-28 18:37:05,606] {bash_operator.py:158} INFO - gs://gauss100-2021-11-13-a-bucket/input/input-file-07.csv
+[2021-11-28 18:37:05,607] {bash_operator.py:158} INFO - gs://gauss100-2021-11-13-a-bucket/input/input-file-08.csv
+[2021-11-28 18:37:05,609] {bash_operator.py:158} INFO - gs://gauss100-2021-11-13-a-bucket/input/input-file-09.csv
+[2021-11-28 18:37:05,916] {bash_operator.py:158} INFO - 
+[2021-11-28 18:37:05,917] {bash_operator.py:158} INFO - Executing: gsutil cp -r gs://gauss100-2021-11-13-a-bucket/input /home/airflow/gcs/data
+[2021-11-28 18:37:18,355] {bash_operator.py:158} INFO - Copying gs://gauss100-2021-11-13-a-bucket/input/input-file-00.csv...
+[2021-11-28 18:37:20,007] {bash_operator.py:158} INFO - / [0 files][    0.0 B/   25.0 B]                                                
+-
+- [1 files][   25.0 B/   25.0 B]                                                
+Copying gs://gauss100-2021-11-13-a-bucket/input/input-file-01.csv...
+[2021-11-28 18:37:21,666] {bash_operator.py:158} INFO - - [1 files][   25.0 B/   59.0 B]                                                
+\
+|
+| [2 files][   59.0 B/   59.0 B]                                                
+Copying gs://gauss100-2021-11-13-a-bucket/input/input-file-02.csv...
+[2021-11-28 18:37:23,299] {bash_operator.py:158} INFO - | [2 files][   59.0 B/   93.0 B]                                                
+/
+-
+- [3 files][   93.0 B/   93.0 B]                                                
+Copying gs://gauss100-2021-11-13-a-bucket/input/input-file-03.csv...
+[2021-11-28 18:37:24,626] {bash_operator.py:158} INFO - - [3 files][   93.0 B/  127.0 B]                                                
+\
+|
+| [4 files][  127.0 B/  127.0 B]
+[2021-11-28 18:37:24,626] {bash_operator.py:158} INFO - ==> NOTE: You are performing a sequence of gsutil operations that may
+[2021-11-28 18:37:24,627] {bash_operator.py:158} INFO - run significantly faster if you instead use gsutil -m cp ... Please
+[2021-11-28 18:37:24,627] {bash_operator.py:158} INFO - see the -m section under "gsutil help options" for further information
+[2021-11-28 18:37:24,627] {bash_operator.py:158} INFO - about when gsutil -m can be advantageous.
+[2021-11-28 18:37:24,627] {bash_operator.py:158} INFO - 
+[2021-11-28 18:37:24,784] {bash_operator.py:158} INFO - Copying gs://gauss100-2021-11-13-a-bucket/input/input-file-04.csv...
+[2021-11-28 18:37:26,333] {bash_operator.py:158} INFO - | [4 files][  127.0 B/  161.0 B]                                                
+/
+-
+- [5 files][  161.0 B/  161.0 B]                                                
+Copying gs://gauss100-2021-11-13-a-bucket/input/input-file-05.csv...
+[2021-11-28 18:37:27,830] {bash_operator.py:158} INFO - - [5 files][  161.0 B/  195.0 B]                                                
+\
+|
+| [6 files][  195.0 B/  195.0 B]                                                
+Copying gs://gauss100-2021-11-13-a-bucket/input/input-file-06.csv...
+[2021-11-28 18:37:29,245] {bash_operator.py:158} INFO - | [6 files][  195.0 B/  229.0 B]                                                
+/
+-
+- [7 files][  229.0 B/  229.0 B]                                                
+Copying gs://gauss100-2021-11-13-a-bucket/input/input-file-07.csv...
+[2021-11-28 18:37:30,579] {bash_operator.py:158} INFO - - [7 files][  229.0 B/  263.0 B]     26.9 B/s                                   
+\
+\ [8 files][  263.0 B/  263.0 B]     29.9 B/s                                   
+|
+Copying gs://gauss100-2021-11-13-a-bucket/input/input-file-08.csv...
+[2021-11-28 18:37:31,880] {bash_operator.py:158} INFO - | [8 files][  263.0 B/  297.0 B]     23.4 B/s                                   
+/
+-
+- [9 files][  297.0 B/  297.0 B]     27.3 B/s                                   
+Copying gs://gauss100-2021-11-13-a-bucket/input/input-file-09.csv...
+[2021-11-28 18:37:33,128] {bash_operator.py:158} INFO - - [9 files][  297.0 B/  332.0 B]     23.4 B/s                                   
+\
+\ [10 files][  332.0 B/  332.0 B]     29.0 B/s                                  
+|
+[2021-11-28 18:37:33,129] {bash_operator.py:158} INFO - Operation completed over 10 objects/332.0 B.
+[2021-11-28 18:37:33,530] {bash_operator.py:162} INFO - Command exited with return code 0
+[2021-11-28 18:37:33,570] {taskinstance.py:1071} INFO - Marking task as SUCCESS.dag_id=gauss100_gke, task_id=injest_input_data, execution_date=20211128T183431, start_date=20211128T183649, end_date=20211128T183733
+[2021-11-28 18:37:34,630] {local_task_job.py:102} INFO - Task exited with return code 0
+
+

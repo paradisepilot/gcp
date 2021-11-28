@@ -1,0 +1,186 @@
+
+
+*** Reading remote log from gs://us-central1-gauss100-2021-1-46ca948c-bucket/logs/gauss100_gke/sum_task_1/2021-11-28T18:34:31.889508+00:00/1.log.
+[2021-11-28 18:37:49,113] {taskinstance.py:671} INFO - Dependencies all met for <TaskInstance: gauss100_gke.sum_task_1 2021-11-28T18:34:31.889508+00:00 [queued]>
+[2021-11-28 18:37:49,237] {taskinstance.py:671} INFO - Dependencies all met for <TaskInstance: gauss100_gke.sum_task_1 2021-11-28T18:34:31.889508+00:00 [queued]>
+[2021-11-28 18:37:49,237] {taskinstance.py:881} INFO - 
+--------------------------------------------------------------------------------
+[2021-11-28 18:37:49,238] {taskinstance.py:882} INFO - Starting attempt 1 of 1
+[2021-11-28 18:37:49,238] {taskinstance.py:883} INFO - 
+--------------------------------------------------------------------------------
+[2021-11-28 18:37:49,391] {taskinstance.py:902} INFO - Executing <Task(KubernetesPodOperator): sum_task_1> on 2021-11-28T18:34:31.889508+00:00
+[2021-11-28 18:37:49,395] {standard_task_runner.py:54} INFO - Started process 2845 to run task
+[2021-11-28 18:37:49,450] {standard_task_runner.py:77} INFO - Running: ['airflow', 'run', 'gauss100_gke', 'sum_task_1', '2021-11-28T18:34:31.889508+00:00', '--job_id', '46', '--pool', 'default_pool', '--raw', '-sd', 'DAGS_FOLDER/dag-gauss100.py', '--cfg_path', '/tmp/tmpargr33o3']
+[2021-11-28 18:37:49,452] {standard_task_runner.py:78} INFO - Job 46: Subtask sum_task_1
+[2021-11-28 18:37:49,990] {logging_mixin.py:120} INFO - Running <TaskInstance: gauss100_gke.sum_task_1 2021-11-28T18:34:31.889508+00:00 [running]> on host airflow-worker-6cc67f6545-hqd7s
+[2021-11-28 18:37:56,838] {kubernetes_pod.py:360} INFO - creating pod with labels {'dag_id': 'gauss100_gke', 'task_id': 'sum_task_1', 'execution_date': '2021-11-28T183431.8895080000-3ec10eae2', 'try_number': '1'} and launcher <airflow.kubernetes.pod_launcher.PodLauncher object at 0x7fcb8a8f3c50>
+[2021-11-28 18:37:56,847] {logging_mixin.py:120} WARNING - /usr/local/lib/airflow/airflow/kubernetes/pod_launcher.py:331: DeprecationWarning: Using `airflow.contrib.kubernetes.pod.Pod` is deprecated. Please use `k8s.V1Pod`.
+  security_context=_extract_security_context(pod.spec.security_context)
+[2021-11-28 18:37:56,847] {logging_mixin.py:120} WARNING - /usr/local/lib/airflow/airflow/kubernetes/pod_launcher.py:77: DeprecationWarning: Using `airflow.contrib.kubernetes.pod.Pod` is deprecated. Please use `k8s.V1Pod` instead.
+  pod = self._mutate_pod_backcompat(pod)
+[2021-11-28 18:37:56,937] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:37:56,938] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:37:57,962] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:37:57,962] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:37:58,972] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:37:58,972] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:37:59,982] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:37:59,983] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:00,991] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:00,991] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:02,003] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:02,004] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:03,013] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:03,014] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:04,025] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:04,025] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:05,034] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:05,034] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:06,042] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:06,042] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:07,051] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:07,052] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:08,059] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:08,059] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:09,068] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:09,068] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:10,079] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:10,079] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:11,088] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:11,088] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:12,098] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:12,098] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:13,108] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:13,108] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:14,118] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:14,119] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:15,129] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:15,129] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:16,145] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:16,145] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:17,154] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:17,154] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:18,162] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:18,162] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:19,171] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:19,172] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:20,180] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:20,181] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:21,189] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:21,189] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:22,199] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:22,200] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:23,209] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:23,209] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:24,218] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:24,219] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:25,228] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:25,228] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:26,238] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:26,238] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:27,248] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:27,248] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:28,260] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:28,261] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:29,298] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:29,302] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:30,327] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:30,328] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:31,337] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:31,337] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:32,345] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:32,346] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:33,354] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:33,354] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:34,362] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:34,363] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:35,372] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:35,372] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:36,380] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:36,381] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:37,392] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:37,392] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:38,400] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:38,400] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:39,408] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:39,409] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:40,417] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:40,418] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:41,427] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:41,427] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:42,435] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:42,436] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:43,444] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:43,445] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:44,453] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:44,453] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:45,461] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:45,462] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:46,472] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:46,473] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:47,481] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:47,482] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:48,491] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:48,492] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:49,501] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:49,502] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:50,509] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:50,509] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:51,516] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:51,516] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:52,524] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:52,525] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:53,533] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:53,534] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:54,542] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:54,542] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:55,550] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:55,550] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:56,558] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:56,559] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:57,570] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:57,570] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:58,579] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:58,579] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:38:59,588] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:38:59,588] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:39:00,601] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:39:00,601] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:39:01,610] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:39:01,610] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:39:02,623] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:39:02,624] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:39:03,637] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:39:03,637] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:39:04,647] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:39:04,647] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:39:05,656] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:39:05,657] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:39:06,669] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:39:06,669] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:39:07,681] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:39:07,681] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:39:08,689] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:39:08,689] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:39:09,697] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:39:09,697] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:39:10,705] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:39:10,705] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:39:11,713] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:39:11,714] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:39:12,722] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:39:12,722] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:39:13,730] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Pending
+[2021-11-28 18:39:13,731] {pod_launcher.py:139} WARNING - Pod not yet started: etl-27fb29cbc5964325b9a788875af7a365
+[2021-11-28 18:39:14,738] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Running
+[2021-11-28 18:39:14,785] {pod_launcher.py:156} INFO - b'Sleeping ...\n'
+[2021-11-28 18:39:23,863] {pod_launcher.py:156} INFO - b"ls: cannot access '/home/airflow/gcs/data/': No such file or directory\n"
+[2021-11-28 18:39:23,863] {pod_launcher.py:156} INFO - b'Done!\n'
+[2021-11-28 18:39:24,895] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Succeeded
+[2021-11-28 18:39:24,901] {pod_launcher.py:287} INFO - Event with job id etl-27fb29cbc5964325b9a788875af7a365 Succeeded
+[2021-11-28 18:39:24,945] {pod_launcher.py:173} INFO - Event: etl-27fb29cbc5964325b9a788875af7a365 had an event of type Succeeded
+[2021-11-28 18:39:24,946] {pod_launcher.py:287} INFO - Event with job id etl-27fb29cbc5964325b9a788875af7a365 Succeeded
+[2021-11-28 18:39:25,027] {taskinstance.py:1071} INFO - Marking task as SUCCESS.dag_id=gauss100_gke, task_id=sum_task_1, execution_date=20211128T183431, start_date=20211128T183749, end_date=20211128T183925
+[2021-11-28 18:39:25,298] {local_task_job.py:102} INFO - Task exited with return code 0
+
+
