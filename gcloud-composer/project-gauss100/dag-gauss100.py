@@ -62,49 +62,54 @@ with models.DAG(JOB_NAME,
     # Generate node-pool name
     NODE_POOL=""" + node_pool_value + """
 
-    echo
-    echo COMPOSER_GKE_ZONE=${COMPOSER_GKE_ZONE}
+    echo;echo COMPOSER_GKE_ZONE=${COMPOSER_GKE_ZONE}
 
-    echo
-    echo COMPOSER_GKE_NAME=${COMPOSER_GKE_NAME}
+    echo;echo COMPOSER_GKE_NAME=${COMPOSER_GKE_NAME}
 
-    echo
-    echo NODE_POOL=${NODE_POOL}
+    echo;echo NODE_POOL=${NODE_POOL}
 
-    echo
-    echo MACHINE_TYPE=${MACHINE_TYPE}
+    echo;echo MACHINE_TYPE=${MACHINE_TYPE}
 
-    echo
-    echo NODE_COUNT=${NODE_COUNT}
+    echo;echo NODE_COUNT=${NODE_COUNT}
 
-    echo
-    echo NODE_DISK_SIZE=${NODE_DISK_SIZE}
+    echo;echo NODE_DISK_SIZE=${NODE_DISK_SIZE}
 
-    echo
-    echo SCOPES=${SCOPES}
+    echo;echo SCOPES=${SCOPES}
 
-    # It is important to set container/cluster; otherwise, Composer would
-    # throw an error at the node pool creation command below
-    # due to the fact that the node pool creation would require more vCPU
-    # than regional vCPU quota.
-    echo
-    echo Executing: gcloud config set container/cluster ${COMPOSER_GKE_NAME}
-    echo
+    ### set kubectl credentials (required by subsequent commands)
+    ### Use the gcloud composer command to connect the kubectl command to the cluster.
+    ### https://cloud.google.com/composer/docs/how-to/using/installing-python-dependencies#viewing_installed_python_packages
+    echo;echo Executing: gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
+    gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
+
+    ### create Kubernetes secret environment variable for EXTERNAL_BUCKET
+    echo;echo Executing: kubectl create secret generic airflow-secret ...
+    kubectl create secret generic airflow-secret-external-bucket --from-literal external_bucket=${EXTERNAL_BUCKET}
+
+    ### create Kubernetes secret volume for service account key
+    gsutil cp ${EXTERNAL_BUCKET}/secrets/service-account-key.json .
+    sleep 5
+    echo;echo Executing: kubectl create secret generic airflow-secret-file ...
+    kubectl create secret generic airflow-secret-file-service-account-key --from-file service_account_key=service-account-key.json
+    sleep 5
+    rm -f service-account-key.json
+
+    ### It is important to set container/cluster; otherwise, Composer would
+    ### throw an error at the node pool creation command below
+    ### due to the fact that the node pool creation would require more vCPU
+    ### than regional vCPU quota.
+    echo;echo Executing: gcloud config set container/cluster ${COMPOSER_GKE_NAME}
     gcloud config set container/cluster ${COMPOSER_GKE_NAME}
 
-    echo
-    echo Executing: gcloud container node-pools create ...
-    echo
+    echo;echo Executing: gcloud container node-pools create ...
     gcloud container node-pools create ${NODE_POOL} \
         --project=${GCP_PROJECT}       --cluster=${COMPOSER_GKE_NAME} --zone=${COMPOSER_GKE_ZONE} \
         --machine-type=${MACHINE_TYPE} --num-nodes=${NODE_COUNT}      --disk-size=${NODE_DISK_SIZE}   \
         --scopes=${SCOPES} \
         --enable-autoupgrade
 
-    # Set the airflow variable name
-    echo
-    echo Executing: airflow variables -s node_pool ${NODE_POOL}
-    echo
+    ### Set the airflow variable name
+    echo;echo Executing: airflow variables -s node_pool ${NODE_POOL}
     airflow variables -s node_pool ${NODE_POOL}
     """
 
@@ -125,15 +130,12 @@ with models.DAG(JOB_NAME,
 
     injest_input_data_command = """
     # Assume that the environment variable EXTERNAL_BUCKET has been set.
-    echo
-    echo EXTERNAL_BUCKET=${EXTERNAL_BUCKET}
+    echo;echo EXTERNAL_BUCKET=${EXTERNAL_BUCKET}
 
-    echo
-    echo "Executing: gsutil ls ${EXTERNAL_BUCKET}/input/"
+    echo;echo "Executing: gsutil ls ${EXTERNAL_BUCKET}/input/"
     gsutil ls ${EXTERNAL_BUCKET}/input/
 
-    echo
-    echo "Executing: gsutil cp -r ${EXTERNAL_BUCKET}/input /home/airflow/gcs/data"
+    echo;echo "Executing: gsutil cp -r ${EXTERNAL_BUCKET}/input /home/airflow/gcs/data"
     gsutil cp -r ${EXTERNAL_BUCKET}/input /home/airflow/gcs/data
     """
 
