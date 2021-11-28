@@ -91,7 +91,10 @@ gcloud composer environments update ${ENVIRONMENT_NAME} --location ${LOCATION} \
    --update-env-variables=EXTERNAL_BUCKET=${BUCKET_NAME},PROJECT_ID=${PROJECT_ID},ENVIRONMENT_NAME=${ENVIRONMENT_NAME},LOCATION=${LOCATION},ZONE=${ZONE}
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
-# creating Kubernetes secret that holds service account key
+# creating two Kubernetes secrets:
+# (a)  Kubernetes secret environment variable that holds external bucket name
+# (b)  Kubernetes secret volume that holds service account key
+
 sleep 20
 cp ${SERVICE_ACCOUNT_KEY_JSON} service-account-key.json
 
