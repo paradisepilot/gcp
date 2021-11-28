@@ -24,5 +24,5 @@ done
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 # remove environment's bucket
-# gsutil rb ${BUCKET_NAME} --quiet
+# gsutil rb ${EXTERNAL_BUCKET} --quiet
 

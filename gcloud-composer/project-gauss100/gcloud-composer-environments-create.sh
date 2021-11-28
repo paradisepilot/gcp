@@ -8,7 +8,7 @@ echo PROJECT_ID=${PROJECT_ID}
 echo ENVIRONMENT_NAME=${ENVIRONMENT_NAME}
 echo LOCATION=${LOCATION}
 echo ZONE=${ZONE}
-echo BUCKET_NAME=${BUCKET_NAME}
+echo EXTERNAL_BUCKET=${EXTERNAL_BUCKET}
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 # set the active project
@@ -92,7 +92,7 @@ gcloud composer environments update ${ENVIRONMENT_NAME} --location ${LOCATION} \
 sleep 20
 echo; echo Executing: gcloud composer environments update -- setting environment variables
 gcloud composer environments update ${ENVIRONMENT_NAME} --location ${LOCATION} \
-   --update-env-variables=EXTERNAL_BUCKET=${BUCKET_NAME},PROJECT_ID=${PROJECT_ID},ENVIRONMENT_NAME=${ENVIRONMENT_NAME},LOCATION=${LOCATION},ZONE=${ZONE}
+   --update-env-variables=EXTERNAL_BUCKET=${EXTERNAL_BUCKET},PROJECT_ID=${PROJECT_ID},ENVIRONMENT_NAME=${ENVIRONMENT_NAME},LOCATION=${LOCATION},ZONE=${ZONE}
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ##### creating two Kubernetes secrets:
@@ -119,4 +119,5 @@ gcloud composer environments update ${ENVIRONMENT_NAME} --location ${LOCATION} \
 # gcloud composer environments run ${ENVIRONMENT_NAME} \
 #     --location ${LOCATION} \
 #     variables -- \
-#     --set gcs_bucket ${BUCKET_NAME}
+#     --set gcs_bucket ${EXTERNAL_BUCKET}
+
