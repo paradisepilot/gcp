@@ -78,22 +78,22 @@ echo; echo AIRFLOW_POD_NAME=${AIRFLOW_POD_NAME}
 # kubectl -n composer-1-17-4-airflow-1-10-15-27457a66 exec -it airflow-worker-57ff5d7f48-22l9t -c airflow-worker -- /bin/bash
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
-# install Python dependencies
-sleep 20
-echo; echo Executing: gcloud composer environments update -- adding python dependencies
-gcloud composer environments update ${ENVIRONMENT_NAME} --location ${LOCATION} \
-   --update-pypi-packages-from-file python-dependencies.txt
+##### install Python dependencies
+# sleep 20
+# echo; echo Executing: gcloud composer environments update -- adding python dependencies
+# gcloud composer environments update ${ENVIRONMENT_NAME} --location ${LOCATION} \
+#     --update-pypi-packages-from-file python-dependencies.txt
 
-# set environment variables
+### set environment variables
 sleep 20
 echo; echo Executing: gcloud composer environments update -- setting environment variables
 gcloud composer environments update ${ENVIRONMENT_NAME} --location ${LOCATION} \
    --update-env-variables=EXTERNAL_BUCKET=${BUCKET_NAME},PROJECT_ID=${PROJECT_ID},ENVIRONMENT_NAME=${ENVIRONMENT_NAME},LOCATION=${LOCATION},ZONE=${ZONE}
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
-# creating two Kubernetes secrets:
-# (a)  Kubernetes secret environment variable that holds external bucket name
-# (b)  Kubernetes secret volume that holds service account key
+##### creating two Kubernetes secrets:
+##### (a)  Kubernetes secret environment variable that holds external bucket name
+##### (b)  Kubernetes secret volume that holds service account key
 
 sleep 20
 cp ${SERVICE_ACCOUNT_KEY_JSON} service-account-key.json
@@ -116,3 +116,4 @@ rm -f service-account-key.json
 #     --location ${LOCATION} \
 #     variables -- \
 #     --set gcs_bucket ${BUCKET_NAME}
+
