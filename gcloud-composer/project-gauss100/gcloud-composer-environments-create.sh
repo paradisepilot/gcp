@@ -100,11 +100,11 @@ cp ${SERVICE_ACCOUNT_KEY_JSON} service-account-key.json
 
 sleep 5
 echo;echo Executing: kubectl create secret generic airflow-secret ...
-kubectl create secret generic airflow-secret --from-literal external_bucket=${EXTERNAL_BUCKET}
+kubectl create secret generic airflow-secret-external-bucket --from-literal external_bucket=${EXTERNAL_BUCKET}
 
 sleep 5
 echo;echo Executing: kubectl create secret generic airflow-secret-file ...
-kubectl create secret generic airflow-secret-file --from-file service_account_key=service-account-key.json
+kubectl create secret generic airflow-secret-file-service-account-key --from-file service_account_key=service-account-key.json
 
 sleep 5
 rm -f service-account-key.json
