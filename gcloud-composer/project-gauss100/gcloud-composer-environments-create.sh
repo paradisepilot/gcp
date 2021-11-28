@@ -92,7 +92,7 @@ gcloud composer environments update ${ENVIRONMENT_NAME} --location ${LOCATION} \
 sleep 20
 echo; echo Executing: gcloud composer environments update -- setting environment variables
 gcloud composer environments update ${ENVIRONMENT_NAME} --location ${LOCATION} \
-   --update-env-variables=EXTERNAL_BUCKET=${EXTERNAL_BUCKET},PROJECT_ID=${PROJECT_ID},ENVIRONMENT_NAME=${ENVIRONMENT_NAME},LOCATION=${LOCATION},ZONE=${ZONE}
+   --update-env-variables=EXTERNAL_BUCKET=${EXTERNAL_BUCKET},PROJECT_ID=${PROJECT_ID},ENVIRONMENT_NAME=${ENVIRONMENT_NAME},LOCATION=${LOCATION},ZONE=${ZONE},CLUSTER_NAME=${CLUSTER_NAME},AIRFLOW_CLUSTER_NAMESPACE=${AIRFLOW_CLUSTER_NAMESPACE}
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ##### creating two Kubernetes secrets:
