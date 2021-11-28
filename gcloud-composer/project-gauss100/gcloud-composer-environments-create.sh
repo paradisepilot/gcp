@@ -64,7 +64,7 @@ echo; echo AIRFLOW_POD_NAME=${AIRFLOW_POD_NAME}
 # Here, we include instructions for how to connect to an Airflow worker pod.
 
 ##### Opening a terminal to a worker node in a single command:
-# kubectl -n `kubectl get namespaces | egrep 'airflow' | awk '{print $1}'` exec -it `kubectl get pods -n ${AIRFLOW_CLUSTER_NAMESPACE} | egrep 'worker' | head -n 1 | awk '{print $1}'` -c airflow-worker -- /bin/bash
+# AIRFLOW_CLUSTER_NAMESPACE=`kubectl get namespaces | egrep 'airflow' | awk '{print $1}'`; AIRFLOW_POD_NAME=`kubectl get pods -n ${AIRFLOW_CLUSTER_NAMESPACE} | egrep 'worker' | head -n 1 | awk '{print $1}'`; kubectl -n ${AIRFLOW_CLUSTER_NAMESPACE} exec -it ${AIRFLOW_POD_NAME} -c airflow-worker -- /bin/bash
 
 ##### Opening a terminal to a worker node manually in three commands:
 ##### (1) List the Kubernetes name spaces.
