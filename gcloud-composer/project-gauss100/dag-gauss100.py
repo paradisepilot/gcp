@@ -100,6 +100,8 @@ with models.DAG(JOB_NAME,
     echo;echo > airflow variables -s node_pool ${NODE_POOL}
     airflow variables -s node_pool ${NODE_POOL}
 
+    sleep 10
+
     ### create Kubernetes secret environment variable for EXTERNAL_BUCKET, and
     ### create Kubernetes secret volume for service account key
     gsutil cp ${EXTERNAL_BUCKET}/secrets/service-account-key.json .
