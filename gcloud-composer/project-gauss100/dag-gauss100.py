@@ -193,7 +193,7 @@ with models.DAG(JOB_NAME,
       # cmds=["sh", "-c", "echo;echo \'Sleeping ...\' ; sleep 10 ; echo;echo whoami=`whoami` ; echo;echo ls -l /usr/local/bin ; ls -l /usr/local/bin ; echo;echo ls -l /data ; ls -l /data ; echo;echo ls -l /opt/conda/bin ; ls -l /opt/conda/bin/ ; echo;echo \'Done\'"],
         cmds=["sh", "-c", "echo;echo \'Sleeping ...\' ; sleep 10 ; echo;echo whoami=`whoami` ; echo;echo ls -l /usr/local/bin ; ls -l /usr/local/bin ; echo;echo EXTERNAL_BUCKET=${EXTERNAL_BUCKET}; echo;echo SERVICE_ACCOUNT_KEY_JSON=${SERVICE_ACCOUNT_KEY_JSON}; echo;echo ls -l ${SERVICE_ACCOUNT_KEY_JSON}; ls -l ${SERVICE_ACCOUNT_KEY_JSON}; echo;echo ls -l /opt/conda/bin ; ls -l /opt/conda/bin/ ; echo;echo \'Done\'"],
       # volumes=["/home/airflow/gcs/data:/data"],
-        secrets=[secret_envvar_external_bucket,secret_volume_service_account_key],
+      # secrets=[secret_envvar_external_bucket,secret_volume_service_account_key],
         env_vars={
             'SERVICE_ACCOUNT_KEY_JSON': '/var/secrets/google/service-account-key.json'
             },
