@@ -100,6 +100,12 @@ with models.DAG(JOB_NAME,
 
     sleep 10
 
+    ### Examine Kubernetes namespaces
+    echo;echo Executing: kubectl get namespaces
+    kubectl get namespaces
+
+    sleep 10
+
     ### create Kubernetes secret environment variable for EXTERNAL_BUCKET, and
     ### create Kubernetes secret volume for service account key
     echo;echo Executing: pwd
