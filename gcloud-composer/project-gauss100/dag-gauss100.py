@@ -83,13 +83,17 @@ with models.DAG(JOB_NAME,
     echo;echo ## gcloud config set container/cluster ${COMPOSER_GKE_NAME}
     gcloud config set container/cluster ${COMPOSER_GKE_NAME}
 
+    sleep 10
+
     ### set kubectl credentials (required by subsequent commands)
     ### Use the gcloud composer command to connect the kubectl command to the cluster.
     ### https://cloud.google.com/composer/docs/how-to/using/installing-python-dependencies#viewing_installed_python_packages
     echo;echo ## gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
     gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
 
-    echo;echo ## gcloud container node-pools create ...
+    sleep 10
+
+    echo;echo ## gcloud container node-pools create ${NODE_POOL} ...
     gcloud container node-pools create ${NODE_POOL} \
         --project=${GCP_PROJECT}       --cluster=${COMPOSER_GKE_NAME} --zone=${COMPOSER_GKE_ZONE} \
         --machine-type=${MACHINE_TYPE} --num-nodes=${NODE_COUNT}      --disk-size=${NODE_DISK_SIZE} \
