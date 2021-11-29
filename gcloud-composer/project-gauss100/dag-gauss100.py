@@ -76,35 +76,20 @@ with models.DAG(JOB_NAME,
 
     echo;echo SCOPES=${SCOPES}
 
-    ### set kubectl credentials (required by subsequent commands)
-    ### Use the gcloud composer command to connect the kubectl command to the cluster.
-    ### https://cloud.google.com/composer/docs/how-to/using/installing-python-dependencies#viewing_installed_python_packages
-    echo;echo Executing: gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
-    gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
-
-    ### create Kubernetes secret environment variable for EXTERNAL_BUCKET, and
-    ### create Kubernetes secret volume for service account key
-    gsutil cp ${EXTERNAL_BUCKET}/secrets/service-account-key.json .
-    sleep 5
-    echo;echo Executing: kubectl create secret generic airflow-secrets-fpca ...
-    kubectl create secret generic airflow-secrets-fpca \
-        --from-literal=external_bucket=${EXTERNAL_BUCKET} \
-        --from-file=service-account-key.json
-    sleep 5
-    rm -f service-account-key.json
-
-    ### check Kubernetes secrets
-    echo;echo Executing: kubectl get secrets
-    kubectl get secrets
-
     ### It is important to set container/cluster; otherwise, Composer would
     ### throw an error at the node pool creation command below
     ### due to the fact that the node pool creation would require more vCPU
     ### than regional vCPU quota.
-    echo;echo Executing: gcloud config set container/cluster ${COMPOSER_GKE_NAME}
+    echo;echo >> gcloud config set container/cluster ${COMPOSER_GKE_NAME}
     gcloud config set container/cluster ${COMPOSER_GKE_NAME}
 
-    echo;echo Executing: gcloud container node-pools create ...
+    ### set kubectl credentials (required by subsequent commands)
+    ### Use the gcloud composer command to connect the kubectl command to the cluster.
+    ### https://cloud.google.com/composer/docs/how-to/using/installing-python-dependencies#viewing_installed_python_packages
+    echo;echo > gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
+    gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
+
+    echo;echo >> gcloud container node-pools create ...
     gcloud container node-pools create ${NODE_POOL} \
         --project=${GCP_PROJECT}       --cluster=${COMPOSER_GKE_NAME} --zone=${COMPOSER_GKE_ZONE} \
         --machine-type=${MACHINE_TYPE} --num-nodes=${NODE_COUNT}      --disk-size=${NODE_DISK_SIZE} \
@@ -112,22 +97,35 @@ with models.DAG(JOB_NAME,
         --enable-autoupgrade
 
     ### Set the airflow variable name
-    echo;echo Executing: airflow variables -s node_pool ${NODE_POOL}
+    echo;echo > airflow variables -s node_pool ${NODE_POOL}
     airflow variables -s node_pool ${NODE_POOL}
+
+    ### create Kubernetes secret environment variable for EXTERNAL_BUCKET, and
+    ### create Kubernetes secret volume for service account key
+    gsutil cp ${EXTERNAL_BUCKET}/secrets/service-account-key.json .
+    sleep 5
+    echo;echo >> ls -l service-account-key.json
+    ls -l service-account-key.json
+    echo;echo >> kubectl create secret generic airflow-secrets-fpca ...
+    kubectl create secret generic airflow-secrets-fpca \
+        --from-literal=external_bucket=${EXTERNAL_BUCKET} \
+        --from-file=service-account-key.json
+    sleep 5
+    # rm -f service-account-key.json
+
+    ### check Kubernetes secrets
+    echo;echo >> kubectl get secrets
+    kubectl get secrets
     """
 
     delete_node_pools_command = """
     # Generate node-pool name
     NODE_POOL=""" + node_pool_value + """
 
-    echo
-    echo Executing: gcloud config set container/cluster ${COMPOSER_GKE_NAME}
-    echo
+    echo; echo >> gcloud config set container/cluster ${COMPOSER_GKE_NAME}
     gcloud config set container/cluster ${COMPOSER_GKE_NAME}
 
-    echo
-    echo Executing: gcloud container node-pools delete ${NODE_POOL} --zone ${COMPOSER_GKE_ZONE} --cluster ${COMPOSER_GKE_NAME} --quiet
-    echo
+    echo;echo >> gcloud container node-pools delete ${NODE_POOL} --zone ${COMPOSER_GKE_ZONE} --cluster ${COMPOSER_GKE_NAME} --quiet
     gcloud container node-pools delete ${NODE_POOL} --zone ${COMPOSER_GKE_ZONE} --cluster ${COMPOSER_GKE_NAME} --quiet
     """
 
@@ -135,17 +133,16 @@ with models.DAG(JOB_NAME,
     # Assume that the environment variable EXTERNAL_BUCKET has been set.
     echo;echo EXTERNAL_BUCKET=${EXTERNAL_BUCKET}
 
-    echo;echo "Executing: gsutil ls ${EXTERNAL_BUCKET}/input/"
+    echo;echo >> gsutil ls ${EXTERNAL_BUCKET}/input/
     gsutil ls ${EXTERNAL_BUCKET}/input/
 
-    echo;echo "Executing: gsutil cp -r ${EXTERNAL_BUCKET}/input /home/airflow/gcs/data"
+    echo;echo >> gsutil cp -r ${EXTERNAL_BUCKET}/input /home/airflow/gcs/data
     gsutil cp -r ${EXTERNAL_BUCKET}/input /home/airflow/gcs/data
     """
 
     persist_output_data_command = """
     # Assume that the environment variable EXTERNAL_BUCKET has been set.
-    # echo
-    # echo "Executing: gsutil cp -r /home/airflow/gcs/data/output ${EXTERNAL_BUCKET}/output"
+    # echo;echo >> gsutil cp -r /home/airflow/gcs/data/output ${EXTERNAL_BUCKET}/output
     # gsutil cp -r /home/airflow/gcs/data/output ${EXTERNAL_BUCKET}/output
     echo
     echo Doing nothing.
