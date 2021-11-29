@@ -104,6 +104,9 @@ with models.DAG(JOB_NAME,
 
     ### create Kubernetes secret environment variable for EXTERNAL_BUCKET, and
     ### create Kubernetes secret volume for service account key
+    echo;echo ## pwd
+    pwd
+    echo;echo ## gsutil cp ${EXTERNAL_BUCKET}/secrets/service-account-key.json .
     gsutil cp ${EXTERNAL_BUCKET}/secrets/service-account-key.json .
     sleep 5
     echo;echo ## ls -l service-account-key.json
