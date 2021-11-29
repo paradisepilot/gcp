@@ -63,17 +63,11 @@ with models.DAG(JOB_NAME,
     NODE_POOL=""" + node_pool_value + """
 
     echo;echo COMPOSER_GKE_ZONE=${COMPOSER_GKE_ZONE}
-
     echo;echo COMPOSER_GKE_NAME=${COMPOSER_GKE_NAME}
-
     echo;echo NODE_POOL=${NODE_POOL}
-
     echo;echo MACHINE_TYPE=${MACHINE_TYPE}
-
     echo;echo NODE_COUNT=${NODE_COUNT}
-
     echo;echo NODE_DISK_SIZE=${NODE_DISK_SIZE}
-
     echo;echo SCOPES=${SCOPES}
 
     ### It is important to set container/cluster; otherwise, Composer would
