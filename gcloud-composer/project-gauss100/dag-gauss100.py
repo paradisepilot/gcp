@@ -22,7 +22,7 @@ default_args = {
 
 secret_envvar_external_bucket = Secret(
     # Name of the Kubernetes Secret
-    secret='external-bucket',
+    secret='airflow-secrets-fpca',
     # Expose the secret as environment variable.
     deploy_type='env',
     # Key of a secret stored in this Secret object
@@ -33,13 +33,13 @@ secret_envvar_external_bucket = Secret(
 
 secret_volume_service_account_key = Secret(
     # Name of Kubernetes Secret
-    secret='service-account-key',
+    secret='airflow-secrets-fpca',
     # type of secret
     deploy_type='volume',
-    # Path where we mount the secret as volume
-    deploy_target='/var/secrets/google',
     # Key in the form of service account file name
-    key='service-account-key.json'
+    key='service-account-key.json',
+    # Path where we mount the secret as volume
+    deploy_target='/var/secrets/google'
     )
 
 with models.DAG(JOB_NAME,
@@ -82,17 +82,20 @@ with models.DAG(JOB_NAME,
     echo;echo Executing: gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
     gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
 
-    ### create Kubernetes secret environment variable for EXTERNAL_BUCKET
-    echo;echo Executing: kubectl create secret generic airflow-secret ...
-    kubectl create secret generic airflow-secret-external-bucket --from-literal external_bucket=${EXTERNAL_BUCKET}
-
+    ### create Kubernetes secret environment variable for EXTERNAL_BUCKET, and
     ### create Kubernetes secret volume for service account key
     gsutil cp ${EXTERNAL_BUCKET}/secrets/service-account-key.json .
     sleep 5
-    echo;echo Executing: kubectl create secret generic airflow-secret-file ...
-    kubectl create secret generic airflow-secret-file-service-account-key --from-file service_account_key=service-account-key.json
+    echo;echo Executing: kubectl create secret generic airflow-secrets-fpca ...
+    kubectl create secret generic airflow-secrets-fpca \
+        --from-literal=external_bucket=${EXTERNAL_BUCKET} \
+        --from-file=service-account-key.json
     sleep 5
     rm -f service-account-key.json
+
+    ### check Kubernetes secrets
+    echo;echo Executing: kubectl get secrets
+    kubectl get secrets
 
     ### It is important to set container/cluster; otherwise, Composer would
     ### throw an error at the node pool creation command below
@@ -104,7 +107,7 @@ with models.DAG(JOB_NAME,
     echo;echo Executing: gcloud container node-pools create ...
     gcloud container node-pools create ${NODE_POOL} \
         --project=${GCP_PROJECT}       --cluster=${COMPOSER_GKE_NAME} --zone=${COMPOSER_GKE_ZONE} \
-        --machine-type=${MACHINE_TYPE} --num-nodes=${NODE_COUNT}      --disk-size=${NODE_DISK_SIZE}   \
+        --machine-type=${MACHINE_TYPE} --num-nodes=${NODE_COUNT}      --disk-size=${NODE_DISK_SIZE} \
         --scopes=${SCOPES} \
         --enable-autoupgrade
 
@@ -188,7 +191,7 @@ with models.DAG(JOB_NAME,
       # cmds=["sh", "-c", 'R -e "DF.temp <- utils::read.csv(\'/home/airflow/gcs/data/input/input-file-00.csv\'); DF.results <- sum(DF.temp[,1]); if (\!dir.exists(\'/home/airflow/gcs/data/output\')) {base::dir.create(\'/home/airflow/gcs/data/output\',recursive=TRUE)}; write.csv(x = DF.results, file = \'/home/airflow/gcs/data/output/output-00.csv\', row.names = FALSE)"'],
       # cmds=["/opt/conda/bin/Rscript", "-e", "DF.temp <- utils::read.csv('/home/airflow/gcs/data/input/input-file-00.csv'); DF.results <- sum(DF.temp[,1]); if (\!dir.exists('/home/airflow/gcs/data/output')) {base::dir.create('/home/airflow/gcs/data/output',recursive=TRUE)}; write.csv(x = DF.results, file = '/home/airflow/gcs/data/output/output-00.csv', row.names = FALSE)"],
       # cmds=["sh", "-c", "echo;echo \'Sleeping ...\' ; sleep 10 ; echo;echo whoami=`whoami` ; echo;echo ls -l /usr/local/bin ; ls -l /usr/local/bin ; echo;echo ls -l /data ; ls -l /data ; echo;echo ls -l /opt/conda/bin ; ls -l /opt/conda/bin/ ; echo;echo \'Done\'"],
-        cmds=["sh", "-c", "echo;echo \'Sleeping ...\' ; sleep 10 ; echo;echo whoami=`whoami` ; echo;echo ls -l /usr/local/bin ; ls -l /usr/local/bin ; echo;echo EXTERNAL_BUCKET=${EXTERNAL_BUCKET}; echo;echo SERVICE_ACCOUNT_KEY_JSON=${SERVICE_ACCOUNT_KEY_JSON}; echo;echo ls -l /opt/conda/bin ; ls -l /opt/conda/bin/ ; echo;echo \'Done\'"],
+        cmds=["sh", "-c", "echo;echo \'Sleeping ...\' ; sleep 10 ; echo;echo whoami=`whoami` ; echo;echo ls -l /usr/local/bin ; ls -l /usr/local/bin ; echo;echo EXTERNAL_BUCKET=${EXTERNAL_BUCKET}; echo;echo SERVICE_ACCOUNT_KEY_JSON=${SERVICE_ACCOUNT_KEY_JSON}; echo;echo ls -l ${SERVICE_ACCOUNT_KEY_JSON}; ls -l ${SERVICE_ACCOUNT_KEY_JSON}; echo;echo ls -l /opt/conda/bin ; ls -l /opt/conda/bin/ ; echo;echo \'Done\'"],
       # volumes=["/home/airflow/gcs/data:/data"],
         secrets=[secret_envvar_external_bucket,secret_volume_service_account_key],
         env_vars={
