@@ -100,6 +100,12 @@ with models.DAG(JOB_NAME,
 
     sleep 10
 
+    ### Examine clusters
+    echo;echo Executing: gcloud container clusters list
+    gcloud container clusters list
+
+    sleep 10
+
     ### Examine Kubernetes namespaces
     echo;echo Executing: kubectl get namespaces
     kubectl get namespaces
