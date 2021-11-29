@@ -80,16 +80,16 @@ with models.DAG(JOB_NAME,
     ### throw an error at the node pool creation command below
     ### due to the fact that the node pool creation would require more vCPU
     ### than regional vCPU quota.
-    echo;echo >> gcloud config set container/cluster ${COMPOSER_GKE_NAME}
+    echo;echo ## gcloud config set container/cluster ${COMPOSER_GKE_NAME}
     gcloud config set container/cluster ${COMPOSER_GKE_NAME}
 
     ### set kubectl credentials (required by subsequent commands)
     ### Use the gcloud composer command to connect the kubectl command to the cluster.
     ### https://cloud.google.com/composer/docs/how-to/using/installing-python-dependencies#viewing_installed_python_packages
-    echo;echo > gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
+    echo;echo ## gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
     gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
 
-    echo;echo >> gcloud container node-pools create ...
+    echo;echo ## gcloud container node-pools create ...
     gcloud container node-pools create ${NODE_POOL} \
         --project=${GCP_PROJECT}       --cluster=${COMPOSER_GKE_NAME} --zone=${COMPOSER_GKE_ZONE} \
         --machine-type=${MACHINE_TYPE} --num-nodes=${NODE_COUNT}      --disk-size=${NODE_DISK_SIZE} \
@@ -106,9 +106,9 @@ with models.DAG(JOB_NAME,
     ### create Kubernetes secret volume for service account key
     gsutil cp ${EXTERNAL_BUCKET}/secrets/service-account-key.json .
     sleep 5
-    echo;echo >> ls -l service-account-key.json
+    echo;echo ## ls -l service-account-key.json
     ls -l service-account-key.json
-    echo;echo >> kubectl create secret generic airflow-secrets-fpca ...
+    echo;echo ## kubectl create secret generic airflow-secrets-fpca ...
     kubectl create secret generic airflow-secrets-fpca \
         --from-literal=external_bucket=${EXTERNAL_BUCKET} \
         --from-file=service-account-key.json
@@ -116,7 +116,7 @@ with models.DAG(JOB_NAME,
     # rm -f service-account-key.json
 
     ### check Kubernetes secrets
-    echo;echo >> kubectl get secrets
+    echo;echo ## kubectl get secrets
     kubectl get secrets
     """
 
@@ -127,7 +127,7 @@ with models.DAG(JOB_NAME,
     echo; echo >> gcloud config set container/cluster ${COMPOSER_GKE_NAME}
     gcloud config set container/cluster ${COMPOSER_GKE_NAME}
 
-    echo;echo >> gcloud container node-pools delete ${NODE_POOL} --zone ${COMPOSER_GKE_ZONE} --cluster ${COMPOSER_GKE_NAME} --quiet
+    echo;echo ## gcloud container node-pools delete ${NODE_POOL} --zone ${COMPOSER_GKE_ZONE} --cluster ${COMPOSER_GKE_NAME} --quiet
     gcloud container node-pools delete ${NODE_POOL} --zone ${COMPOSER_GKE_ZONE} --cluster ${COMPOSER_GKE_NAME} --quiet
     """
 
@@ -135,16 +135,16 @@ with models.DAG(JOB_NAME,
     # Assume that the environment variable EXTERNAL_BUCKET has been set.
     echo;echo EXTERNAL_BUCKET=${EXTERNAL_BUCKET}
 
-    echo;echo >> gsutil ls ${EXTERNAL_BUCKET}/input/
+    echo;echo ## gsutil ls ${EXTERNAL_BUCKET}/input/
     gsutil ls ${EXTERNAL_BUCKET}/input/
 
-    echo;echo >> gsutil cp -r ${EXTERNAL_BUCKET}/input /home/airflow/gcs/data
+    echo;echo ## gsutil cp -r ${EXTERNAL_BUCKET}/input /home/airflow/gcs/data
     gsutil cp -r ${EXTERNAL_BUCKET}/input /home/airflow/gcs/data
     """
 
     persist_output_data_command = """
     # Assume that the environment variable EXTERNAL_BUCKET has been set.
-    # echo;echo >> gsutil cp -r /home/airflow/gcs/data/output ${EXTERNAL_BUCKET}/output
+    # echo;echo ## gsutil cp -r /home/airflow/gcs/data/output ${EXTERNAL_BUCKET}/output
     # gsutil cp -r /home/airflow/gcs/data/output ${EXTERNAL_BUCKET}/output
     echo
     echo Doing nothing.
