@@ -62,8 +62,14 @@ with models.DAG(JOB_NAME,
     # Generate node-pool name
     NODE_POOL=""" + node_pool_value + """
 
+    echo;echo whoami=`whoami`
+    echo;echo pwd; pwd
+    echo;echo cd /home/airflow/; cd /home/airflow/
+    echo;echo pwd; pwd
+
     echo;echo COMPOSER_GKE_ZONE=${COMPOSER_GKE_ZONE}
     echo;echo COMPOSER_GKE_NAME=${COMPOSER_GKE_NAME}
+    echo;echo CLUSTER_NAME=${CLUSTER_NAME}
     echo;echo NODE_POOL=${NODE_POOL}
     echo;echo MACHINE_TYPE=${MACHINE_TYPE}
     echo;echo NODE_COUNT=${NODE_COUNT}
