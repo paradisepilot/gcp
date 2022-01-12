@@ -1,0 +1,9 @@
+
+PROJECT_ID=fpca-336015
+ENVIRONMENT_NAME=${PROJECT_ID}
+LOCATION=us-central1
+ZONE=us-central1-a
+EXTERNAL_BUCKET=gs://${PROJECT_ID}-xbucket
+SERVICE_ACCOUNT_ID=gauss100-service-account
+source ./global-parameters-secrets.txt
+
