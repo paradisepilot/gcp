@@ -335,6 +335,12 @@ spec:\n\
         # label 'cloud.google.com/gke-nodepool' with value
         # 'nodepool-label-value' or 'nodepool-label-value2' is not found on any
         # nodes, it will fail to schedule.
+        tolerations=[{
+            'key': "work",
+            'operator': 'Equal',
+            'value': 'well',
+            'effect': "NoSchedule"
+            }],
         affinity={
             'nodeAffinity': {
                 # requiredDuringSchedulingIgnoredDuringExecution means in order
