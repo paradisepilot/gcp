@@ -241,8 +241,8 @@ spec:\n\
     echo;echo Executing: gsutil ls ${EXTERNAL_BUCKET}/input/
     gsutil ls ${EXTERNAL_BUCKET}/input/
 
-    echo;echo Executing: mkdir datatransfer; ls -l
-    mkdir datatransfer; ls -l
+    echo;echo Executing: mkdir datatransfer
+    mkdir datatransfer
 
     echo;echo Executing: gsutil cp -r ${EXTERNAL_BUCKET}/input datatransfer
     gsutil cp -r ${EXTERNAL_BUCKET}/input datatransfer
@@ -460,6 +460,6 @@ spec:\n\
         })
 
     # Tasks order
+    # create_node_pool_task >> injest_input_data_task
     # create_node_pool_task >> injest_input_data_task >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task
-    # create_node_pool_task >> injest_input_data_task >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task >> delete_node_pool_task
-    create_node_pool_task >> injest_input_data_task
+    create_node_pool_task >> injest_input_data_task >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task >> delete_node_pool_task
