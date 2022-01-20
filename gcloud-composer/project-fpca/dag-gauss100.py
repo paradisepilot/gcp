@@ -156,10 +156,10 @@ with models.DAG(JOB_NAME,
     NODE_POOL=""" + node_pool_value + """
 
     echo; echo >> gcloud config set container/cluster ${COMPOSER_GKE_NAME}
-    gcloud config set container/cluster ${COMPOSER_GKE_NAME}
+    sudo gcloud config set container/cluster ${COMPOSER_GKE_NAME}
 
     echo;echo Executing: gcloud container node-pools delete ${NODE_POOL} --zone ${COMPOSER_GKE_ZONE} --cluster ${COMPOSER_GKE_NAME} --quiet
-    gcloud container node-pools delete ${NODE_POOL} --zone ${COMPOSER_GKE_ZONE} --cluster ${COMPOSER_GKE_NAME} --quiet
+    sudo gcloud container node-pools delete ${NODE_POOL} --zone ${COMPOSER_GKE_ZONE} --cluster ${COMPOSER_GKE_NAME} --quiet
     """
 
     injest_input_data_command = """
@@ -329,25 +329,27 @@ spec:\n\
       # cmds=["sh", "-c", "echo;echo \'Sleeping ...\' ; sleep 10 ; echo;echo whoami=`whoami` ; echo;echo ls -l /usr/local/bin ; ls -l /usr/local/bin ; echo;echo EXTERNAL_BUCKET=${EXTERNAL_BUCKET}; echo;echo SERVICE_ACCOUNT_KEY_JSON=${SERVICE_ACCOUNT_KEY_JSON}; echo;echo ls -l ${SERVICE_ACCOUNT_KEY_JSON}; ls -l ${SERVICE_ACCOUNT_KEY_JSON}; echo;echo ls -l /opt/conda/bin ; ls -l /opt/conda/bin/ ; echo;echo ls -l /datatransfer/input; ls -l /datatransfer/input/ ; echo;echo \'Done\'"],
         cmds=["sh", "-c", "echo;echo \'Sleeping ...\' ; sleep 10 ; echo;echo whoami=`whoami` ; echo;echo ls -l /usr/local/bin ; ls -l /usr/local/bin ; echo;echo EXTERNAL_BUCKET=${EXTERNAL_BUCKET}; echo;echo ls -l /opt/conda/bin ; ls -l /opt/conda/bin/ ; echo;echo ls -l /datatransfer/input; ls -l /datatransfer/input/ ; echo;echo \'Done\'"],
       # volumes=["/home/airflow/gcs/data:/data"],
-        volumes=[volume],
-        volume_mounts=[volume_mount],
+
+      # volumes=[volume],
+      # volume_mounts=[volume_mount],
+
       # secrets=[secret_envvar_external_bucket,secret_volume_service_account_key],
       # secrets=[secret_envvar_external_bucket],
         # env_vars={
         #     'SERVICE_ACCOUNT_KEY_JSON': '/var/secrets/google/service-account-key.json'
         #     },
       # is_delete_operator_pod=True,
-        # affinity allows you to constrain which nodes your pod is eligible to
-        # be scheduled on, based on labels on the node. In this case, if the
-        # label 'cloud.google.com/gke-nodepool' with value
-        # 'nodepool-label-value' or 'nodepool-label-value2' is not found on any
-        # nodes, it will fail to schedule.
         tolerations=[{
             'key': "work",
             'operator': 'Equal',
             'value': 'well',
             'effect': "NoSchedule"
             }],
+        # affinity allows you to constrain which nodes your pod is eligible to
+        # be scheduled on, based on labels on the node. In this case, if the
+        # label 'cloud.google.com/gke-nodepool' with value
+        # 'nodepool-label-value' or 'nodepool-label-value2' is not found on any
+        # nodes, it will fail to schedule.
         affinity={
             'nodeAffinity': {
                 # requiredDuringSchedulingIgnoredDuringExecution means in order
