@@ -5,7 +5,9 @@ from airflow.operators.bash_operator import BashOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.providers.cncf.kubernetes.operators import kubernetes_pod
 from airflow.models import Variable
-from airflow.kubernetes.secret import Secret
+# from airflow.kubernetes.secret import Secret
+from airflow.kubernetes.volume import Volume
+from airflow.kubernetes.volume_mount import VolumeMount
 
 import os
 
@@ -20,27 +22,31 @@ default_args = {
     'retry_delay': datetime.timedelta(minutes=1),
 }
 
-secret_envvar_external_bucket = Secret(
-    # Name of the Kubernetes Secret
-    secret='airflow-secrets-fpca',
-    # Expose the secret as environment variable.
-    deploy_type='env',
-    # Key of a secret stored in this Secret object
-    key='external_bucket',
-    # The name of the environment variable, since deploy_type is `env` rather than `volume`.
-    deploy_target='EXTERNAL_BUCKET'
-    )
+# secret_envvar_external_bucket = Secret(
+#     # Name of the Kubernetes Secret
+#     secret='airflow-secrets-fpca',
+#     # Expose the secret as environment variable.
+#     deploy_type='env',
+#     # Key of a secret stored in this Secret object
+#     key='external_bucket',
+#     # The name of the environment variable, since deploy_type is `env` rather than `volume`.
+#     deploy_target='EXTERNAL_BUCKET'
+#     )
+#
+# secret_volume_service_account_key = Secret(
+#     # Name of Kubernetes Secret
+#     secret='airflow-secrets-fpca',
+#     # type of secret
+#     deploy_type='volume',
+#     # Key in the form of service account file name
+#     key='service-account-key.json',
+#     # Path where we mount the secret as volume
+#     deploy_target='/var/secrets/google'
+#     )
 
-secret_volume_service_account_key = Secret(
-    # Name of Kubernetes Secret
-    secret='airflow-secrets-fpca',
-    # type of secret
-    deploy_type='volume',
-    # Key in the form of service account file name
-    key='service-account-key.json',
-    # Path where we mount the secret as volume
-    deploy_target='/var/secrets/google'
-    )
+volume_config = {'persistentVolumeClaim':{'claimName': 'my-disk-claim'}}
+volume        = Volume(name = 'my-disk-claim', configs = volume_config)
+volume_mount  = VolumeMount('my-disk-claim', mount_path = '/datatransfer',sub_path = None, read_only = False)
 
 with models.DAG(JOB_NAME,
                 default_args=default_args,
@@ -120,23 +126,23 @@ with models.DAG(JOB_NAME,
 
     ### create Kubernetes secret environment variable for EXTERNAL_BUCKET, and
     ### create Kubernetes secret volume for service account key
-    echo;echo Executing: pwd
-    pwd
-    echo;echo Executing: gsutil cp ${EXTERNAL_BUCKET}/secrets/service-account-key.json .
-    gsutil cp ${EXTERNAL_BUCKET}/secrets/service-account-key.json .
-    sleep 5
-    echo;echo Executing: ls -l service-account-key.json
-    ls -l service-account-key.json
-    echo;echo Executing: kubectl create secret generic airflow-secrets-fpca ...
-    kubectl create secret generic airflow-secrets-fpca \
-        --from-literal=external_bucket=${EXTERNAL_BUCKET} \
-        --from-file=service-account-key.json
-    sleep 5
+    # echo;echo Executing: pwd
+    # pwd
+    # echo;echo Executing: gsutil cp ${EXTERNAL_BUCKET}/secrets/service-account-key.json .
+    # gsutil cp ${EXTERNAL_BUCKET}/secrets/service-account-key.json .
+    # sleep 5
+    # echo;echo Executing: ls -l service-account-key.json
+    # ls -l service-account-key.json
+    # echo;echo Executing: kubectl create secret generic airflow-secrets-fpca ...
+    # kubectl create secret generic airflow-secrets-fpca \
+    #    --from-literal=external_bucket=${EXTERNAL_BUCKET} \
+    #    --from-file=service-account-key.json
+    # sleep 5
     # rm -f service-account-key.json
 
     ### check Kubernetes secrets
-    echo;echo Executing: kubectl get secrets
-    kubectl get secrets
+    # echo;echo Executing: kubectl get secrets
+    # kubectl get secrets
     """
 
     delete_node_pools_command = """
@@ -151,14 +157,119 @@ with models.DAG(JOB_NAME,
     """
 
     injest_input_data_command = """
+echo \
+"\n\
+apiVersion: storage.k8s.io/v1\n\
+kind: StorageClass\n\
+metadata:\n\
+  name: my-storage-class\n\
+  namespace: default\n\
+provisioner: kubernetes.io/gce-pd\n\
+parameters:\n\
+  type: pd-ssd\n"\
+> create_sc.yaml
+
+echo \
+"\n\
+apiVersion: v1\n\
+kind: PersistentVolumeClaim\n\
+metadata:\n\
+  name: my-disk-claim\n\
+  namespace: default\n\
+spec:\n\
+  resources:\n\
+    requests:\n\
+      storage: 23Gi\n\
+  accessModes:\n\
+    - ReadWriteOnce\n\
+  storageClassName: my-storage-class\n"\
+> create_pvc.yaml
+
+echo \
+"\n\
+apiVersion: v1\n\
+kind: Pod\n\
+metadata:\n\
+  name: datatransfer-pod\n\
+  namespace: default\n\
+spec:\n\
+  containers:\n\
+  - name: datatransfer-container\n\
+    image: nginx\n\
+    volumeMounts:\n\
+    - mountPath: /datatransfer\n\
+      name: script-data\n\
+  volumes:\n\
+  - name: script-data\n\
+    persistentVolumeClaim:\n\
+      claimName: my-disk-claim\n"\
+> create_pod_data.yaml
+
+    echo;echo cat create_sc.yaml
+    cat create_sc.yaml
+    echo
+
+    echo;echo cat create_pvc.yaml
+    cat create_pvc.yaml
+    echo
+
+    echo;echo cat create_pod_data.yaml
+    cat create_pod_data.yaml
+    echo
+
+    sleep 10
+
+    echo; echo Executing: gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
+    sudo gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
+    sleep 10
+
+    echo;echo Executing: sudo kubectl create -f create_sc.yaml
+    sudo kubectl create -f create_sc.yaml
+    sleep 10
+
+    echo;echo Executing: sudo kubectl create -f create_pvc.yaml
+    sudo kubectl create -f create_pvc.yaml
+    sleep 10
+
+    echo;echo Executing: sudo kubectl create -f create_pod_data.yaml
+    sudo kubectl create -f create_pod_data.yaml
+    sleep 10
+
     # Assume that the environment variable EXTERNAL_BUCKET has been set.
     echo;echo EXTERNAL_BUCKET=${EXTERNAL_BUCKET}
 
     echo;echo Executing: gsutil ls ${EXTERNAL_BUCKET}/input/
     gsutil ls ${EXTERNAL_BUCKET}/input/
 
-    echo;echo Executing: gsutil cp -r ${EXTERNAL_BUCKET}/input /home/airflow/gcs/data
-    gsutil cp -r ${EXTERNAL_BUCKET}/input /home/airflow/gcs/data
+    echo;echo Executing: mkdir datatransfer; ls -l
+    mkdir datatransfer; ls -l
+
+    echo;echo Executing: gsutil cp -r ${EXTERNAL_BUCKET}/input datatransfer
+    gsutil cp -r ${EXTERNAL_BUCKET}/input datatransfer
+
+    echo;echo Executing: ls -l datatransfer
+    ls -l datatransfer
+
+    echo;echo Executing: sudo kubectl cp datatransfer/input default/datatransfer-pod:/datatransfer
+    sudo kubectl cp datatransfer/input default/datatransfer-pod:/datatransfer
+
+    echo;echo Executing: ls -l datatransfer
+    ls -l datatransfer
+
+    echo;echo Executing: ls -l datatransfer/input
+    ls -l datatransfer/input
+
+    # echo;echo Executing: sudo kubectl exec -n default datatransfer-pod -- /bin/sh -c 'mkdir /datatransfer/input/; mkdir /datatransfer/output/; ls -l /datatransfer; exit'
+    # sudo kubectl exec -n default datatransfer-pod -- /bin/sh -c 'mkdir /datatransfer/input/; mkdir /datatransfer/output/; ls -l /datatransfer; exit'
+
+    # echo;echo Executing: kubectl exec -n default datatransfer-pod -- /bin/sh -c 'gsutil cp -r ${EXTERNAL_BUCKET}/input /datatransfer/input; ls -l /datatransfer/input; exit'
+    # sudo kubectl exec -n default datatransfer-pod -- /bin/sh -c 'kubectl cp ${EXTERNAL_BUCKET}/input /datatransfer/input; ls -l /datatransfer/input; exit'
+
+    # echo;echo Executing: ls -l default/datatransfer-pod:/datatransfer
+    # ls -l default/datatransfer-pod:/datatransfer
+
+    # echo;echo Executing: gsutil cp -r ${EXTERNAL_BUCKET}/input default/datatransfer-pod:/datatransfer/input
+    # gsutil cp -r ${EXTERNAL_BUCKET}/input default/datatransfer-pod:/datatransfer/input
     """
 
     persist_output_data_command = """
@@ -209,10 +320,12 @@ with models.DAG(JOB_NAME,
       # cmds=["sh", "-c", 'R -e "DF.temp <- utils::read.csv(\'/home/airflow/gcs/data/input/input-file-00.csv\'); DF.results <- sum(DF.temp[,1]); if (\!dir.exists(\'/home/airflow/gcs/data/output\')) {base::dir.create(\'/home/airflow/gcs/data/output\',recursive=TRUE)}; write.csv(x = DF.results, file = \'/home/airflow/gcs/data/output/output-00.csv\', row.names = FALSE)"'],
       # cmds=["/opt/conda/bin/Rscript", "-e", "DF.temp <- utils::read.csv('/home/airflow/gcs/data/input/input-file-00.csv'); DF.results <- sum(DF.temp[,1]); if (\!dir.exists('/home/airflow/gcs/data/output')) {base::dir.create('/home/airflow/gcs/data/output',recursive=TRUE)}; write.csv(x = DF.results, file = '/home/airflow/gcs/data/output/output-00.csv', row.names = FALSE)"],
       # cmds=["sh", "-c", "echo;echo \'Sleeping ...\' ; sleep 10 ; echo;echo whoami=`whoami` ; echo;echo ls -l /usr/local/bin ; ls -l /usr/local/bin ; echo;echo ls -l /data ; ls -l /data ; echo;echo ls -l /opt/conda/bin ; ls -l /opt/conda/bin/ ; echo;echo \'Done\'"],
-        cmds=["sh", "-c", "echo;echo \'Sleeping ...\' ; sleep 10 ; echo;echo whoami=`whoami` ; echo;echo ls -l /usr/local/bin ; ls -l /usr/local/bin ; echo;echo EXTERNAL_BUCKET=${EXTERNAL_BUCKET}; echo;echo SERVICE_ACCOUNT_KEY_JSON=${SERVICE_ACCOUNT_KEY_JSON}; echo;echo ls -l ${SERVICE_ACCOUNT_KEY_JSON}; ls -l ${SERVICE_ACCOUNT_KEY_JSON}; echo;echo ls -l /opt/conda/bin ; ls -l /opt/conda/bin/ ; echo;echo \'Done\'"],
+        cmds=["sh", "-c", "echo;echo \'Sleeping ...\' ; sleep 10 ; echo;echo whoami=`whoami` ; echo;echo ls -l /usr/local/bin ; ls -l /usr/local/bin ; echo;echo EXTERNAL_BUCKET=${EXTERNAL_BUCKET}; echo;echo SERVICE_ACCOUNT_KEY_JSON=${SERVICE_ACCOUNT_KEY_JSON}; echo;echo ls -l ${SERVICE_ACCOUNT_KEY_JSON}; ls -l ${SERVICE_ACCOUNT_KEY_JSON}; echo;echo ls -l /opt/conda/bin ; ls -l /opt/conda/bin/ ; echo;echo ls -l /datatransfer/input; ls -l /datatransfer/input/ ; echo;echo \'Done\'"],
       # volumes=["/home/airflow/gcs/data:/data"],
+        volumes=[volume],
+        volume_mounts=[volume_mount],
       # secrets=[secret_envvar_external_bucket,secret_volume_service_account_key],
-        secrets=[secret_envvar_external_bucket],
+      # secrets=[secret_envvar_external_bucket],
         env_vars={
             'SERVICE_ACCOUNT_KEY_JSON': '/var/secrets/google/service-account-key.json'
             },
@@ -347,5 +460,6 @@ with models.DAG(JOB_NAME,
         })
 
     # Tasks order
-    create_node_pool_task >> injest_input_data_task >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task >> delete_node_pool_task
     # create_node_pool_task >> injest_input_data_task >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task
+    # create_node_pool_task >> injest_input_data_task >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task >> delete_node_pool_task
+    create_node_pool_task >> injest_input_data_task
