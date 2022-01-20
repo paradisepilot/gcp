@@ -83,10 +83,10 @@ echo; echo AIRFLOW_POD_NAME=${AIRFLOW_POD_NAME}
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ##### install Python dependencies
-sleep 20
-echo; echo Executing: gcloud composer environments update -- adding python dependencies
-gcloud composer environments update ${ENVIRONMENT_NAME} --location ${LOCATION} \
-    --update-pypi-packages-from-file python-dependencies.txt
+# sleep 20
+# echo; echo Executing: gcloud composer environments update -- adding python dependencies
+# gcloud composer environments update ${ENVIRONMENT_NAME} --location ${LOCATION} \
+#    --update-pypi-packages-from-file python-dependencies.txt
 
 ### set environment variables
 sleep 20
