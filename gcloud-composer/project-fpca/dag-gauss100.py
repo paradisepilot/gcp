@@ -1,5 +1,6 @@
-import datetime
+# import datetime
 
+from datetime import timedelta,datetime
 from airflow import models
 from airflow.operators.bash_operator import BashOperator
 from airflow.operators.python_operator import PythonOperator
@@ -12,14 +13,17 @@ from airflow.kubernetes.volume_mount import VolumeMount
 import os
 
 JOB_NAME = 'gauss100_gke'
-start_date = datetime.datetime(2021, 1, 31)
+
+# start_date = datetime.datetime(2021, 1, 31)
+YESTERDAY = datetime.now() - timedelta(days=1)
 
 default_args = {
-    'start_date': start_date,
-    'email_on_failure': False,
-    'email_on_retry': False,
-    'retries': 0,
-    'retry_delay': datetime.timedelta(minutes=1),
+    # 'start_date': start_date,
+    'start_date': YESTERDAY
+    # 'email_on_failure': False,
+    # 'email_on_retry': False,
+    # 'retries': 0,
+    # 'retry_delay': datetime.timedelta(minutes=1)
 }
 
 # secret_envvar_external_bucket = Secret(
@@ -50,8 +54,10 @@ volume_mount  = VolumeMount('my-disk-claim', mount_path = '/datatransfer',sub_pa
 
 with models.DAG(JOB_NAME,
                 default_args=default_args,
-                schedule_interval=None,
-                catchup=False) as dag:
+                # schedule_interval=None,
+                schedule_interval=timedelta(days=1)
+                #,catchup=False
+                ) as dag:
 
     # This value can be customized to whatever format is preferred for the node pool name
     # Default node pool naming format is <cluster name>-node-pool-<execution_date>
