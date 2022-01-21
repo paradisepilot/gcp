@@ -279,6 +279,30 @@ spec:\n\
     # gsutil cp -r ${EXTERNAL_BUCKET}/input default/datatransfer-pod:/datatransfer/input
     """
 
+    delete_datatransfer_pod_command = """
+echo \
+"\n\
+apiVersion: v1\n\
+kind: Pod\n\
+metadata:\n\
+  name: datatransfer-pod\n\
+  namespace: default\n\
+spec:\n\
+  containers:\n\
+  - name: datatransfer-container\n\
+    image: nginx\n\
+    volumeMounts:\n\
+    - mountPath: /datatransfer\n\
+      name: script-data\n\
+  volumes:\n\
+  - name: script-data\n\
+    persistentVolumeClaim:\n\
+      claimName: my-disk-claim\n"\
+> create_pod_data.yaml
+
+    sudo kubectl delete -f create_pod_data.yaml
+    """
+
     persist_output_data_command = """
     # Assume that the environment variable EXTERNAL_BUCKET has been set.
     # echo;echo Executing: gsutil cp -r /home/airflow/gcs/data/output ${EXTERNAL_BUCKET}/output
@@ -309,6 +333,13 @@ spec:\n\
         dag=dag
     )
 
+    delete_datatransfer_pod = BashOperator(
+        task_id="delete_datatransfer_pod",
+        bash_command=delete_datatransfer_pod_command,
+      # xcom_push=True,
+        dag=dag
+    )
+
     persist_output_data_task = BashOperator(
         task_id="persist_output_data",
         bash_command=persist_output_data_command,
@@ -331,8 +362,8 @@ spec:\n\
         cmds=["sh", "-c", "echo;echo \'Sleeping ...\' ; sleep 10 ; echo;echo whoami=`whoami` ; echo;echo ls -l /usr/local/bin ; ls -l /usr/local/bin ; echo;echo EXTERNAL_BUCKET=${EXTERNAL_BUCKET}; echo;echo ls -l /opt/conda/bin ; ls -l /opt/conda/bin/ ; echo;echo ls -l /datatransfer/input; ls -l /datatransfer/input/ ; echo;echo \'Done\'"],
       # volumes=["/home/airflow/gcs/data:/data"],
 
-      # volumes=[volume],
-      # volume_mounts=[volume_mount],
+      volumes=[volume],
+      volume_mounts=[volume_mount],
 
       # secrets=[secret_envvar_external_bucket,secret_volume_service_account_key],
       # secrets=[secret_envvar_external_bucket],
@@ -478,4 +509,5 @@ spec:\n\
     # Tasks order
     # create_node_pool_task >> injest_input_data_task
     # create_node_pool_task >> injest_input_data_task >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task
-    create_node_pool_task >> injest_input_data_task >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task >> delete_node_pool_task
+    # create_node_pool_task >> injest_input_data_task >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task >> delete_node_pool_task
+    create_node_pool_task >> injest_input_data_task >> delete_datatransfer_pod >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task >> delete_node_pool_task
