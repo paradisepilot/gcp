@@ -280,27 +280,14 @@ spec:\n\
     """
 
     delete_datatransfer_pod_command = """
-echo \
-"\n\
-apiVersion: v1\n\
-kind: Pod\n\
-metadata:\n\
-  name: datatransfer-pod\n\
-  namespace: default\n\
-spec:\n\
-  containers:\n\
-  - name: datatransfer-container\n\
-    image: nginx\n\
-    volumeMounts:\n\
-    - mountPath: /datatransfer\n\
-      name: script-data\n\
-  volumes:\n\
-  - name: script-data\n\
-    persistentVolumeClaim:\n\
-      claimName: my-disk-claim\n"\
-> create_pod_data.yaml
+    echo;echo Executing: sudo kubectl get nodes
+    sudo kubectl get nodes
 
-    sudo kubectl delete -f create_pod_data.yaml
+    echo;echo Executing: sudo kubectl get pods -o wide
+    sudo kubectl get pods -o wide
+
+    echo;echo Executing: sudo kubectl delete pod datatransfer-pod
+    sudo kubectl delete pod datatransfer-pod
     """
 
     persist_output_data_command = """
@@ -351,7 +338,7 @@ spec:\n\
         task_id='sum_task_0',
         name='etl',
         namespace='default',
-        startup_timeout_seconds=720,
+        startup_timeout_seconds=3600,
       # image='gcr.io/gcp-runtimes/ubuntu_18_0_4',
       # image='paradisepilot/miniconda3-r-base:0.1',
         image='paradisepilot/fpca-base:0.8',
@@ -362,8 +349,8 @@ spec:\n\
         cmds=["sh", "-c", "echo;echo \'Sleeping ...\' ; sleep 10 ; echo;echo whoami=`whoami` ; echo;echo ls -l /usr/local/bin ; ls -l /usr/local/bin ; echo;echo EXTERNAL_BUCKET=${EXTERNAL_BUCKET}; echo;echo ls -l /opt/conda/bin ; ls -l /opt/conda/bin/ ; echo;echo ls -l /datatransfer/input; ls -l /datatransfer/input/ ; echo;echo \'Done\'"],
       # volumes=["/home/airflow/gcs/data:/data"],
 
-      volumes=[volume],
-      volume_mounts=[volume_mount],
+        volumes=[volume],
+        volume_mounts=[volume_mount],
 
       # secrets=[secret_envvar_external_bucket,secret_volume_service_account_key],
       # secrets=[secret_envvar_external_bucket],
@@ -422,11 +409,11 @@ spec:\n\
         cmds=["sh", "-c", 'echo \'Sleeping ...\'; sleep 10; echo;echo ls -l /home/airflow/gcs/data/ ; ls -l /home/airflow/gcs/data/ ; echo;echo ls -l /datatransfer/input; ls -l /datatransfer/input/ ; echo;echo \'Done!\''],
       # cmds=["sh", "-c", 'R -e "DF.temp <- utils::read.csv(\'/home/airflow/gcs/data/input/input-file-01.csv\'); DF.results <- sum(DF.temp[,1]); if (\!dir.exists(\'/home/airflow/gcs/data/output\')) {base::dir.create(\'/home/airflow/gcs/data/output\',recursive=TRUE)}; write.csv(x = DF.results, file = \'/home/airflow/gcs/data/output/output-01.csv\', row.names = FALSE)"'],
       # cmds=["/opt/conda/bin/Rscript", "-e", "DF.temp <- utils::read.csv('/home/airflow/gcs/data/input/input-file-01.csv'); DF.results <- sum(DF.temp[,1]); if (\!dir.exists('/home/airflow/gcs/data/output')) {base::dir.create('/home/airflow/gcs/data/output',recursive=TRUE)}; write.csv(x = DF.results, file = '/home/airflow/gcs/data/output/output-01.csv', row.names = FALSE)"],
-        startup_timeout_seconds=720,
+        startup_timeout_seconds=3600,
       # is_delete_operator_pod=True,
 
-      volumes=[volume],
-      volume_mounts=[volume_mount],
+        volumes=[volume],
+        volume_mounts=[volume_mount],
 
       # secrets=[secret_envvar_external_bucket,secret_volume_service_account_key],
       # secrets=[secret_envvar_external_bucket],
@@ -440,7 +427,6 @@ spec:\n\
             'value': 'well',
             'effect': "NoSchedule"
             }],
-
         # affinity allows you to constrain which nodes your pod is eligible to
         # be scheduled on, based on labels on the node. In this case, if the
         # label 'cloud.google.com/gke-nodepool' with value
@@ -486,11 +472,11 @@ spec:\n\
         cmds=["sh", "-c", 'echo \'Sleeping ...\'; sleep 10; echo;echo which docker ; which docker; echo;echo which R ; which R ; echo;echo R -e "library(help=arrow)" ; R -e "library(help=arrow)"; echo;echo R -e "library(help=fpcFeatures)" ; R -e "library(help=fpcFeatures)"; echo;echo ls -l /home/airflow/gcs/data/ ; ls -l /home/airflow/gcs/data/ ; echo;echo ls -l /datatransfer/input ; ls -l /datatransfer/input/ ; echo;echo \'Done!\''],
       # cmds=["sh", "-c", 'R -e "DF.temp <- utils::read.csv(\'/home/airflow/gcs/data/input/input-file-02.csv\'); DF.results <- sum(DF.temp[,1]); if (\!dir.exists(\'/home/airflow/gcs/data/output\')) {base::dir.create(\'/home/airflow/gcs/data/output\',recursive=TRUE)}; write.csv(x = DF.results, file = \'/home/airflow/gcs/data/output/output-02.csv\', row.names = FALSE)"'],
       # cmds=["/opt/conda/bin/Rscript", "-e", "DF.temp <- utils::read.csv('/home/airflow/gcs/data/input/input-file-02.csv'); DF.results <- sum(DF.temp[,1]); if (\!dir.exists('/home/airflow/gcs/data/output')) {base::dir.create('/home/airflow/gcs/data/output',recursive=TRUE)}; write.csv(x = DF.results, file = '/home/airflow/gcs/data/output/output-02.csv', row.names = FALSE)"],
-        startup_timeout_seconds=720,
+        startup_timeout_seconds=3600,
       # is_delete_operator_pod=True,
 
-      volumes=[volume],
-      volume_mounts=[volume_mount],
+        volumes=[volume],
+        volume_mounts=[volume_mount],
 
       # secrets=[secret_envvar_external_bucket,secret_volume_service_account_key],
       # secrets=[secret_envvar_external_bucket],
@@ -504,7 +490,6 @@ spec:\n\
             'value': 'well',
             'effect': "NoSchedule"
             }],
-
         # affinity allows you to constrain which nodes your pod is eligible to
         # be scheduled on, based on labels on the node. In this case, if the
         # label 'cloud.google.com/gke-nodepool' with value
