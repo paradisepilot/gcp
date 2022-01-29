@@ -93,16 +93,16 @@ with models.DAG(JOB_NAME,
     ### throw an error at the node pool creation command below
     ### due to the fact that the node pool creation would require more vCPU
     ### than regional vCPU quota.
-    echo;echo Executing: gcloud config set container/cluster ${COMPOSER_GKE_NAME}
-    gcloud config set container/cluster ${COMPOSER_GKE_NAME}
+    echo;echo Executing: sudo gcloud config set container/cluster ${COMPOSER_GKE_NAME}
+    sudo gcloud config set container/cluster ${COMPOSER_GKE_NAME}
 
     sleep 10
 
     ### set kubectl credentials (required by subsequent commands)
     ### Use the gcloud composer command to connect the kubectl command to the cluster.
     ### https://cloud.google.com/composer/docs/how-to/using/installing-python-dependencies#viewing_installed_python_packages
-    echo;echo Executing: gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
-    gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
+    echo;echo Executing: sudo gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
+    sudo gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
 
     sleep 10
 
@@ -114,7 +114,7 @@ with models.DAG(JOB_NAME,
         --enable-autoupgrade
 
     ### Set the airflow variable name
-    echo;echo > airflow variables -s node_pool ${NODE_POOL}
+    echo;echo Executing: airflow variables -s node_pool ${NODE_POOL}
     airflow variables -s node_pool ${NODE_POOL}
 
     sleep 10
@@ -280,6 +280,31 @@ spec:\n\
     """
 
     delete_datatransfer_pod_command = """
+    echo;echo Executing: sudo gcloud config set container/cluster ${COMPOSER_GKE_NAME}
+    sudo gcloud config set container/cluster ${COMPOSER_GKE_NAME}
+
+    sleep 10
+
+    echo;echo Executing: sudo gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
+    sudo gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
+
+    sleep 10
+
+    # Generate node-pool name
+    NODE_POOL=""" + node_pool_value + """
+
+    ### Set the airflow variable name
+    echo;echo Executing: airflow variables -s node_pool ${NODE_POOL}
+    airflow variables -s node_pool ${NODE_POOL}
+
+    sleep 10
+
+    ### Examine clusters
+    echo;echo Executing: gcloud container clusters list
+    gcloud container clusters list
+
+    sleep 60
+
     echo;echo Executing: sudo kubectl get nodes
     sudo kubectl get nodes
 
@@ -309,28 +334,29 @@ spec:\n\
     delete_node_pool_task = BashOperator(
         task_id="delete_node_pool",
         bash_command=delete_node_pools_command,
-        trigger_rule='all_done',        # Always run even if failures so the node pool is deleted
+        trigger_rule='all_done', # Always run even if failures so the node pool is deleted
+        # xcom_push=True,
         dag=dag
     )
 
     injest_input_data_task = BashOperator(
         task_id="injest_input_data",
         bash_command=injest_input_data_command,
-      # xcom_push=True,
+        xcom_push=True,
         dag=dag
     )
 
     delete_datatransfer_pod = BashOperator(
         task_id="delete_datatransfer_pod",
         bash_command=delete_datatransfer_pod_command,
-      # xcom_push=True,
+        xcom_push=True,
         dag=dag
     )
 
     persist_output_data_task = BashOperator(
         task_id="persist_output_data",
         bash_command=persist_output_data_command,
-      # xcom_push=True,
+        xcom_push=True,
         dag=dag
     )
 
