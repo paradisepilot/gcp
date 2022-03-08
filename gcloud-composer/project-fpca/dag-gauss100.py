@@ -248,7 +248,6 @@ spec:\n\
     echo;echo Executing: gsutil ls ${BOQ_BUCKET}/TrainingData_Geojson
     gsutil ls ${BOQ_BUCKET}/TrainingData_Geojson
 
-
     echo;echo Executing: mkdir datatransfer
     mkdir datatransfer
 
