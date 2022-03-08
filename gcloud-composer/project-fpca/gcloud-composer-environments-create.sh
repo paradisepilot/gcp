@@ -9,6 +9,8 @@ echo ENVIRONMENT_NAME=${ENVIRONMENT_NAME}
 echo LOCATION=${LOCATION}
 echo ZONE=${ZONE}
 echo EXTERNAL_BUCKET=${EXTERNAL_BUCKET}
+echo BOQ_BUCKET=${BOQ_BUCKET}
+echo WILLISTON_BUCKET=${WILLISTON_BUCKET}
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 # set the active project
@@ -92,7 +94,7 @@ echo; echo AIRFLOW_POD_NAME=${AIRFLOW_POD_NAME}
 sleep 20
 echo; echo Executing: gcloud composer environments update -- setting environment variables
 gcloud composer environments update ${ENVIRONMENT_NAME} --location ${LOCATION} \
-   --update-env-variables=EXTERNAL_BUCKET=${EXTERNAL_BUCKET},PROJECT_ID=${PROJECT_ID},ENVIRONMENT_NAME=${ENVIRONMENT_NAME},LOCATION=${LOCATION},ZONE=${ZONE},CLUSTER_NAME=${CLUSTER_NAME},AIRFLOW_CLUSTER_NAMESPACE=${AIRFLOW_CLUSTER_NAMESPACE}
+   --update-env-variables=WILLISTON_BUCKET=${WILLISTON_BUCKET},BOQ_BUCKET=${BOQ_BUCKET},EXTERNAL_BUCKET=${EXTERNAL_BUCKET},PROJECT_ID=${PROJECT_ID},ENVIRONMENT_NAME=${ENVIRONMENT_NAME},LOCATION=${LOCATION},ZONE=${ZONE},CLUSTER_NAME=${CLUSTER_NAME},AIRFLOW_CLUSTER_NAMESPACE=${AIRFLOW_CLUSTER_NAMESPACE}
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ##### creating two Kubernetes secrets:

@@ -4,6 +4,8 @@ ENVIRONMENT_NAME=${PROJECT_ID}
 LOCATION=us-central1
 ZONE=us-central1-a
 EXTERNAL_BUCKET=gs://${PROJECT_ID}-xbucket
+BOQ_BUCKET=gs://fpca-bay-of-quinte-test
+WILLISTON_BUCKET=gs://fpca-williston-a
 SERVICE_ACCOUNT_ID=gauss100-service-account
 source ./global-parameters-secrets.txt
 
