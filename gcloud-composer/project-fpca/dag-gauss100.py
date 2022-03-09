@@ -242,6 +242,10 @@ spec:\n\
     sudo kubectl create -f create_pod_data.yaml
     sleep 10
 
+    echo;echo Executing: sudo kubectl get nodes ; echo ; sudo kubectl get pods -o wide
+    sudo kubectl get nodes ; echo ; sudo kubectl get pods -o wide
+    sleep 10
+
     # Assume that the environment variable BOQ_BUCKET has been set.
     echo;echo BOQ_BUCKET=${BOQ_BUCKET}
 
@@ -251,8 +255,8 @@ spec:\n\
     echo;echo Executing: mkdir datatransfer
     mkdir datatransfer
 
-    echo;echo Executing: gsutil cp -r ${BOQ_BUCKET}/TrainingData_Geojson datatransfer
-    gsutil cp -r ${BOQ_BUCKET}/TrainingData_Geojson datatransfer
+    echo;echo Executing: gsutil -m cp -r ${BOQ_BUCKET}/TrainingData_Geojson datatransfer
+    gsutil -m cp -r ${BOQ_BUCKET}/TrainingData_Geojson datatransfer
 
     echo;echo Executing: ls -l datatransfer
     ls -l datatransfer
@@ -316,11 +320,186 @@ spec:\n\
     """
 
     persist_output_data_command = """
-    # Assume that the environment variable EXTERNAL_BUCKET has been set.
-    # echo;echo Executing: gsutil cp -r /home/airflow/gcs/data/output ${EXTERNAL_BUCKET}/output
-    # gsutil cp -r /home/airflow/gcs/data/output ${EXTERNAL_BUCKET}/output
+echo \
+"\n\
+apiVersion: storage.k8s.io/v1\n\
+kind: StorageClass\n\
+metadata:\n\
+  name: my-storage-class\n\
+  namespace: default\n\
+provisioner: kubernetes.io/gce-pd\n\
+parameters:\n\
+  type: pd-ssd\n"\
+> create_sc.yaml
+
+echo \
+"\n\
+apiVersion: v1\n\
+kind: PersistentVolumeClaim\n\
+metadata:\n\
+  name: my-disk-claim\n\
+  namespace: default\n\
+spec:\n\
+  resources:\n\
+    requests:\n\
+      storage: 23Gi\n\
+  accessModes:\n\
+    - ReadWriteOnce\n\
+  storageClassName: my-storage-class\n"\
+> create_pvc.yaml
+
+echo \
+"\n\
+apiVersion: v1\n\
+kind: Pod\n\
+metadata:\n\
+  name: datatransfer-pod\n\
+  namespace: default\n\
+spec:\n\
+  containers:\n\
+  - name: datatransfer-container\n\
+    image: nginx\n\
+    volumeMounts:\n\
+    - mountPath: /datatransfer\n\
+      name: script-data\n\
+  volumes:\n\
+  - name: script-data\n\
+    persistentVolumeClaim:\n\
+      claimName: my-disk-claim\n"\
+> create_pod_data.yaml
+
+    echo;echo cat create_sc.yaml
+    cat create_sc.yaml
     echo
-    echo Doing nothing.
+
+    echo;echo cat create_pvc.yaml
+    cat create_pvc.yaml
+    echo
+
+    echo;echo cat create_pod_data.yaml
+    cat create_pod_data.yaml
+    echo
+
+    sleep 10
+
+    echo; echo Executing: gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
+    sudo gcloud container clusters get-credentials ${CLUSTER_NAME} --zone ${ZONE}
+    sleep 10
+
+    echo;echo Executing: sudo kubectl create -f create_sc.yaml
+    # sudo kubectl create -f create_sc.yaml
+    sleep 10
+
+    echo;echo Executing: sudo kubectl create -f create_pvc.yaml
+    # sudo kubectl create -f create_pvc.yaml
+    sleep 10
+
+    echo;echo Executing: sudo kubectl create -f create_pod_data.yaml
+    sudo kubectl create -f create_pod_data.yaml
+    sleep 10
+
+    echo;echo Executing: sudo kubectl get nodes ; echo ; sudo kubectl get pods -o wide
+    sudo kubectl get nodes ; echo ; sudo kubectl get pods -o wide
+    sleep 10
+
+    echo;echo Executing: mkdir -p datatransfer/output1
+    mkdir -p datatransfer/output1
+    sleep 10
+
+    echo;echo Executing: mkdir -p datatransfer/output2
+    mkdir -p datatransfer/output2
+    sleep 10
+
+    echo;echo Executing: mkdir -p datatransfer/output3
+    mkdir -p datatransfer/output3
+    sleep 10
+
+    echo;echo Executing: ls -l
+    ls -l
+    sleep 10
+
+    echo;echo Executing: ls -l datatransfer
+    ls -l datatransfer
+    sleep 10
+
+    echo;echo Executing: sudo kubectl cp default/datatransfer-pod:/datatransfer/output datatransfer
+    sudo kubectl cp default/datatransfer-pod:/datatransfer/output datatransfer
+    sleep 10
+
+    echo;echo Executing: sudo kubectl cp default/datatransfer-pod:/datatransfer/output datatransfer/output1
+    sudo kubectl cp default/datatransfer-pod:/datatransfer/output datatransfer/output1
+    sleep 10
+
+    echo;echo Executing: sudo kubectl cp default/datatransfer-pod:/datatransfer/output datatransfer/output2/
+    sudo kubectl cp default/datatransfer-pod:/datatransfer/output datatransfer/output2/
+    sleep 10
+
+    echo;echo Executing: sudo kubectl cp default/datatransfer-pod:/datatransfer/output/ datatransfer/output3/
+    sudo kubectl cp default/datatransfer-pod:/datatransfer/output/ datatransfer/output3/
+    sleep 10
+
+    echo;echo Executing: ls -l datatransfer
+    ls -l datatransfer
+    sleep 10
+
+    echo;echo Executing: ls -l datatransfer/output
+    ls -l datatransfer/output
+    sleep 10
+
+    echo;echo Executing: ls -l datatransfer/output1
+    ls -l datatransfer/output1
+    sleep 10
+
+    echo;echo Executing: ls -l datatransfer/output2
+    ls -l datatransfer/output2
+    sleep 10
+
+    echo;echo Executing: ls -l datatransfer/output3
+    ls -l datatransfer/output3
+    sleep 10
+
+    # Assume that the environment variable EXTERNAL_BUCKET has been set.
+    echo;echo Executing: gsutil -m cp -r datatransfer/output ${EXTERNAL_BUCKET}
+    gsutil -m cp -r datatransfer/output ${EXTERNAL_BUCKET}
+    sleep 10
+
+    # Assume that the environment variable EXTERNAL_BUCKET has been set.
+    echo;echo Executing: gsutil -m cp -r datatransfer/output1 ${EXTERNAL_BUCKET}
+    gsutil -m cp -r datatransfer/output1 ${EXTERNAL_BUCKET}
+    sleep 10
+
+    # Assume that the environment variable EXTERNAL_BUCKET has been set.
+    echo;echo Executing: gsutil -m cp -r datatransfer/output2 ${EXTERNAL_BUCKET}
+    gsutil -m cp -r datatransfer/output2 ${EXTERNAL_BUCKET}
+    sleep 10
+
+    # Assume that the environment variable EXTERNAL_BUCKET has been set.
+    echo;echo Executing: gsutil -m cp -r datatransfer/output3 ${EXTERNAL_BUCKET}
+    gsutil -m cp -r datatransfer/output3 ${EXTERNAL_BUCKET}
+    sleep 10
+
+    echo;echo Executing: gsutil ls ${EXTERNAL_BUCKET}
+    gsutil ls ${EXTERNAL_BUCKET}
+    sleep 10
+
+    echo;echo Executing: gsutil ls ${EXTERNAL_BUCKET}/output
+    gsutil ls ${EXTERNAL_BUCKET}/output
+    sleep 10
+
+    echo;echo Executing: gsutil ls ${EXTERNAL_BUCKET}/output1
+    gsutil ls ${EXTERNAL_BUCKET}/output1
+    sleep 10
+
+    echo;echo Executing: gsutil ls ${EXTERNAL_BUCKET}/output2
+    gsutil ls ${EXTERNAL_BUCKET}/output2
+    sleep 10
+
+    echo;echo Executing: gsutil ls ${EXTERNAL_BUCKET}/output3
+    gsutil ls ${EXTERNAL_BUCKET}/output3
+    sleep 10
+
+    echo;echo Executing: sudo kubectl delete pod datatransfer-pod
+    sudo kubectl delete pod datatransfer-pod
     """
 
     # Tasks definitions
