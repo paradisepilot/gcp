@@ -398,20 +398,16 @@ spec:\n\
     sudo kubectl create -f create_pod_data.yaml
     sleep 10
 
-    echo;echo Executing: sudo kubectl get nodes ; echo ; sudo kubectl get pods -o wide
-    sudo kubectl get nodes ; echo ; sudo kubectl get pods -o wide
+    echo;echo Executing: sudo kubectl get nodes
+    sudo kubectl get nodes
     sleep 10
 
-    echo;echo Executing: mkdir -p datatransfer/output1
-    mkdir -p datatransfer/output1
+    echo;echo Executing: sudo kubectl get pods -o wide
+    sudo kubectl get pods -o wide
     sleep 10
 
-    echo;echo Executing: mkdir -p datatransfer/output2
-    mkdir -p datatransfer/output2
-    sleep 10
-
-    echo;echo Executing: mkdir -p datatransfer/output3
-    mkdir -p datatransfer/output3
+    echo;echo Executing: mkdir -p datatransfer/output
+    mkdir -p datatransfer/output
     sleep 10
 
     echo;echo Executing: ls -l
@@ -422,20 +418,8 @@ spec:\n\
     ls -l datatransfer
     sleep 10
 
-    echo;echo Executing: sudo kubectl cp default/datatransfer-pod:/datatransfer/output datatransfer
-    sudo kubectl cp default/datatransfer-pod:/datatransfer/output datatransfer
-    sleep 10
-
-    echo;echo Executing: sudo kubectl cp default/datatransfer-pod:/datatransfer/output datatransfer/output1
-    sudo kubectl cp default/datatransfer-pod:/datatransfer/output datatransfer/output1
-    sleep 10
-
-    echo;echo Executing: sudo kubectl cp default/datatransfer-pod:/datatransfer/output datatransfer/output2/
-    sudo kubectl cp default/datatransfer-pod:/datatransfer/output datatransfer/output2/
-    sleep 10
-
-    echo;echo Executing: sudo kubectl cp default/datatransfer-pod:/datatransfer/output/ datatransfer/output3/
-    sudo kubectl cp default/datatransfer-pod:/datatransfer/output/ datatransfer/output3/
+    echo;echo Executing: sudo kubectl cp default/datatransfer-pod:/datatransfer/output datatransfer/output
+    sudo kubectl cp default/datatransfer-pod:/datatransfer/output datatransfer/output
     sleep 10
 
     echo;echo Executing: ls -l datatransfer
@@ -446,36 +430,9 @@ spec:\n\
     ls -l datatransfer/output
     sleep 10
 
-    echo;echo Executing: ls -l datatransfer/output1
-    ls -l datatransfer/output1
-    sleep 10
-
-    echo;echo Executing: ls -l datatransfer/output2
-    ls -l datatransfer/output2
-    sleep 10
-
-    echo;echo Executing: ls -l datatransfer/output3
-    ls -l datatransfer/output3
-    sleep 10
-
     # Assume that the environment variable EXTERNAL_BUCKET has been set.
     echo;echo Executing: gsutil -m cp -r datatransfer/output ${EXTERNAL_BUCKET}
     gsutil -m cp -r datatransfer/output ${EXTERNAL_BUCKET}
-    sleep 10
-
-    # Assume that the environment variable EXTERNAL_BUCKET has been set.
-    echo;echo Executing: gsutil -m cp -r datatransfer/output1 ${EXTERNAL_BUCKET}
-    gsutil -m cp -r datatransfer/output1 ${EXTERNAL_BUCKET}
-    sleep 10
-
-    # Assume that the environment variable EXTERNAL_BUCKET has been set.
-    echo;echo Executing: gsutil -m cp -r datatransfer/output2 ${EXTERNAL_BUCKET}
-    gsutil -m cp -r datatransfer/output2 ${EXTERNAL_BUCKET}
-    sleep 10
-
-    # Assume that the environment variable EXTERNAL_BUCKET has been set.
-    echo;echo Executing: gsutil -m cp -r datatransfer/output3 ${EXTERNAL_BUCKET}
-    gsutil -m cp -r datatransfer/output3 ${EXTERNAL_BUCKET}
     sleep 10
 
     echo;echo Executing: gsutil ls ${EXTERNAL_BUCKET}
@@ -486,20 +443,16 @@ spec:\n\
     gsutil ls ${EXTERNAL_BUCKET}/output
     sleep 10
 
-    echo;echo Executing: gsutil ls ${EXTERNAL_BUCKET}/output1
-    gsutil ls ${EXTERNAL_BUCKET}/output1
-    sleep 10
-
-    echo;echo Executing: gsutil ls ${EXTERNAL_BUCKET}/output2
-    gsutil ls ${EXTERNAL_BUCKET}/output2
-    sleep 10
-
-    echo;echo Executing: gsutil ls ${EXTERNAL_BUCKET}/output3
-    gsutil ls ${EXTERNAL_BUCKET}/output3
-    sleep 10
-
     echo;echo Executing: sudo kubectl delete pod datatransfer-pod
     sudo kubectl delete pod datatransfer-pod
+
+    echo;echo Executing: sudo kubectl get nodes
+    sudo kubectl get nodes
+    sleep 10
+
+    echo;echo Executing: sudo kubectl get pods -o wide
+    sudo kubectl get pods -o wide
+    sleep 10
     """
 
     # Tasks definitions
@@ -737,4 +690,5 @@ spec:\n\
     # create_node_pool_task >> injest_input_data_task
     # create_node_pool_task >> injest_input_data_task >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task
     # create_node_pool_task >> injest_input_data_task >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task >> delete_node_pool_task
+    # create_node_pool_task >> injest_input_data_task >> delete_datatransfer_pod >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task >> delete_node_pool_task
     create_node_pool_task >> injest_input_data_task >> delete_datatransfer_pod >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task >> delete_node_pool_task
