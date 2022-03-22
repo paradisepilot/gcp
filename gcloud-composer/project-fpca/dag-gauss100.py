@@ -67,8 +67,9 @@ with models.DAG(JOB_NAME,
 
     create_node_pool_command = """
     # Set some environment variables in case they were not set already
+    # [ -z "${MACHINE_TYPE}" ] && MACHINE_TYPE=n1-standard-2
     [ -z "${NODE_COUNT}" ] && NODE_COUNT=3
-    [ -z "${MACHINE_TYPE}" ] && MACHINE_TYPE=n1-standard-2
+    [ -z "${MACHINE_TYPE}" ] && MACHINE_TYPE=custom-4-5120
     [ -z "${SCOPES}" ] && SCOPES=default,cloud-platform
     [ -z "${NODE_DISK_SIZE}" ] && NODE_DISK_SIZE=20
 
@@ -574,6 +575,7 @@ spec:\n\
 
         volumes=[volume],
         volume_mounts=[volume_mount],
+        resources={'request_cpu': "3000m", 'request_memory': "3072M"},
 
       # secrets=[secret_envvar_external_bucket,secret_volume_service_account_key],
       # secrets=[secret_envvar_external_bucket],
@@ -638,6 +640,7 @@ spec:\n\
 
         volumes=[volume],
         volume_mounts=[volume_mount],
+        resources={'request_cpu': "3000m", 'request_memory': "3072M"},
 
       # secrets=[secret_envvar_external_bucket,secret_volume_service_account_key],
       # secrets=[secret_envvar_external_bucket],
