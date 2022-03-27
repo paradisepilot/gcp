@@ -67,11 +67,16 @@ with models.DAG(JOB_NAME,
 
     create_node_pool_command = """
     # Set some environment variables in case they were not set already
+
+    # [ -z "${NODE_COUNT}" ] && NODE_COUNT=3
     # [ -z "${MACHINE_TYPE}" ] && MACHINE_TYPE=n1-standard-2
-    [ -z "${NODE_COUNT}" ] && NODE_COUNT=3
-    [ -z "${MACHINE_TYPE}" ] && MACHINE_TYPE=custom-4-5120
+    # [ -z "${MACHINE_TYPE}" ] && MACHINE_TYPE=custom-4-5120
+    # [ -z "${NODE_DISK_SIZE}" ] && NODE_DISK_SIZE=20
+
+    [ -z "${NODE_COUNT}" ] && NODE_COUNT=6
+    [ -z "${MACHINE_TYPE}" ] && MACHINE_TYPE=custom-16-65536
     [ -z "${SCOPES}" ] && SCOPES=default,cloud-platform
-    [ -z "${NODE_DISK_SIZE}" ] && NODE_DISK_SIZE=20
+    [ -z "${NODE_DISK_SIZE}" ] && NODE_DISK_SIZE=512
 
     # Generate node-pool name
     NODE_POOL=""" + node_pool_value + """
@@ -187,7 +192,7 @@ metadata:\n\
 spec:\n\
   resources:\n\
     requests:\n\
-      storage: 23Gi\n\
+      storage: 500Gi\n\
   accessModes:\n\
     - ReadWriteOnce\n\
   storageClassName: my-storage-class\n"\
@@ -259,17 +264,26 @@ spec:\n\
     echo;echo Executing: gsutil -m cp -r ${BOQ_BUCKET}/TrainingData_Geojson datatransfer
     gsutil -m cp -r ${BOQ_BUCKET}/TrainingData_Geojson datatransfer
 
+    echo;echo Executing: gsutil -m cp -r ${BOQ_BUCKET}/img datatransfer
+    gsutil -m cp -r ${BOQ_BUCKET}/img datatransfer
+
     echo;echo Executing: ls -l datatransfer
     ls -l datatransfer
 
     echo;echo Executing: sudo kubectl cp datatransfer/TrainingData_Geojson default/datatransfer-pod:/datatransfer
     sudo kubectl cp datatransfer/TrainingData_Geojson default/datatransfer-pod:/datatransfer
 
+    echo;echo Executing: sudo kubectl cp datatransfer/img default/datatransfer-pod:/datatransfer
+    sudo kubectl cp datatransfer/img default/datatransfer-pod:/datatransfer
+
     echo;echo Executing: ls -l datatransfer
     ls -l datatransfer
 
     echo;echo Executing: ls -l datatransfer/TrainingData_Geojson
     ls -l datatransfer/TrainingData_Geojson
+
+    echo;echo Executing: ls -l datatransfer/img
+    ls -l datatransfer/img
 
     # echo;echo Executing: sudo kubectl exec -n default datatransfer-pod -- /bin/sh -c 'mkdir /datatransfer/input/; mkdir /datatransfer/output/; ls -l /datatransfer; exit'
     # sudo kubectl exec -n default datatransfer-pod -- /bin/sh -c 'mkdir /datatransfer/input/; mkdir /datatransfer/output/; ls -l /datatransfer; exit'
@@ -343,7 +357,7 @@ metadata:\n\
 spec:\n\
   resources:\n\
     requests:\n\
-      storage: 23Gi\n\
+      storage: 500Gi\n\
   accessModes:\n\
     - ReadWriteOnce\n\
   storageClassName: my-storage-class\n"\
@@ -497,7 +511,7 @@ spec:\n\
         task_id='sum_task_0',
         name='etl',
         namespace='default',
-        startup_timeout_seconds=3600,
+        startup_timeout_seconds=10800,
       # image='gcr.io/gcp-runtimes/ubuntu_18_0_4',
       # image='paradisepilot/miniconda3-r-base:0.1',
         image='paradisepilot/fpca-base:0.8',
@@ -511,6 +525,8 @@ spec:\n\
 
         volumes=[volume],
         volume_mounts=[volume_mount],
+      # resources={'request_cpu': "15000m", 'request_memory': "61440M"},
+      # resources={'request_cpu':  "9000m", 'request_memory':  "3072M"},
 
       # secrets=[secret_envvar_external_bucket,secret_volume_service_account_key],
       # secrets=[secret_envvar_external_bucket],
@@ -570,12 +586,13 @@ spec:\n\
       # cmds=["/opt/conda/bin/Rscript", "-e", "DF.temp <- utils::read.csv('/home/airflow/gcs/data/input/input-file-01.csv'); DF.results <- sum(DF.temp[,1]); if (\!dir.exists('/home/airflow/gcs/data/output')) {base::dir.create('/home/airflow/gcs/data/output',recursive=TRUE)}; write.csv(x = DF.results, file = '/home/airflow/gcs/data/output/output-01.csv', row.names = FALSE)"],
       # cmds=["sh", "-c", 'echo \'Sleeping ...\'; sleep 10; echo;echo ls -l /home/airflow/gcs/data/ ; ls -l /home/airflow/gcs/data/ ; echo;echo ls -l /datatransfer/input; ls -l /datatransfer/input/ ; echo;echo \'Done!\''],
         cmds=["sh", "-c", 'echo "Sleeping ..."; sleep 10; echo;echo ls -l /home/airflow/gcs/data/ ; ls -l /home/airflow/gcs/data/ ; echo;echo ls -l /datatransfer/TrainingData_Geojson; ls -l /datatransfer/TrainingData_Geojson/ ; echo;echo mkdir github ; mkdir github ; echo;echo cd github ; cd github ; echo;echo git clone https://github.com/STC-NWRC/bay-of-quinte.git ; git clone https://github.com/STC-NWRC/bay-of-quinte.git ; echo;echo cd bay-of-quinte ; cd bay-of-quinte ; echo;echo chmod ugo+x run-main.sh ; chmod ugo+x run-main.sh ;  echo;echo ./run-main.sh apple ; ./run-main.sh apple ; echo;echo pwd ; pwd ; echo;echo "ls -l .." ; ls -l .. ; echo;echo "ls -l ../.." ; ls -l ../.. ; echo;echo "tree ../.." ; tree ../.. ; echo;echo "cat ../../gittmp/bay-of-quinte/output-apple/stdout.R.main" ; cat ../../gittmp/bay-of-quinte/output-apple/stdout.R.main ; echo;echo "cd ../.." ; cd ../.. ; echo;echo pwd ; pwd ; echo;echo ls -l ; ls -l ; mkdir /datatransfer/output ; echo;echo rm -rf /datatransfer/output/output-apple; rm -rf /datatransfer/output/output-apple ; echo;echo cp -r gittmp/bay-of-quinte/output-apple /datatransfer/output/output-apple ; cp -r gittmp/bay-of-quinte/output-apple /datatransfer/output/output-apple ; echo;echo "ls -l /datatransfer/output/" ; ls -l /datatransfer/output/ ; echo;echo "ls -l /datatransfer/output/output-apple" ; ls -l /datatransfer/output/output-apple ; echo;echo \'Done!\''],
-        startup_timeout_seconds=3600,
+        startup_timeout_seconds=10800,
       # is_delete_operator_pod=True,
 
         volumes=[volume],
         volume_mounts=[volume_mount],
-        resources={'request_cpu': "3000m", 'request_memory': "3072M"},
+      # resources={'request_cpu': "15000m", 'request_memory': "61440M"},
+        resources={'request_cpu':  "3000m", 'request_memory':  "3072M"},
 
       # secrets=[secret_envvar_external_bucket,secret_volume_service_account_key],
       # secrets=[secret_envvar_external_bucket],
@@ -635,12 +652,13 @@ spec:\n\
       # cmds=["/opt/conda/bin/Rscript", "-e", "DF.temp <- utils::read.csv('/home/airflow/gcs/data/input/input-file-02.csv'); DF.results <- sum(DF.temp[,1]); if (\!dir.exists('/home/airflow/gcs/data/output')) {base::dir.create('/home/airflow/gcs/data/output',recursive=TRUE)}; write.csv(x = DF.results, file = '/home/airflow/gcs/data/output/output-02.csv', row.names = FALSE)"],
       # cmds=["sh", "-c", 'echo \'Sleeping ...\'; sleep 10; echo;echo which docker ; which docker; echo;echo which R ; which R ; echo;echo R -e "library(help=arrow)" ; R -e "library(help=arrow)"; echo;echo R -e "library(help=fpcFeatures)" ; R -e "library(help=fpcFeatures)"; echo;echo ls -l /home/airflow/gcs/data/ ; ls -l /home/airflow/gcs/data/ ; echo;echo ls -l /datatransfer/input ; ls -l /datatransfer/input/ ; echo;echo \'Done!\''],
         cmds=["sh", "-c", 'echo \'Sleeping ...\'; sleep 10; echo;echo which docker ; which docker; echo;echo which R ; which R ; echo;echo R -e "library(help=arrow)" ; R -e "library(help=arrow)"; echo;echo R -e "library(help=fpcFeatures)" ; R -e "library(help=fpcFeatures)"; echo;echo ls -l /home/airflow/gcs/data/ ; ls -l /home/airflow/gcs/data/ ; echo;echo ls -l /datatransfer/TrainingData_Geojson ; ls -l /datatransfer/TrainingData_Geojson/ ; echo;echo mkdir github ; mkdir github ; echo;echo cd github ; cd github ; echo;echo git clone https://github.com/STC-NWRC/bay-of-quinte.git ; git clone https://github.com/STC-NWRC/bay-of-quinte.git ; echo;echo cd bay-of-quinte ; cd bay-of-quinte ; echo;echo chmod ugo+x run-main.sh ; chmod ugo+x run-main.sh ;  echo;echo ./run-main.sh orange ; ./run-main.sh orange ; echo;echo pwd ; pwd ; echo;echo "ls -l .." ; ls -l .. ; echo;echo "ls -l ../.." ; ls -l ../.. ; echo;echo "tree ../.." ; tree ../.. ; echo;echo "cat ../../gittmp/bay-of-quinte/output-orange/stdout.R.main" ; cat ../../gittmp/bay-of-quinte/output-orange/stdout.R.main ; echo;echo "cd ../.." ; cd ../.. ; echo;echo pwd ; pwd ; echo;echo ls -l ; ls -l ; mkdir /datatransfer/output ; echo;echo rm -rf /datatransfer/output/output-orange; rm -rf /datatransfer/output/output-orange ; echo;echo cp -r gittmp/bay-of-quinte/output-orange /datatransfer/output/output-orange ; cp -r gittmp/bay-of-quinte/output-orange /datatransfer/output/output-orange ; echo;echo "ls -l /datatransfer/output/" ; ls -l /datatransfer/output/ ; echo;echo "ls -l /datatransfer/output/output-orange" ; ls -l /datatransfer/output/output-orange ; echo;echo \'Done!\''],
-        startup_timeout_seconds=3600,
+        startup_timeout_seconds=10800,
       # is_delete_operator_pod=True,
 
         volumes=[volume],
         volume_mounts=[volume_mount],
-        resources={'request_cpu': "3000m", 'request_memory': "3072M"},
+      # resources={'request_cpu': "15000m", 'request_memory': "61440M"},
+        resources={'request_cpu':  "3000m", 'request_memory':  "3072M"},
 
       # secrets=[secret_envvar_external_bucket,secret_volume_service_account_key],
       # secrets=[secret_envvar_external_bucket],
@@ -694,4 +712,5 @@ spec:\n\
     # create_node_pool_task >> injest_input_data_task >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task
     # create_node_pool_task >> injest_input_data_task >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task >> delete_node_pool_task
     # create_node_pool_task >> injest_input_data_task >> delete_datatransfer_pod >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task >> delete_node_pool_task
-    create_node_pool_task >> injest_input_data_task >> delete_datatransfer_pod >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task >> delete_node_pool_task
+    # create_node_pool_task >> injest_input_data_task >> delete_datatransfer_pod >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task >> delete_node_pool_task
+    injest_input_data_task >> delete_datatransfer_pod >> create_node_pool_task >> [sum_task_0, sum_task_1, sum_task_2] >> persist_output_data_task >> delete_node_pool_task
