@@ -21,6 +21,7 @@ gcloud config set project ${PROJECT_ID}
 # Following instructions from:
 # https://cloud.google.com/composer/docs/how-to/managing/creating#gcloud_1
 # https://cloud.google.com/composer/docs/concepts/versioning/composer-versions#images
+# https://cloud.google.com/compute/docs/general-purpose-machines
 # https://cloud.google.com/composer/pricing#machine-type
 # https://cloud.google.com/composer/pricing#db-machine-types
 # https://cloud.google.com/composer/pricing#ws-machine-types
@@ -28,8 +29,9 @@ gcloud config set project ${PROJECT_ID}
 IMAGE_VERSION="composer-1.17.4-airflow-1.10.15"
 NODE_COUNT=3
 SCHEDULER_COUNT=1
-DISK_SIZE=20
-NODE_MACHINE_TYPE=n1-standard-2
+DISK_SIZE=500
+# NODE_MACHINE_TYPE=n1-standard-2
+NODE_MACHINE_TYPE=n2-standard-16
 SQL_MACHINE_TYPE=db-n1-standard-2
 WS_MACHINE_TYPE=composer-n1-webserver-2
 
