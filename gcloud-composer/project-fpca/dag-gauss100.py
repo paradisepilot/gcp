@@ -118,7 +118,8 @@ with models.DAG(JOB_NAME,
         --project=${GCP_PROJECT}       --cluster=${COMPOSER_GKE_NAME} --zone=${COMPOSER_GKE_ZONE} \
         --machine-type=${MACHINE_TYPE} --num-nodes=${NODE_COUNT}      --disk-size=${NODE_DISK_SIZE} \
         --scopes=${SCOPES} \
-        --enable-autoupgrade
+        --enable-autoupgrade \
+        --enable-autoscaling
 
     ### Set the airflow variable name
     echo;echo Executing: airflow variables -s node_pool ${NODE_POOL}
