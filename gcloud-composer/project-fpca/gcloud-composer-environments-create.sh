@@ -65,7 +65,7 @@ AIRFLOW_POD_NAME=`kubectl get pods -n ${AIRFLOW_CLUSTER_NAMESPACE} | egrep 'work
 echo; echo AIRFLOW_POD_NAME=${AIRFLOW_POD_NAME}
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
-# Here, we include instructions for how to connect to an Airflow worker pod.
+# Here, we include instructions for how to connect to an Airflow worker node.
 
 ##### Opening a terminal to a worker node in a single command:
 # AIRFLOW_CLUSTER_NAMESPACE=`kubectl get namespaces | egrep 'airflow' | awk '{print $1}'`; AIRFLOW_POD_NAME=`kubectl get pods -n ${AIRFLOW_CLUSTER_NAMESPACE} | egrep 'worker' | head -n 1 | awk '{print $1}'`; kubectl -n ${AIRFLOW_CLUSTER_NAMESPACE} exec -it ${AIRFLOW_POD_NAME} -c airflow-worker -- /bin/bash
@@ -84,6 +84,20 @@ echo; echo AIRFLOW_POD_NAME=${AIRFLOW_POD_NAME}
 #####     (Airflow worker pod name: airflow-worker-57ff5d7f48-22l9t)
 # kubectl -n ${AIRFLOW_CLUSTER_NAMESPACE}             exec -it ${AIRFLOW_POD_NAME}             -c airflow-worker -- /bin/bash
 # kubectl -n composer-1-17-4-airflow-1-10-15-27457a66 exec -it airflow-worker-57ff5d7f48-22l9t -c airflow-worker -- /bin/bash
+
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
+# Instructions for how to connect to a Kubernetes pod.
+
+##### Opening a terminal to a Kubernetes pod manually in two commands:
+##### (1) List the pods (pod names are in the first column)
+# kubectl get pods -o wide
+
+##### (2) Connect to a remote shell in a Kubernetes pod:
+# kubectl exec --stdin --tty ${KUBERNETES_POD_NAME} -- /bin/sh 
+#
+# Examples:
+# kubectl exec --stdin --tty etl-56c68ccfd085403a8aa99449cf11e743 -- /bin/sh 
+# kubectl exec --stdin --tty composer-fluentd-daemon-p294m        -- /bin/sh
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
 ##### install Python dependencies
