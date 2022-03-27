@@ -72,10 +72,11 @@ with models.DAG(JOB_NAME,
     # [ -z "${NODE_COUNT}" ] && NODE_COUNT=6
     # [ -z "${MACHINE_TYPE}" ] && MACHINE_TYPE=n1-standard-2
     # [ -z "${MACHINE_TYPE}" ] && MACHINE_TYPE=custom-4-5120
+    # [ -z "${MACHINE_TYPE}" ] && MACHINE_TYPE=custom-16-65536
     # [ -z "${NODE_DISK_SIZE}" ] && NODE_DISK_SIZE=20
 
     [ -z "${NODE_COUNT}" ] && NODE_COUNT=3
-    [ -z "${MACHINE_TYPE}" ] && MACHINE_TYPE=custom-16-65536
+    [ -z "${MACHINE_TYPE}" ] && MACHINE_TYPE=custom-80-262144
     [ -z "${SCOPES}" ] && SCOPES=default,cloud-platform
     [ -z "${NODE_DISK_SIZE}" ] && NODE_DISK_SIZE=512
 
