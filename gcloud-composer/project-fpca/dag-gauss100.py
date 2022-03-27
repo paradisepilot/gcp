@@ -57,6 +57,7 @@ with models.DAG(JOB_NAME,
                 default_args=default_args,
                 schedule_interval=None,
                 # schedule_interval=timedelta(days=1),
+                concurrency=6,
                 catchup=False
                 ) as dag:
 
