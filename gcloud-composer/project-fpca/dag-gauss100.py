@@ -117,9 +117,9 @@ with models.DAG(JOB_NAME,
     gcloud container node-pools create ${NODE_POOL} \
         --project=${GCP_PROJECT}       --cluster=${COMPOSER_GKE_NAME} --zone=${COMPOSER_GKE_ZONE} \
         --machine-type=${MACHINE_TYPE} --num-nodes=${NODE_COUNT}      --disk-size=${NODE_DISK_SIZE} \
+    #   --enable-autoscaling --min-nodes 1 --max-nodes 10 \
         --scopes=${SCOPES} \
-        --enable-autoupgrade \
-        --enable-autoscaling
+        --enable-autoupgrade
 
     ### Set the airflow variable name
     echo;echo Executing: airflow variables -s node_pool ${NODE_POOL}
@@ -266,14 +266,11 @@ spec:\n\
     echo;echo Executing: gsutil -m cp -r ${BOQ_BUCKET}/TrainingData_Geojson datatransfer
     gsutil -m cp -r ${BOQ_BUCKET}/TrainingData_Geojson datatransfer
 
-    echo;echo Executing: gsutil -m cp -r ${BOQ_BUCKET}/img datatransfer
-    gsutil -m cp -r ${BOQ_BUCKET}/img datatransfer
-
-    echo;echo Executing: ls -l datatransfer
-    ls -l datatransfer
-
     echo;echo Executing: sudo kubectl cp datatransfer/TrainingData_Geojson default/datatransfer-pod:/datatransfer
     sudo kubectl cp datatransfer/TrainingData_Geojson default/datatransfer-pod:/datatransfer
+
+    echo;echo Executing: gsutil -m cp -r ${BOQ_BUCKET}/img datatransfer
+    gsutil -m cp -r ${BOQ_BUCKET}/img datatransfer
 
     echo;echo Executing: sudo kubectl cp datatransfer/img default/datatransfer-pod:/datatransfer
     sudo kubectl cp datatransfer/img default/datatransfer-pod:/datatransfer
@@ -281,11 +278,14 @@ spec:\n\
     echo;echo Executing: ls -l datatransfer
     ls -l datatransfer
 
-    echo;echo Executing: ls -l datatransfer/TrainingData_Geojson
-    ls -l datatransfer/TrainingData_Geojson
+    echo;echo Executing: ls -l datatransfer/*
+    ls -l datatransfer/*
 
-    echo;echo Executing: ls -l datatransfer/img
-    ls -l datatransfer/img
+    # echo;echo Executing: ls -l datatransfer/TrainingData_Geojson
+    # ls -l datatransfer/TrainingData_Geojson
+
+    # echo;echo Executing: ls -l datatransfer/img
+    # ls -l datatransfer/img
 
     # echo;echo Executing: sudo kubectl exec -n default datatransfer-pod -- /bin/sh -c 'mkdir /datatransfer/input/; mkdir /datatransfer/output/; ls -l /datatransfer; exit'
     # sudo kubectl exec -n default datatransfer-pod -- /bin/sh -c 'mkdir /datatransfer/input/; mkdir /datatransfer/output/; ls -l /datatransfer; exit'
