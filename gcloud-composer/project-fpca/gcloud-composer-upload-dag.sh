@@ -13,5 +13,5 @@ echo; echo Executing: gcloud composer environments storage dags import
 gcloud composer environments storage dags import \
     --environment ${ENVIRONMENT_NAME} \
     --location ${LOCATION} \
-    --source dag-gauss100.py
+    --source dag-fpca.py
 
