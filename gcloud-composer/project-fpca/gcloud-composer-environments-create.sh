@@ -29,9 +29,10 @@ gcloud config set project ${PROJECT_ID}
 IMAGE_VERSION="composer-1.17.4-airflow-1.10.15"
 NODE_COUNT=3
 SCHEDULER_COUNT=1
-DISK_SIZE=500
-# NODE_MACHINE_TYPE=n1-standard-2
-NODE_MACHINE_TYPE=n2-standard-16
+# DISK_SIZE=500
+# NODE_MACHINE_TYPE=n2-standard-16
+DISK_SIZE=64
+NODE_MACHINE_TYPE=n1-standard-2
 SQL_MACHINE_TYPE=db-n1-standard-2
 WS_MACHINE_TYPE=composer-n1-webserver-2
 
@@ -93,10 +94,10 @@ echo; echo AIRFLOW_POD_NAME=${AIRFLOW_POD_NAME}
 # kubectl get pods -o wide
 
 ##### (2) Connect to a remote shell in a Kubernetes pod:
-# kubectl exec --stdin --tty ${KUBERNETES_POD_NAME} -- /bin/sh 
+# kubectl exec --stdin --tty ${KUBERNETES_POD_NAME} -- /bin/sh
 #
 # Examples:
-# kubectl exec --stdin --tty etl-56c68ccfd085403a8aa99449cf11e743 -- /bin/sh 
+# kubectl exec --stdin --tty etl-56c68ccfd085403a8aa99449cf11e743 -- /bin/sh
 # kubectl exec --stdin --tty composer-fluentd-daemon-p294m        -- /bin/sh
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
