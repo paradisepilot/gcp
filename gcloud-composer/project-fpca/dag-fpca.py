@@ -197,7 +197,7 @@ metadata:\n\
 spec:\n\
   resources:\n\
     requests:\n\
-      storage: 500Gi\n\
+      storage: 64Gi\n\
   accessModes:\n\
     - ReadWriteOnce\n\
   storageClassName: my-storage-class\n"\
@@ -362,7 +362,7 @@ metadata:\n\
 spec:\n\
   resources:\n\
     requests:\n\
-      storage: 500Gi\n\
+      storage: 64Gi\n\
   accessModes:\n\
     - ReadWriteOnce\n\
   storageClassName: my-storage-class\n"\
