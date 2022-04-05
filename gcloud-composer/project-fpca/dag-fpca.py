@@ -283,7 +283,7 @@ spec:\n\
     ### Examine clusters
     echo;echo Executing: gcloud container clusters list
     gcloud container clusters list
-    sleep 60
+    sleep 10
 
     echo;echo Executing: sudo kubectl get nodes
     sudo kubectl get nodes
@@ -393,8 +393,8 @@ spec:\n\
     ls -l datatransfer
     sleep 10
 
-    echo;echo Executing: sudo kubectl cp default/pvc-{BUCKET_NAME}:/datatransfer/output datatransfer/output
-    sudo kubectl cp default/pvc-{BUCKET_NAME}:/datatransfer/output datatransfer/output
+    echo;echo Executing: sudo kubectl cp default/pd-{BUCKET_NAME}:/datatransfer/output datatransfer/output
+    sudo kubectl cp default/pd-{BUCKET_NAME}:/datatransfer/output datatransfer/output
     sleep 10
 
     echo;echo Executing: ls -l datatransfer
@@ -407,7 +407,7 @@ spec:\n\
 
     # Assume that the environment variable EXTERNAL_BUCKET has been set.
     echo;echo Executing: gsutil -m cp -r datatransfer/output ${EXTERNAL_BUCKET}
-    gsutil -m cp -r datatransfer/output ${EXTERNAL_BUCKET}
+    gsutil -m cp -r "datatransfer/output/*" ${EXTERNAL_BUCKET}/output/{BUCKET_NAME}
     sleep 10
 
     echo;echo Executing: gsutil ls ${EXTERNAL_BUCKET}
@@ -418,8 +418,8 @@ spec:\n\
     gsutil ls ${EXTERNAL_BUCKET}/output
     sleep 10
 
-    echo;echo Executing: sudo kubectl delete pod pvc-{BUCKET_NAME}
-    sudo kubectl delete pod pvc-{BUCKET_NAME}
+    echo;echo Executing: sudo kubectl delete pod pd-{BUCKET_NAME}
+    sudo kubectl delete pod pd-{BUCKET_NAME}
 
     echo;echo Executing: sudo kubectl get nodes
     sudo kubectl get nodes
