@@ -157,7 +157,7 @@ echo \
 apiVersion: storage.k8s.io/v1\n\
 kind: StorageClass\n\
 metadata:\n\
-  name: my-storage-class\n\
+  name: sc-{BUCKET_NAME}\n\
   namespace: default\n\
 provisioner: kubernetes.io/gce-pd\n\
 parameters:\n\
@@ -177,7 +177,7 @@ spec:\n\
       storage: 64Gi\n\
   accessModes:\n\
     - ReadWriteOnce\n\
-  storageClassName: my-storage-class\n"\
+  storageClassName: sc-{BUCKET_NAME}\n"\
 > create_pvc.yaml
 
 echo \
@@ -301,7 +301,7 @@ echo \
 apiVersion: storage.k8s.io/v1\n\
 kind: StorageClass\n\
 metadata:\n\
-  name: my-storage-class\n\
+  name: sc-{BUCKET_NAME}\n\
   namespace: default\n\
 provisioner: kubernetes.io/gce-pd\n\
 parameters:\n\
@@ -321,7 +321,7 @@ spec:\n\
       storage: 64Gi\n\
   accessModes:\n\
     - ReadWriteOnce\n\
-  storageClassName: my-storage-class\n"\
+  storageClassName: sc-{BUCKET_NAME}\n"\
 > create_pvc.yaml
 
 echo \
