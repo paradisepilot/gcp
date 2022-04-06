@@ -52,12 +52,14 @@ with models.DAG(JOB_NAME,
     # [ -z "${MACHINE_TYPE}" ] && MACHINE_TYPE=custom-16-65536
     # [ -z "${MACHINE_TYPE}" ] && MACHINE_TYPE=custom-80-262144
     # [ -z "${NODE_DISK_SIZE}" ] && NODE_DISK_SIZE=20
+    # [ -z "${NODE_DISK_SIZE}" ] && NODE_DISK_SIZE=64
+    # [ -z "${NODE_DISK_SIZE}" ] && NODE_DISK_SIZE=128
     # [ -z "${NODE_DISK_SIZE}" ] && NODE_DISK_SIZE=512
 
     [ -z "${NODE_COUNT}" ] && NODE_COUNT=3
-    [ -z "${MACHINE_TYPE}" ] && MACHINE_TYPE=custom-4-5120
+    [ -z "${MACHINE_TYPE}" ] && MACHINE_TYPE=custom-80-262144
     [ -z "${SCOPES}" ] && SCOPES=default,cloud-platform
-    [ -z "${NODE_DISK_SIZE}" ] && NODE_DISK_SIZE=20
+    [ -z "${NODE_DISK_SIZE}" ] && NODE_DISK_SIZE=64
 
     # Generate node-pool name
     NODE_POOL=""" + node_pool_value + """
@@ -249,11 +251,11 @@ spec:\n\
     echo;echo Executing: sudo kubectl cp datatransfer/TrainingData_Geojson default/pd-{BUCKET_NAME}:/datatransfer
     sudo kubectl cp datatransfer/TrainingData_Geojson default/pd-{BUCKET_NAME}:/datatransfer
 
-    # echo;echo Executing: gsutil -m cp -r gs://{BUCKET_NAME}/img datatransfer
-    # gsutil -m cp -r gs://{BUCKET_NAME}/img datatransfer
+    echo;echo Executing: gsutil -m cp -r gs://{BUCKET_NAME}/img datatransfer
+    gsutil -m cp -r gs://{BUCKET_NAME}/img datatransfer
 
-    # echo;echo Executing: sudo kubectl cp datatransfer/img default/pd-{BUCKET_NAME}:/datatransfer
-    # sudo kubectl cp datatransfer/img default/pd-{BUCKET_NAME}:/datatransfer
+    echo;echo Executing: sudo kubectl cp datatransfer/img default/pd-{BUCKET_NAME}:/datatransfer
+    sudo kubectl cp datatransfer/img default/pd-{BUCKET_NAME}:/datatransfer
 
     echo;echo Executing: ls -l datatransfer
     ls -l datatransfer
